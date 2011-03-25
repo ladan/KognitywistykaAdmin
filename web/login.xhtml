@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kognitywistyka FORESIGHT - Panel Administracyjny</title>
+<link href="resources/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/login.css" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body class="glowna">
+<header id="main-header">
+	<h1>Logowanie do panelu</h1>
+</header>
+
+<div id="site-wrapper">
+    <form id="login-form" action="j_spring_security_check">
+        <div>
+            <label for="j_username">Nazwa użytkownika:</label>
+            <input name="j_username" type="text" />
+        </div>
+        <div>
+            <label for="j_password">Hasło:</label>
+            <input name="j_password" type="password" />
+        </div>
+        <div>
+            <input type="submit" value="Zaloguj" class="button" />
+        </div>  
+    </form>
+</div>
+</body>
+</html>

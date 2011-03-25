@@ -1,0 +1,40 @@
+/*----------------Ogólne----------------*/
+#main-header h1 {
+	font-size: 24px;
+	margin: 10px;	
+}
+
+/*----------------Panel logowania----------------*/
+#login-form {
+	border: 1px solid black;
+	width: 400px;
+	margin: 10px;
+	overflow: auto;
+}
+
+#login-form div {
+	float: left;
+	clear: left;
+	margin: 10px;	
+}
+
+#login-form label {
+	width: 150px;	
+	display: block;
+	float: left;
+	padding: 4px 0;	
+}
+
+#login-form input {
+	float: left;
+	width: 200px;
+	padding: 0 10px;	
+	height: 24px;
+	border: 1px solid b3b3b3;
+}
+
+#login-form input.button {
+	margin-left: 150px;
+	width: 80px;
+	height: 30px;
+}
