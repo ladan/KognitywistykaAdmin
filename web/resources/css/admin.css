@@ -1,3 +1,15 @@
+/*----------------HACKS----------------*/
+
+/*Sposób na to, by zaznaczaćw menu stronę, która aktualnie jest podświetlona.
+  Dzięki temu możemy stosować taki sam header w każdej podstronie.
+  */
+.glowna #head-wrapper nav .nav-1-link a,
+.oprojekcie #head-wrapper nav .nav-2-link a {
+	border: 0;
+	color: #fff;
+	background: #000;
+}
+
 /*----------------Ogólne----------------*/
 #head-wrapper {
 	margin: auto;

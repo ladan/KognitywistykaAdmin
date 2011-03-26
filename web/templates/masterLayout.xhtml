@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<ui:insert name="headDate">
+		<ui:include src="/templates/sections/headData.xhtml" />	
+	</ui:insert>
+</h:head>
+
+<h:body class="#{bodyClass}">
+	<ui:insert name="siteHeader">
+		<ui:include src="/templates/sections/header.xhtml" />
+	</ui:insert>
+	
+	<div id="site-wrapper">
+		<div id="content">
+			<ui:insert name="siteContent" />
+		</div>
+		
+		<aside id="site-sidebar">
+			<ui:insert name="siteSidebar" />
+		</aside>
+	</div>	
+	
+	
+	<ui:insert name="siteFooter">
+		<ui:include src="/templates/sections/footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>
