@@ -166,3 +166,98 @@
 	color: #000;
 	line-height: 20px;
 }
+
+/*----------------Kadra projektu----------------*/
+.kadra-form {
+	margin-bottom: 30px;
+}
+
+.kadra-form div {
+	margin: 10px 0;	
+	clear: both;
+	overflow: auto;	
+}
+
+.kadra-form label {
+	padding: 4px 0;
+	width: 150px;
+	float: left;
+	display: block;
+}
+
+.kadra-form input {
+	float: left;
+	width: 240px;
+	padding: 0 5px;	
+	height: 24px;
+	font-size: 13px;
+	border: 1px solid b3b3b3;	
+}
+
+.kadra-form textarea {
+	float: left;
+	width: 480px;
+	padding: 5px;
+	font-size: 13px;
+	border: 1px solid b3b3b3;
+}
+
+.kadra-form input.kadra-form-button {
+	margin-left: 150px;
+	width: 70px;	
+	height: 28px;
+}
+
+.zadania-kadry {
+	margin: 10px 0; 
+	list-style: none;	
+}
+
+.zadania-kadry li {
+	margin: 5px 0;	
+}
+
+.zadania-kadry span {
+	display: inline-block;
+	width: 150px;
+}
+
+.kadra-podglad article {
+	overflow: auto;	
+}
+
+.kadra-podglad h3{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	color: #000;
+	margin: 10px 0;
+}
+
+.kadra-podglad h4{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #000;
+}
+
+.kadra-podglad p{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000;
+	line-height: 20px;
+}
+
+.kadra-podglad p.tytul-naukowy{
+	margin-bottom: 10px;
+}
+
+.kadra-zdjecie {
+	float: left;
+	border: 1px solid #888888;
+	width: 98px;
+	min-height: 100px;
+	padding: 3px 3px 0;
+	height-min: 50px;
+	margin: 0 10px 10px 0;
+	background: url(../images/kadra-brak.png) no-repeat;
+}

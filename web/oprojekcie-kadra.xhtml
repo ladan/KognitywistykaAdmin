@@ -14,8 +14,100 @@
 	<ui:param name="bodyClass" value="oprojekcie" />
 	
 	<ui:define name="siteContent">
-    	<h2>O projekcie - Kadra projektu</h2>
-        <p>---</p>
+    	<section class="kadra-form">
+        	<h2>Kadra projektu</h2>
+            <form>
+                <div>
+                    <label for="zadanie">Zadanie:</label>
+                    <select>
+                        <option value="wykonawca">Wykonawca</option>
+                        <option value="wspolpracownik">Współpracownik</option>
+                        <option value="">Lorem ipsum</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="imie">Imię:</label>
+                    <input type="text" name="imie" />
+                </div>
+                <div>
+                    <label for="nazwisko">Nazwisko:</label>
+                    <input type="text" name="" />
+                </div>
+                <div>
+                    <label for="tytul">Tytuł naukowy:</label>
+                    <input type="text" name="" />
+                </div>
+                <div>
+                    <label for="opis">Opis:</label>
+                    <textarea rows="5" name="" id=""></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Dodaj" class="kadra-form-button" />
+                </div>
+            </form>
+        </section>
+        <section class="kadra-form">
+        	<h2>Zadania kadry</h2>
+            <ul class="zadania-kadry">
+            	<li><span>Wykonawca</span> <a href="#">Usuń</a></li>
+                <li><span>Współpracownik</span> <a href="#">Usuń</a></li>
+                <li><span>Lorem ipsum</span> <a href="#">Usuń</a></li>
+            </ul>
+            <form>
+                <div>
+                    <label for="zadanie">Dodaj zadanie:</label>
+                    <input type="text" name="zadanie" />
+                </div>
+                <div>
+                    <input type="submit" value="Dodaj" class="kadra-form-button" />
+                </div>
+            </form>
+        </section>
+        <section class="kadra-podglad">
+        	<h2>Kadra projektu</h2>
+            <h3>Wykonawcy</h3>
+        	<article>
+                <div class="kadra-zdjecie">
+                	<img src="#" alt="" />
+                </div>
+                <h4>Jan Kowalski</h4>
+                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            </article>
+            <article>
+                <div class="kadra-zdjecie">
+                	<img src="#" alt="" />
+                </div>
+                <h4>Jan Kowalski</h4>
+                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            </article>
+            <h3>Współpracownicy</h3>
+            <article>
+                <div class="kadra-zdjecie">
+                	<img src="resources/images/kadra-foto.jpg" alt="" />
+                </div>
+                <h4>Jan Kowalski</h4>
+                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            </article>
+            <article>
+                <div class="kadra-zdjecie">
+                	<img src="resources/images/kadra-foto.jpg" alt="" />
+                </div>
+                <h4>Jan Kowalski</h4>
+                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            </article>
+            <article>
+                <div class="kadra-zdjecie">
+                	<img src="resources/images/kadra-foto.jpg" alt="" />
+                </div>
+                <h4>Jan Kowalski</h4>
+                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            </article>
+        </section>
     </ui:define>
     
     <ui:define name="siteSidebar">
