@@ -14,8 +14,81 @@
 	<ui:param name="bodyClass" value="oprojekcie" />
 	
 	<ui:define name="siteContent">
-    	<h2>O projekcie - Baza linków</h2>
-        <p>---</p>
+    	<section class="linki-form">
+        	<h2>Linki</h2>
+            <form>
+            	<div>
+                    <label for="nazwa">Nazwa:</label>
+                    <input type="text" name="nazwa" />
+                </div>
+                <div>
+                    <label for="url">Adres URL:</label>
+                    <input type="text" name="url" value="http://" />
+                </div>
+                <div>
+                    <label for="opis">Opis:</label>
+                    <textarea rows="5" name="" id="opis"></textarea>
+                </div>
+                
+                <div>
+                    <input type="submit" value="Dodaj" class="linki-form-button" />
+                </div>
+            </form>
+        </section>
+        <section class="linki-preview">
+        	<h2>Baza linków</h2>
+            <article class="link-baza">
+            	<header>
+                	<h3><a href="#" class="link1">Link</a></h3>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="linki-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                    <form>
+                        <div>
+                            <input type="text" name="nazwa" value="Link1"/>
+                        </div>
+                        <div>
+                            <input type="text" name="url" value="http://www.google.com"/>
+                        </div>
+                        <div>
+                            <textarea rows="5" name="opis">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</textarea>
+                        </div>
+                        
+                        <div>
+                            <input type="submit" value="Zapisz" class="linki-form-button" />
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="link-baza">
+            	<header>
+                	<h3><a href="#" class="link1">Link</a></h3>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="linki-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </article>
+            <article class="link-baza">
+            	<header>
+                	<h3><a href="#" class="link1">Link</a></h3>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="linki-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </article>
+            <article class="link-baza">
+            	<header>
+                	<h3><a href="#" class="link1">Link</a></h3>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="linki-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </article>
+        </section>
     </ui:define>
     
     <ui:define name="siteSidebar">

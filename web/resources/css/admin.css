@@ -178,12 +178,14 @@
 	line-height: 20px;
 }
 
-/*----------------Kadra projektu, Raporty projektu----------------*/
+/*----------------Kadra projektu, Raporty projektu, Linki projektu----------------*/
+.linki-form,
 .raporty-form,
 .kadra-form {
 	margin-bottom: 30px;
 }
 
+.linki-form div,
 .raporty-form div,
 .kadra-form div {
 	margin: 10px 0;	
@@ -191,6 +193,7 @@
 	overflow: auto;	
 }
 
+.linki-form label,
 .raporty-form label,
 .kadra-form label {
 	padding: 4px 0;
@@ -199,6 +202,7 @@
 	display: block;
 }
 
+.linki-form input,
 .raporty-form input,
 .kadra-form input {
 	float: left;
@@ -209,6 +213,7 @@
 	border: 1px solid b3b3b3;	
 }
 
+.linki-form textarea,
 .raporty-form textarea,
 .kadra-form textarea {
 	float: left;
@@ -218,6 +223,7 @@
 	border: 1px solid b3b3b3;
 }
 
+.linki-form input.linki-form-button,
 .raporty-form input.raporty-form-button,
 .kadra-form input.kadra-form-button {
 	margin-left: 150px;
@@ -298,18 +304,22 @@
 	float: right;	
 }
 
+
+.link-baza,
 .raport {
 	margin: 10px 0;
 	overflow: auto;	
 	border-bottom: 1px dashed  #9c9c9c;
 }
 
+.link-baza h2,
 .raport h2 {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 20px;
 	color: #000;
 }
 
+.link-baza h3,
 .raport h3 {
 	font-family: Arial, Helvetica, sans-serif;	
 	font-size: 15px;
@@ -321,6 +331,7 @@
 	color: #8d8d8d;	
 }
 
+.link-baza pre,
 .raport pre {
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: 13px;
@@ -333,28 +344,24 @@
 	margin: 0 10px;
 }
 
+.linki-options,
 .raporty-options {
-	margin: 10px 0;	
+	margin: 10px 0 30px;	
 }
 
+.linki-options a,
 .raporty-options a{
 	margin-right: 15px;	
 }
 
-.raporty-options {
-	
-}
-
-.raporty-options {
-	margin-bottom: 30px;
-}
-
+.linki-options div,
 .raporty-options div {
 	margin: 10px 0;	
 	clear: both;
 	overflow: auto;	
 }
 
+.linki-options input,
 .raporty-options input {
 	float: left;
 	width: 260px;
@@ -368,6 +375,7 @@
 	width: 120px;
 }
 
+.linki-options textarea,
 .raporty-options textarea {
 	float: left;
 	width: 620px;
@@ -376,6 +384,7 @@
 	border: 1px solid b3b3b3;
 }
 
+.linki-options input.linki-form-button,
 .raporty-options input.raporty-form-button {
 	width: 70px;	
 	height: 28px;
