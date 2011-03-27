@@ -223,7 +223,9 @@
 }
 
 .kadra-podglad article {
-	overflow: auto;	
+	overflow: auto;
+	border-bottom: 1px solid #999;
+	margin: 10px 0;
 }
 
 .kadra-podglad h3{
@@ -260,4 +262,15 @@
 	height-min: 50px;
 	margin: 0 10px 10px 0;
 	background: url(../images/kadra-brak.png) no-repeat;
+}
+
+.kadra-options {
+	clear: both;
+	overflow: auto;
+	margin: 10px 0;
+}
+
+.kadra-delete {
+	background: #FF8080;
+	float: right;	
 }
