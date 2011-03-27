@@ -11,6 +11,17 @@
 }
 
 /*----------------Ogólne----------------*/
+
+.link1 {
+	color: #178DB9;
+	text-decoration: none;	
+	font-weight: bold;
+}
+
+.link1:hover {
+	color: #000;	
+}
+
 #head-wrapper {
 	margin: auto;
 	width: 980px;
@@ -167,17 +178,20 @@
 	line-height: 20px;
 }
 
-/*----------------Kadra projektu----------------*/
+/*----------------Kadra projektu, Raporty projektu----------------*/
+.raporty-form,
 .kadra-form {
 	margin-bottom: 30px;
 }
 
+.raporty-form div,
 .kadra-form div {
 	margin: 10px 0;	
 	clear: both;
 	overflow: auto;	
 }
 
+.raporty-form label,
 .kadra-form label {
 	padding: 4px 0;
 	width: 150px;
@@ -185,6 +199,7 @@
 	display: block;
 }
 
+.raporty-form input,
 .kadra-form input {
 	float: left;
 	width: 240px;
@@ -194,6 +209,7 @@
 	border: 1px solid b3b3b3;	
 }
 
+.raporty-form textarea,
 .kadra-form textarea {
 	float: left;
 	width: 480px;
@@ -202,10 +218,17 @@
 	border: 1px solid b3b3b3;
 }
 
+.raporty-form input.raporty-form-button,
 .kadra-form input.kadra-form-button {
 	margin-left: 150px;
 	width: 70px;	
 	height: 28px;
+}
+
+.raporty-form div p {
+	font-size: 13px;
+	padding: 7px;
+	float: left;
 }
 
 .zadania-kadry {
@@ -273,4 +296,93 @@
 .kadra-delete {
 	background: #FF8080;
 	float: right;	
+}
+
+.raport {
+	margin: 10px 0;
+	overflow: auto;	
+	border-bottom: 1px dashed  #9c9c9c;
+}
+
+.raport h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	color: #000;
+}
+
+.raport h3 {
+	font-family: Arial, Helvetica, sans-serif;	
+	font-size: 15px;
+}
+
+.raport time {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 15px;
+	color: #8d8d8d;	
+}
+
+.raport pre {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 13px;
+		line-height: 20px;
+		margin: 10px 0;
+}
+
+.raport-download {
+	float: right;
+	margin: 0 10px;
+}
+
+.raporty-options {
+	margin: 10px 0;	
+}
+
+.raporty-options a{
+	margin-right: 15px;	
+}
+
+.raporty-options {
+	
+}
+
+.raporty-options {
+	margin-bottom: 30px;
+}
+
+.raporty-options div {
+	margin: 10px 0;	
+	clear: both;
+	overflow: auto;	
+}
+
+.raporty-options input {
+	float: left;
+	width: 260px;
+	padding: 0 5px;	
+	height: 24px;
+	font-size: 13px;
+	border: 1px solid b3b3b3;	
+}
+
+.raporty-options input.raporty-data {
+	width: 120px;
+}
+
+.raporty-options textarea {
+	float: left;
+	width: 620px;
+	padding: 5px;
+	font-size: 13px;
+	border: 1px solid b3b3b3;
+}
+
+.raporty-options input.raporty-form-button {
+	width: 70px;	
+	height: 28px;
+}
+
+.raporty-options div p {
+	font-size: 13px;
+	padding: 7px;
+	float: left;
 }

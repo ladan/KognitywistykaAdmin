@@ -14,8 +14,95 @@
 	<ui:param name="bodyClass" value="oprojekcie" />
 	
 	<ui:define name="siteContent">
-    	<h2>O projekcie - Raporty</h2>
-        <p>---</p>
+    	<section class="raporty-form">
+        	<h2>Raporty</h2>
+            <form>
+            	<div>
+                    <label for="nazwa">Nazwa:</label>
+                    <input type="text" name="nazwa" />
+                </div>
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="date" name="data" />
+                    <p>Format: DD/MM/YYYY</p>
+                </div>
+                <div>
+                    <label for="raport">Załącznik:</label>
+                    <input type="file" name="raport" />
+                </div>
+                <div>
+                    <label for="opis">Opis:</label>
+                    <textarea rows="5" name="" id=""></textarea>
+                </div>
+                
+                <div>
+                    <input type="submit" value="Dodaj" class="raporty-form-button" />
+                </div>
+            </form>
+        </section>
+        <section class="raporty-preview">
+        	<h2>Raporty</h2>
+            <div class="raport">
+            	<header>
+                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="raporty-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                    <form>
+                        <div>
+                            <input type="text" name="nazwa" value="Raport z konferencji"/>
+                        </div>
+                        <div>
+                            <input type="date" name="data" class="raporty-data" value="14/06/2010"/>
+                            <p>Format: DD/MM/YYYY</p>
+                        </div>
+                        <div>
+                            <textarea rows="5" name="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</textarea>
+                        </div>
+                        
+                        <div>
+                            <input type="submit" value="Zapisz" class="raporty-form-button" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="raport">
+            	<header>
+                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="raporty-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </div>
+            <div class="raport">
+            	<header>
+                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="raporty-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </div>
+            <div class="raport">
+            	<header>
+                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
+                </header>
+                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
+                <div class="raporty-options">
+                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
+                </div>
+            </div>
+        </section>
     </ui:define>
     
     <ui:define name="siteSidebar">
