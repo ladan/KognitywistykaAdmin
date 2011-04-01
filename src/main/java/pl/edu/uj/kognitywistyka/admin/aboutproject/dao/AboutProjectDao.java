@@ -5,9 +5,9 @@ import java.util.List;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.AboutProject;
 
 public interface AboutProjectDao {
-	void addAboutDescription(AboutProject aboutProject);
+	void addAboutProject(AboutProject aboutProject);
 
-	List<AboutProject> findAllAboutDescriptions();
+	List<AboutProject> findAllAboutProjects();
 
-	AboutProject findLatestAboutDescription();
+	AboutProject findLatestAboutProject();
 }

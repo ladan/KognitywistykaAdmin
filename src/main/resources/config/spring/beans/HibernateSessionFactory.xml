@@ -21,6 +21,10 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 		<property name="mappingResources">
 			<list>
 				<value>xml/aboutProject/hibernate/AboutProject.hbm.xml</value>
+				<value>xml/aboutProject/hibernate/Employee.hbm.xml</value>
+				<value>xml/aboutProject/hibernate/Link.hbm.xml</value>
+				<value>xml/aboutProject/hibernate/Position.hbm.xml</value>
+				<value>xml/aboutProject/hibernate/Report.hbm.xml</value>
 			</list>
 		</property>
 

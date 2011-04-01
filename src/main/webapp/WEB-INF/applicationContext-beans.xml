@@ -9,5 +9,4 @@
 
 	<!-- Beans Declaration -->
 	<import resource="classes/xml/aboutProject/spring/AboutProjectBean.xml" />
-
 </beans>

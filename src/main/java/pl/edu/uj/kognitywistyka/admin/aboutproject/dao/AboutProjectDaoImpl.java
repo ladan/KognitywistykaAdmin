@@ -9,17 +9,17 @@ import pl.edu.uj.kognitywistyka.admin.aboutproject.model.AboutProject;
 public class AboutProjectDaoImpl extends HibernateDaoSupport 
 	implements AboutProjectDao {
 
-	public void addAboutDescription(AboutProject aboutProject) {
+	public void addAboutProject(AboutProject aboutProject) {
 		getHibernateTemplate().save(aboutProject);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<AboutProject> findAllAboutDescriptions() {
+	public List<AboutProject> findAllAboutProjects() {
 		return getHibernateTemplate().find("from AboutProject order by Data desc");
 	}
 
-	public AboutProject findLatestAboutDescription() {
-		return findAllAboutDescriptions().get(0);
+	public AboutProject findLatestAboutProject() {
+		return findAllAboutProjects().get(0);
 	}
 
 }

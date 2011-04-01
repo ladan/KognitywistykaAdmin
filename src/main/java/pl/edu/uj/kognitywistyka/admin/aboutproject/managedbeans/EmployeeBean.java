@@ -7,18 +7,18 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.PersonnelBo;
+import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBo;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position;
 
 @ManagedBean
 @RequestScoped
-public class PersonnelBean implements Serializable {
+public class EmployeeBean implements Serializable {
 	private static final long serialVersionUID = 4241366958741596166L;
 
 	// Dependency injection via Spring
-	@ManagedProperty(name="personnelBo", value="#{personnelBo}")
-	PersonnelBo personnelBo;
+	@ManagedProperty(name="employeeBo", value="#{employeeBo}")
+	EmployeeBo employeeBo;
 
 	private String name;
 	private String surname;
@@ -77,24 +77,24 @@ public class PersonnelBean implements Serializable {
 		this.photo = photo;
 	}
 
-	public void setPersonnelBo(PersonnelBo personnelBo) {
-		this.personnelBo = personnelBo;
+	public void setEmployeeBo(EmployeeBo employeeBo) {
+		this.employeeBo = employeeBo;
 	}
 
 	public List<Employee> getAllEmployees() {
-		return personnelBo.findAllEmployees();
+		return employeeBo.findAllEmployees();
 	}
 	
 	public String addEmployee() {
 		Employee employee = new Employee();
-		employee.setName(name);
-		employee.setSurname(surname);
+		employee.setFirstName(name);
+		employee.setLastName(surname);
 		employee.setDescription(description);
 		employee.setPhoto(photo);
 		employee.setPosition(position);
 		employee.setTitle(title);
 		
-		personnelBo.addEmployee(employee);
+		employeeBo.addEmployee(employee);
 		
 		clearForm();
 		return "";

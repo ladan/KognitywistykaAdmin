@@ -23,7 +23,7 @@ public class AboutProjectBean implements Serializable {
 
 	public String getDescription() {
 		if(aboutProjectBo != null)
-			return aboutProjectBo.findLatestAboutDescription().getDescription();
+			return aboutProjectBo.findLatestAboutProject().getDescription();
 		else
 			return "";
 	}
@@ -36,15 +36,15 @@ public class AboutProjectBean implements Serializable {
 		this.aboutProjectBo = aboutProjectBo;
 	}
 
-	public AboutProject getAboutDescription() {
-		return aboutProjectBo.findLatestAboutDescription();
+	public AboutProject getAboutProject() {
+		return aboutProjectBo.findLatestAboutProject();
 	}
 	
-	public String addAboutDescription() {
+	public String addAboutProject() {
 		AboutProject aboutProject = new AboutProject();
 		aboutProject.setDescription(description);
 		
-		aboutProjectBo.addAboutDescription(aboutProject);
+		aboutProjectBo.addAboutProject(aboutProject);
 		
 		clearForm();
 		return "";

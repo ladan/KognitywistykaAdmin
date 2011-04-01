@@ -17,19 +17,19 @@ public class AboutProjectBoImpl implements AboutProjectBo, Serializable {
 		this.aboutProjectDao = aboutProjectDao;
 	}
 	
-	public void addAboutDescription(AboutProject aboutProject) {
+	public void addAboutProject(AboutProject aboutProject) {
 		//Datę zapisujemy tutaj, bo w przypadku opisu "O projekcie" ma ona znaczenie tylko
 		//przy sortowaniu względem czasu
 		aboutProject.setDate(new Date());
-		aboutProjectDao.addAboutDescription(aboutProject);
+		aboutProjectDao.addAboutProject(aboutProject);
 	}
 
-	public List<AboutProject> findAllAboutDescriptions() {
-		return aboutProjectDao.findAllAboutDescriptions();
+	public List<AboutProject> findAllAboutProjects() {
+		return aboutProjectDao.findAllAboutProjects();
 	}
 
-	public AboutProject findLatestAboutDescription() {
-		return aboutProjectDao.findLatestAboutDescription();
+	public AboutProject findLatestAboutProject() {
+		return aboutProjectDao.findLatestAboutProject();
 	}
 
 }

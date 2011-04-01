@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Link" table="k_Linki">
+		<id name="linkId" column="Id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="Naglowek" not-null="true" />
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="Url" not-null="true" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name ="Opis" not-null="false"/>
+		</property>
+   </class>
+</hibernate-mapping>

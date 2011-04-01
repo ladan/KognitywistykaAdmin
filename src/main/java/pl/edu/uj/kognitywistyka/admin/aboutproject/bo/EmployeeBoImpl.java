@@ -3,25 +3,25 @@ package pl.edu.uj.kognitywistyka.admin.aboutproject.bo;
 import java.io.Serializable;
 import java.util.List;
 
-import pl.edu.uj.kognitywistyka.admin.aboutproject.dao.PersonnelDao;
+import pl.edu.uj.kognitywistyka.admin.aboutproject.dao.EmployeeDao;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee;
 
-public class PersonnelBoImpl implements PersonnelBo, Serializable {
+public class EmployeeBoImpl implements EmployeeBo, Serializable {
 	private static final long serialVersionUID = 1621947279851464888L;
 
-	PersonnelDao personnelDao;
+	EmployeeDao employeeDao;
 
-	public void setPersonnelDao(PersonnelDao personnelDao) {
-		this.personnelDao = personnelDao;
+	public void setPersonnelDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
 	}
 
 	public void addEmployee(Employee employee) {
-		personnelDao.addEmployee(employee);
+		employeeDao.addEmployee(employee);
 
 	}
 
 	public List<Employee> findAllEmployees() {
-		return personnelDao.findAllEmployees();
+		return employeeDao.findAllEmployees();
 	}
 
 }
