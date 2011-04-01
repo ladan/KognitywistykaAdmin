@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -16,19 +17,16 @@
 	<ui:define name="siteContent">
     	<h2>Podstawowe informacje o projekcie</h2>
         <section class="oprojekcie-form">
-        	<form>
-            	<div>
+        	<h:form>
+        		<div>
                 	<label for="oprojekcie-info">Informacje o projekcie</label>
-                    <textarea rows="10" name="oprojekcie-info" id="oprojekcie-info">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolor.
-
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia. </textarea>
+                	<h:inputTextarea value="#{aboutProjectBean.description}" rows="10">
+                	</h:inputTextarea>
                 </div>
                 <div>
-                	<input type="submit" value="Zapisz" class="oprojekcie-form-button" />
+                	<h:commandButton value="Zapisz" class="oprojekcie-form-button" action="#{aboutProjectBean.addAboutDescription}" />
                 </div>
-            </form>
+        	</h:form>
         </section>
         <h2>Podgląd</h2>
         <section class="oprojekcie-preview">
@@ -38,7 +36,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         <!-- Textarea autoresize -->
         <script>
 		$(document).ready(function() {
-        	$('textarea#oprojekcie-info').autoResize({
+        	$('textarea').autoResize({
 				onResize : function() {
 					$(this).css({opacity:0.8});
 				},
@@ -54,10 +52,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         <script>
 		$(document).ready(function() {
 			//Copy textarea to preview
-			var $comment = $('textarea#oprojekcie-info').val();
+			var $comment = $('textarea').val();
 			$('#preview-field').html( $comment );
 			//Update preview on key up
-			$('textarea#oprojekcie-info').keyup(function() {
+			$('textarea').keyup(function() {
 				$comment = $(this).val();
 				$('#preview-field').html( $comment );
 			});

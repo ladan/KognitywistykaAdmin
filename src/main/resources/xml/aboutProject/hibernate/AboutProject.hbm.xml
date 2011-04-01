@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.AboutProject" 
+		   table="k_O_Projekcie">
+
+		<id name="aboutProjectId" type="long">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+
+		<property name="description" type="java.lang.String">
+			<column name="Opis" not-null="true"/>
+		</property>
+		<property name="date" type="timestamp">
+			<column name="Data" not-null="true" length="19" />
+		</property>
+		
+	</class>
+</hibernate-mapping>
