@@ -1,7 +1,7 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
 public class Employee {
-	private int employeeId;
+	private long employeeId;
 	private String firstName;
 	private String lastName;
 	private String title;
@@ -9,11 +9,11 @@ public class Employee {
 	private Position position;
 	private String photo;
 
-	public int getEmployeeId() {
+	public long getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
 	}
 

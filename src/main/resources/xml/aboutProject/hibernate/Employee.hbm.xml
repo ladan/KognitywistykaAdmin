@@ -24,6 +24,8 @@
 			<column name="Zdjecie" />
 		</property>
 	
-		<many-to-one name="position" cascade="persist,merge,save-update" class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position" column="Stanowisko"/>
+		<many-to-one name="position" class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position" fetch="select">
+			<column name="Stanowisko" not-null="true" />
+		</many-to-one>
    </class>
 </hibernate-mapping>

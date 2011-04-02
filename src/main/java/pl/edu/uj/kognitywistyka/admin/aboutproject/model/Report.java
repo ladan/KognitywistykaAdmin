@@ -1,16 +1,17 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Report{
-	private int reportId;
+	private long reportId;
 	private String title;
 	private Date data;
 	private String content;
-	public int getReportId() {
+	
+	public long getReportId() {
 		return reportId;
 	}
-	public void setReportId(int raportId) {
+	public void setReportId(long raportId) {
 		this.reportId = raportId;
 	}
 	public String getTitle() {

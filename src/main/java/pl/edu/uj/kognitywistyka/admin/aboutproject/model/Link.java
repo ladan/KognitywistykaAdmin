@@ -1,14 +1,14 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
 public class Link{
-	private int linkId;
+	private long linkId;
 	private String name;
 	private String url;
 	private String description;
-	public int getLinkId() {
+	public long getLinkId() {
 		return linkId;
 	}
-	public void setLinkId(int linkId) {
+	public void setLinkId(long linkId) {
 		this.linkId = linkId;
 	}
 	public String getName() {

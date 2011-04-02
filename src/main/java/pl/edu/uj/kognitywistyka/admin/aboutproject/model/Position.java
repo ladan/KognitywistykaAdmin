@@ -1,14 +1,18 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
-public class Position {
-	private int positionId;
-	private String name;
+import java.util.HashSet;
+import java.util.Set;
 
-	public int getPositionId() {
+public class Position {
+	private long positionId;
+	private String name;
+	private Set<Employee> employees = new HashSet<Employee>();
+
+	public long getPositionId() {
 		return positionId;
 	}
 
-	public void setPositionId(int postionId) {
+	public void setPositionId(long postionId) {
 		this.positionId = postionId;
 	}
 
@@ -18,6 +22,14 @@ public class Position {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
 }

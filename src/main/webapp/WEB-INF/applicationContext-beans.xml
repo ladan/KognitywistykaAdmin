@@ -9,4 +9,8 @@
 
 	<!-- Beans Declaration -->
 	<import resource="classes/xml/aboutProject/spring/AboutProjectBean.xml" />
+	<import resource="classes/xml/aboutProject/spring/EmployeeBean.xml" />
+	<import resource="classes/xml/aboutProject/spring/LinkBean.xml" />
+	<import resource="classes/xml/aboutProject/spring/PositionBean.xml" />
+	<import resource="classes/xml/aboutProject/spring/ReportBean.xml" />
 </beans>
