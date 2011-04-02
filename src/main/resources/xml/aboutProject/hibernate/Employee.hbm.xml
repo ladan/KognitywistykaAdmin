@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Personnel" table="k_Kadra">
+    <class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee" table="k_Kadra">
 		<id name="employeeId" column="Id" type="long">
 			<generator class="native"/>
 		</id>

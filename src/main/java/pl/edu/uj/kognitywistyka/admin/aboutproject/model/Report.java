@@ -5,7 +5,7 @@ import java.util.Date;
 public class Report{
 	private long reportId;
 	private String title;
-	private Date data;
+	private Date date;
 	private String content;
 	
 	public long getReportId() {
@@ -20,11 +20,11 @@ public class Report{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
-	public void setData(Date data) {
-		this.data = data;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public String getContent() {
 		return content;

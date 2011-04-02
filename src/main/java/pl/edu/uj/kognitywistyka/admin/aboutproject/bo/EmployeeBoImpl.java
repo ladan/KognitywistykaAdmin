@@ -11,7 +11,7 @@ public class EmployeeBoImpl implements EmployeeBo, Serializable {
 
 	EmployeeDao employeeDao;
 
-	public void setPersonnelDao(EmployeeDao employeeDao) {
+	public void setEmployeeDao(EmployeeDao employeeDao) {
 		this.employeeDao = employeeDao;
 	}
 

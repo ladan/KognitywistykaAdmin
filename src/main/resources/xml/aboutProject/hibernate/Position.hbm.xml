@@ -16,7 +16,7 @@
 			<key>
 				<column name="Stanowisko" not-null="true"></column>
 			</key>
-			<one-to-many class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Personnel"/>
+			<one-to-many class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee"/>
 		</set>
    </class>
 </hibernate-mapping>
