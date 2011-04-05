@@ -4,13 +4,15 @@
   Dzięki temu możemy stosować taki sam header w każdej podstronie.
   */
 .glowna #head-wrapper nav .nav-1-link a,
-.oprojekcie #head-wrapper nav .nav-2-link a {
+.oprojekcie #head-wrapper nav .nav-2-link a,
+.newsy #head-wrapper nav .nav-3-link a {
 	border: 0;
 	color: #fff;
 	background: #000;
 }
 
 /*----------------Ogólne----------------*/
+
 
 .link1 {
 	color: #178DB9;
@@ -20,6 +22,32 @@
 
 .link1:hover {
 	color: #000;	
+}
+.link2 {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.link2:hover {
+	color: #d5d5d5;	
+}
+.link3 {
+	color: #178DB9;
+}
+
+.link3:hover {
+	color: #000;	
+}
+.link4 {
+	color: #8d8d8d;
+}
+
+.link4:hover {
+	color: #000;	
+}
+
+.link-right {
+	float: right;	
 }
 
 #head-wrapper {
@@ -181,13 +209,15 @@
 /*----------------Kadra projektu, Raporty projektu, Linki projektu----------------*/
 .linki-form,
 .raporty-form,
-.kadra-form {
+.kadra-form, 
+.news-form{
 	margin-bottom: 30px;
 }
 
 .linki-form div,
 .raporty-form div,
-.kadra-form div {
+.kadra-form div,
+.news-form div {
 	margin: 10px 0;	
 	clear: both;
 	overflow: auto;	
@@ -195,7 +225,8 @@
 
 .linki-form label,
 .raporty-form label,
-.kadra-form label {
+.kadra-form label,
+.news-form label {
 	padding: 4px 0;
 	width: 150px;
 	float: left;
@@ -204,7 +235,8 @@
 
 .linki-form input,
 .raporty-form input,
-.kadra-form input {
+.kadra-form input,
+.news-form input {
 	float: left;
 	width: 240px;
 	padding: 0 5px;	
@@ -215,7 +247,8 @@
 
 .linki-form textarea,
 .raporty-form textarea,
-.kadra-form textarea {
+.kadra-form textarea,
+.news-form textarea {
 	float: left;
 	width: 480px;
 	padding: 5px;
@@ -225,13 +258,15 @@
 
 .linki-form input.linki-form-button,
 .raporty-form input.raporty-form-button,
-.kadra-form input.kadra-form-button {
+.kadra-form input.kadra-form-button,
+.news-form input.news-form-button {
 	margin-left: 150px;
 	width: 70px;	
 	height: 28px;
 }
 
-.raporty-form div p {
+.raporty-form div p,
+.news-form div p {
 	font-size: 13px;
 	padding: 7px;
 	float: left;
@@ -296,7 +331,7 @@
 .kadra-options {
 	clear: both;
 	overflow: auto;
-	margin: 10px 0;
+	margin: 20px 0 10px;
 }
 
 .kadra-delete {
@@ -333,10 +368,10 @@
 
 .link-baza pre,
 .raport pre {
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 13px;
-		line-height: 20px;
-		margin: 10px 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 20px;
+	margin: 10px 0;
 }
 
 .raport-download {
@@ -394,4 +429,36 @@
 	font-size: 13px;
 	padding: 7px;
 	float: left;
+}
+
+.newsy-preview {
+	overflow: auto;	
+	padding: 10px 0;
+}
+
+.news {
+	overflow: auto;
+	border-bottom: 1px dashed gray;
+	margin: 10px 0;
+}
+
+.newsy-preview h3 {
+	font-family: Georgia, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #000;
+}
+
+.newsy-preview time {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 15px;
+	color: #8d8d8d;
+	margin-bottom: 5px;
+	display: block;	
+}
+
+.newsy-prieview p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #000;
+	line-height: 20px;	
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:ui="http://java.sun.com/jsf/facelets">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+
+<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
+<!-- Dostępne wartości: glowna, oprojekcie, newsy -->
+	<ui:param name="bodyClass" value="newsy" />
+	
+	<ui:define name="siteContent">
+    	<h2>Dodaj newsa</h2>
+        <section class="news-form">
+        	<form>
+            	<div>
+                    <label for="tytul">Tytuł:</label>
+                    <input type="text" name="tytul" />
+                </div>
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="date" name="data" />
+                    <p>Format: DD/MM/YYYY</p>
+                </div>
+            	<div>
+                	<label for="tresc">Treść</label>
+                    <textarea rows="10" name="tresc"></textarea>
+                </div>
+                <div>
+                	<input type="submit" value="Dodaj" class="news-form-button" />
+                </div>
+            </form>
+        </section>
+    	
+        <h2>Podgląd</h2>
+        <section class="newsy-preview">
+        	<div class="news">
+            	<header>
+                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                </header>
+                <section>
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
+                </section>
+                <div class="kadra-options">
+                	<form>
+                        <label for="foto">Dodaj zdjęcie:</label>
+                        <input type="file" name="foto" />
+                        <input type="submit" value="Zapisz zdjęcie" />
+                        <input type="submit" value="Edytuj wpis" />
+                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
+                    </form>
+                </div>
+            </div>
+            <div class="news">
+            	<header>
+                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                </header>
+                <section>
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
+                </section>
+                <div class="kadra-options">
+                	<form>
+                        <label for="foto">Dodaj zdjęcie:</label>
+                        <input type="file" name="foto" />
+                        <input type="submit" value="Zapisz zdjęcie" />
+                        <input type="submit" value="Edytuj wpis" />
+                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
+                    </form>
+                </div>
+            </div>
+            <div class="news">
+            	<header>
+                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                </header>
+                <section>
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
+                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
+                </section>
+                <div class="kadra-options">
+                	<form>
+                        <label for="foto">Dodaj zdjęcie:</label>
+                        <input type="file" name="foto" />
+                        <input type="submit" value="Zapisz zdjęcie" />
+                        <input type="submit" value="Edytuj wpis" />
+                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
+                    </form>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+    
+    <ui:define name="siteSidebar">
+    	<ui:include src="/templates/sections/sidebars/glowna-sidebar.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>
