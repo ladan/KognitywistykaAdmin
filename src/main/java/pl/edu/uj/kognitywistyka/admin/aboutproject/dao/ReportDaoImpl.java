@@ -20,6 +20,17 @@ public class ReportDaoImpl extends HibernateDaoSupport
 	public List<Report> findAllReports() {
 		return getHibernateTemplate().find("from Report");
 	}
+
+	public void removeReport(Report report) {
+		getHibernateTemplate().delete(report);
+		
+	}
+
+	@Override
+	public void updateReport(Report report) {
+		getHibernateTemplate().update(report);
+		
+	}
 	
 
 

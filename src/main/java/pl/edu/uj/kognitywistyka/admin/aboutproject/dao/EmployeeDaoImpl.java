@@ -19,5 +19,15 @@ public class EmployeeDaoImpl extends HibernateDaoSupport
 	public List<Employee> findAllEmployees() {
 		return getHibernateTemplate().find("from Employee");
 	}
+
+	public void removeEmployee(Employee employee) {
+		getHibernateTemplate().delete(employee);
+		
+	}
+
+	public void updateEmployee(Employee employee) {
+		getHibernateTemplate().update(employee);
+		
+	}
 	
 }

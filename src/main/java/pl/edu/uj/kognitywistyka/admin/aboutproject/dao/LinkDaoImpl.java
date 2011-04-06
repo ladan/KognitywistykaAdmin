@@ -20,6 +20,18 @@ public class LinkDaoImpl extends HibernateDaoSupport
 	public List<Link> findAllLinks() {
 		return getHibernateTemplate().find("from Link");
 	}
+
+	
+	public void removeLink(Link link) {
+		getHibernateTemplate().delete(link);
+		
+	}
+
+
+	public void updateLink(Link link) {
+		getHibernateTemplate().update(link);
+		
+	}
 	
 
 

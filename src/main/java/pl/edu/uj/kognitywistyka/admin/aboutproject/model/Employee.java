@@ -1,6 +1,9 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
-public class Employee {
+public class Employee implements java.io.Serializable {
+	
+	private static final long serialVersionUID = -2076512681055030608L;
+	
 	private long employeeId;
 	private String firstName;
 	private String lastName;

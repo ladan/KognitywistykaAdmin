@@ -2,7 +2,10 @@ package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
 import java.util.Date;
 
-public class Report{
+public class Report implements java.io.Serializable{
+	
+	private static final long serialVersionUID = -7968128389684506623L;
+	
 	private long reportId;
 	private String title;
 	private Date date;

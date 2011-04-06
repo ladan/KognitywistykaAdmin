@@ -1,6 +1,9 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
-public class Link{
+public class Link implements java.io.Serializable{
+	
+	private static final long serialVersionUID = 6417225711933545255L;
+	
 	private long linkId;
 	private String name;
 	private String url;

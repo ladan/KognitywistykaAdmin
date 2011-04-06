@@ -12,7 +12,7 @@
 		<property name="name" type="java.lang.String">
 			<column name="Nazwa" not-null="true" length="50"/>
 		</property>
-		<set name="employees" table="k_Kadra" fetch="select">
+		<set name="employees" inverse="true" table="k_Kadra" fetch="select">
 			<key>
 				<column name="Stanowisko" not-null="true"></column>
 			</key>

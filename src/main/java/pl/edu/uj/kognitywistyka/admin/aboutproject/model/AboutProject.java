@@ -2,11 +2,14 @@ package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
 import java.util.Date;
 
-public class AboutProject {
+public class AboutProject implements java.io.Serializable {
+	
+	private static final long serialVersionUID = -7861350928516109979L;
+
 	private long aboutProjectId;
 	private String description;
 	private Date date;
-
+	
 	public long getAboutProjectId() {
 		return aboutProjectId;
 	}
