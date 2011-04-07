@@ -49,10 +49,13 @@
                 </section>
                 <div class="kadra-options">
                 	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
+                        <label for="foto">Podepnij galerię:</label>
+                        <select name="foto">
+                            <option value="g1">brak</option>
+                            <option disabled="true">---</option>
+                            <option value="g2">Galeria 2 - 16 sty. 2011</option>
+                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
+                    	</select>
                         <input type="submit" value="Usuń wpis" class="kadra-delete" />
                     </form>
                 </div>
@@ -68,10 +71,13 @@
                 </section>
                 <div class="kadra-options">
                 	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
+                        <label for="foto">Podepnij galerię:</label>
+                        <select name="foto">
+                            <option value="g1">brak</option>
+                            <option disabled="true">---</option>
+                            <option value="g2">Galeria 2 - 16 sty. 2011</option>
+                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
+                    	</select>
                         <input type="submit" value="Usuń wpis" class="kadra-delete" />
                     </form>
                 </div>
@@ -87,10 +93,13 @@
                 </section>
                 <div class="kadra-options">
                 	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
+                        <label for="foto">Podepnij galerię:</label>
+                        <select name="foto">
+                            <option value="g1">brak</option>
+                            <option disabled="true">---</option>
+                            <option value="g2">Galeria 2 - 16 sty. 2011</option>
+                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
+                    	</select>
                         <input type="submit" value="Usuń wpis" class="kadra-delete" />
                     </form>
                 </div>
@@ -99,7 +108,7 @@
     </ui:define>
     
     <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/glowna-sidebar.xhtml" />
+    	<ui:include src="/templates/sections/sidebars/newsy-sidebar.xhtml" />
 	</ui:define>
 	
 </ui:composition>

@@ -15,7 +15,7 @@
 	
 	<ui:define name="siteContent">
     	<h2>Dodaj galerię</h2>
-        <section class="news-form">
+        <section class="galeria-form">
         	<form>
             	<div>
                     <label for="tytul">Tytuł:</label>
@@ -26,81 +26,127 @@
                     <input type="date" name="data" />
                     <p>Format: DD/MM/YYYY</p>
                 </div>
-           </form>
-            	<div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcia:</label>
-                        <div class="kadra-options">
-                        	<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-							<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-                        	<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-                        	<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-                        	<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-                        	<div><input type="file" name="foto" />
-                        	<input type="submit" class="gallery-button" value="Usuń" /></div>
-	                        <div><input type="submit" class="gallery-button" value="Dodaj więcej" />
-	                        <input type="submit" class="gallery-button" value="Zapisz zdjęcia" /></div>
-                    	</div>
-                    </form>
+            	<div>
+                	<label for="zdjecie">Dodaj zdjęcie</label>
+                    <input type="file" name="zdjecie" />
+                    <input type="submit" value="Dodaj" class="galerie-form-button" />
                 </div>
-            
+                <div class="dodane-zdjecia">
+                	<h3>Dodane zdjęcia</h3>
+                    <div>
+                    	<a href="#">Usuń</a>
+                    	<img src="resources/images/kadra-brak.png" alt="brak" />
+                    </div>
+                    <div>
+                    	<a href="#">Usuń</a>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                    	<a href="#">Usuń</a>
+                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
+                    </div>
+                </div>
+                <div>
+                	<input type="submit" value="Zapisz galerię" class="galerie-form-button" />
+                </div>
+            </form>
         </section>
     	
-        <h2>Poprzednie galerie</h2>
+        <h2>Galerie</h2>
         <section class="newsy-preview">
         	<div class="news">
             	<header>
-                	<h3><a href="#" class="link1">Tytuł galerii</a></h3>
+                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
                     <time datetime="14-06-2010">14 czerwca 2010</time>
                 </header>
                 <section>
-                        <div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                        <input type="submit" value="Edytuj galerię" />
-                    </form>
+                    <div class="galeria">
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
                 </div>
-            </div>
-           <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł galerii</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                        <div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
                 </section>
                 <div class="kadra-options">
                 	<form>
-                        <input type="submit" value="Edytuj galerię" />
+                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
                     </form>
                 </div>
             </div>
             <div class="news">
             	<header>
-                	<h3><a href="#" class="link1">Tytuł galerii</a></h3>
+                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
                     <time datetime="14-06-2010">14 czerwca 2010</time>
                 </header>
                 <section>
-                        <div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/man.jpg" /></div>
-    					<div class="image-gallery"><img src="resources/images/gallery/woman.jpg" /></div>
+                    <div class="galeria">
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                </div>
                 </section>
                 <div class="kadra-options">
                 	<form>
-                        <input type="submit" value="Edytuj galerię" />
+                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
+                    </form>
+                </div>
+            </div>
+            <div class="news">
+            	<header>
+                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                </header>
+                <section>
+                    <div class="galeria">
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                </div>
+                </section>
+                <div class="kadra-options">
+                	<form>
+                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
+                    </form>
+                </div>
+            </div>
+            <div class="news">
+            	<header>
+                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
+                    <time datetime="14-06-2010">14 czerwca 2010</time>
+                </header>
+                <section>
+                    <div class="galeria">
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                    <div>
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+                </div>
+                </section>
+                <div class="kadra-options">
+                	<form>
+                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
                     </form>
                 </div>
             </div>
@@ -108,7 +154,7 @@
     </ui:define>
     
     <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/glowna-sidebar.xhtml" />
+    	<ui:include src="/templates/sections/sidebars/newsy-sidebar.xhtml" />
 	</ui:define>
 	
 </ui:composition>
