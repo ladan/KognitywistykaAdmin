@@ -11,6 +11,12 @@
 	background: #000;
 }
 
+.galeria #head-wrapper nav .nav-4-link a {
+	border: 0;
+	color: #fff;
+	background: #000;
+}
+
 /*----------------Ogólne----------------*/
 
 
@@ -213,19 +219,23 @@
 .news-form{
 	margin-bottom: 30px;
 }
+.gallery-form,
 
 .linki-form div,
 .raporty-form div,
 .kadra-form div,
+.gallery-form div,
 .news-form div {
 	margin: 10px 0;	
 	clear: both;
 	overflow: auto;	
 }
 
+
 .linki-form label,
 .raporty-form label,
 .kadra-form label,
+.gallery-form label,
 .news-form label {
 	padding: 4px 0;
 	width: 150px;
@@ -236,6 +246,7 @@
 .linki-form input,
 .raporty-form input,
 .kadra-form input,
+.gallery-form input,
 .news-form input {
 	float: left;
 	width: 240px;
@@ -248,6 +259,7 @@
 .linki-form textarea,
 .raporty-form textarea,
 .kadra-form textarea,
+.gallery-form textarea,
 .news-form textarea {
 	float: left;
 	width: 480px;
@@ -259,6 +271,7 @@
 .linki-form input.linki-form-button,
 .raporty-form input.raporty-form-button,
 .kadra-form input.kadra-form-button,
+.gallery-form input.gallery-form-button,
 .news-form input.news-form-button {
 	margin-left: 150px;
 	width: 70px;	
@@ -461,4 +474,18 @@
 	font-size: 15px;
 	color: #000;
 	line-height: 20px;	
+}
+
+.image-gallery{
+	float: left;
+	margin: 10px;
+	border: 1px solid #8d8d8d;
+	width: 102px;
+	height: 102px;
+}
+
+.gallery-button{
+	margin-left: 10px;
+	width: 20px;	
+	height: 28px;
 }
