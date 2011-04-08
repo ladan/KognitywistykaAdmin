@@ -25,6 +25,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 				<value>xml/aboutProject/hibernate/Link.hbm.xml</value>
 				<value>xml/aboutProject/hibernate/Position.hbm.xml</value>
 				<value>xml/aboutProject/hibernate/Report.hbm.xml</value>
+				<value>xml/news/hibernate/News.hbm.xml</value>
+				<value>xml/gallery/hibernate/Gallery.hbm.xml</value>
+				<value>xml/gallery/hibernate/Photo.hbm.xml</value>
 			</list>
 		</property>
 
