@@ -4,15 +4,15 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="pl.edu.uj.kognitywistyka.admin.gallery.model.Photo" table="k_Zdjecia">
-		<id name="photoId" column="Id" type="long">
+    <class name="pl.edu.uj.kognitywistyka.admin.gallery.model.Photo" table="k_photo">
+		<id name="photoId" column="id" type="long">
 			<generator class="native"/>
 		</id>		
 		<property name="photo" type="java.lang.String">
-			<column name="Zdjecie" not-null="true" length="90"/>
+			<column name="photo" not-null="true" length="90"/>
 		</property>
 		<many-to-one name="gallery" class="pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery" fetch="select">
-			<column name="IdGalerii" not-null="true" />
+			<column name="galleryId" not-null="true" />
 		</many-to-one>
    </class>
 </hibernate-mapping>

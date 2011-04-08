@@ -9,6 +9,6 @@ public interface NewsDao {
 
 	List<News> findAllNews();
 	
-	News getNews(long id);
+	News getNews(News news);
 	void updateNews(News news);
 }

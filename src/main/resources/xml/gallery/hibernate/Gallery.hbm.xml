@@ -4,19 +4,19 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery" table="k_Galeria">
-		<id name="galleryId" column="Id" type="long">
+    <class name="pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery" table="k_gallery">
+		<id name="galleryId" column="id" type="long">
 			<generator class="native"/>
 		</id>
 		<property name="title" type="java.lang.String">
-			<column name="Tytul" not-null="true" length="80"/>
+			<column name="title" not-null="true" length="80"/>
 		</property>
 		<property name="date" type="timestamp">
-			<column name="Data" not-null="true" length="19"/>
+			<column name="date" not-null="true" length="19"/>
 		</property>
-		<set name="photos" table="k_Zdjecia" fetch="select" inverse="true">
+		<set name="photos" table="k_photo" fetch="select" inverse="true">
 			<key>
-				<column name="IdGalerii" not-null="true"></column>
+				<column name="galleryId" not-null="true"></column>
 			</key>
 			<one-to-many class="pl.edu.uj.kognitywistyka.admin.gallery.model.Photo"/>
 		</set>

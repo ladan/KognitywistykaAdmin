@@ -4,7 +4,7 @@ import java.util.List;
 
 import pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery;
 
-public interface Gallerydao {
+public interface GalleryDao {
 	void addGallery(Gallery gallery);
 	void removeGallery(Gallery gallery);
 	List<Gallery> findAllGalleries();

@@ -4,17 +4,17 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position" table="k_Stanowiska">
+    <class name="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position" table="k_position">
 		<id name="positionId" column="Id" type="long">
 			<generator class="native"/>
 		</id>
 		
 		<property name="name" type="java.lang.String">
-			<column name="Nazwa" not-null="true" length="50"/>
+			<column name="name" not-null="true" length="50"/>
 		</property>
-		<set name="employees" inverse="true" table="k_Kadra" fetch="select">
+		<set name="employees" inverse="true" table="k_employee" fetch="select">
 			<key>
-				<column name="Stanowisko" not-null="true"></column>
+				<column name="position" not-null="true"></column>
 			</key>
 			<one-to-many class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee"/>
 		</set>
