@@ -22,7 +22,8 @@ public class AboutProjectDaoImpl extends HibernateDaoSupport implements
 	}
 
 	public AboutProject findLatestAboutProject() {
-		return findAllAboutProjects().get(0);
+		List<AboutProject> list = findAllAboutProjects(); 
+		return list.isEmpty() ? null : list.get(0);
 	}
 
 }
