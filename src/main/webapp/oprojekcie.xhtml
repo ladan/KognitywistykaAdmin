@@ -20,8 +20,11 @@
         	<h:form>
         		<div>
                 	<label for="oprojekcie-info">Informacje o projekcie</label>
-                	<h:inputTextarea value="#{aboutProjectBean.description}" rows="10">
+                	<h:inputTextarea id="description" value="#{aboutProjectBean.description}" rows="10" required="true">
                 	</h:inputTextarea>
+                </div>
+                <div>
+                	<h:message for="description" style="color:red"/>
                 </div>
                 <div>
                 	<h:commandButton value="Zapisz" class="oprojekcie-form-button" action="#{aboutProjectBean.addAboutProject}" />
