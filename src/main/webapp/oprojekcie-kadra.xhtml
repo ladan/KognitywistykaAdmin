@@ -53,18 +53,23 @@
         	<h2>Zadania kadry</h2>
             <ul class="zadania-kadry">
             	<ui:repeat var="pos" value="#{positionListBean.allPositions}">
-                	<li><span>#{pos.name}</span> <a href="#">Usuń</a></li>
+                	<li><span>#{pos.name}</span> 
+                		<h:form rendered="#{empty pos.employeesList}">
+                			<h:commandLink value="Usuń" action="#{positionBean.removePosition(pos.positionId)}" />
+                		</h:form>
+                		<h:outputText rendered="#{not empty pos.employeesList}" value="Aby usunąć pozycję musisz usunąć wszystkich, którzy do niej należą"/>
+               		</li>
                	</ui:repeat>
             </ul>
-            <form>
+            <h:form>
                 <div>
-                    <label for="zadanie">Dodaj zadanie:</label>
-                    <input type="text" name="zadanie" />
+                	<h:outputLabel for="zadanie" value="Dodaj zadanie:" />
+                    <h:inputText id="zadanie" value="#{positionBean.name}"/>
                 </div>
                 <div>
-                    <input type="submit" value="Dodaj" class="kadra-form-button" />
+                	<h:commandButton class="kadra-form-button" value="Dodaj" action="#{positionBean.addPosition}" />
                 </div>
-            </form>
+            </h:form>
         </section>
         <section class="kadra-podglad">
         	<h2>Kadra projektu</h2>
@@ -77,12 +82,12 @@
 		                <p class="tytul-naukowy">#{employee.title}</p>
 		                <p>#{employee.description}</p>
 		                <div class="kadra-options">
-	                	<form>
+	                	<h:form>
 	                        <label for="foto">Dodaj zdjęcie:</label>
 	                        <input type="file" name="foto" />
 	                        <input type="submit" value="Zapisz zdjęcie" />
-	                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-	                    </form>
+	                        <h:commandButton value="Usuń członka kadry" class="kadra-delete" action="#{employeeBean.removeEmployee(employee.employeeId)}"/>
+	                    </h:form>
 	                </div>
 		        	</article>
 	        	</ui:repeat>

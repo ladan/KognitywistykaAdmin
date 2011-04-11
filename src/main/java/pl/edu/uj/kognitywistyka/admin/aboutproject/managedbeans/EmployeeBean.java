@@ -110,10 +110,17 @@ public class EmployeeBean implements Serializable {
 		
 		employeeBo.addEmployee(employee);
 		
-		clearForm();
+		resetView();
 		return "";
 	}
 
+	public String removeEmployee(long employeeId) {
+		employeeBo.removeEmployee(employeeId);
+		
+		resetView();
+		return "";
+	}
+	
 	private Position getRightPosition() {
 		for (Position position : positionListBean.getAllPositions()) {
 			if(position.getPositionId() == positionId) return position;
@@ -121,13 +128,15 @@ public class EmployeeBean implements Serializable {
 		return null;
 	}
 
-	private void clearForm() {
+	private void resetView() {
 		setDescription("");
 		setName("");
 		setSurname("");
 		setPhoto("");
 		setPosition(new Position());
 		setTitle("");
+		
+		positionListBean.setAllPositions(null);
 	}
 	
 }

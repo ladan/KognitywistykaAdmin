@@ -15,8 +15,15 @@ public class PositionBoImpl implements PositionBo, Serializable {
 		this.positionDao = positionDao;
 	}
 
-	@Override
 	public List<Position> findAllPositions() {
 		return positionDao.findAllPositions();
+	}
+
+	public void addNewPosion(Position position) {
+		positionDao.addPosition(position);
+	}
+
+	public void removePosition(Position position) {
+		positionDao.removePosition(position);
 	}
 }

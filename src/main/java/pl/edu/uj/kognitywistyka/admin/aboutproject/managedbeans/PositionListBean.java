@@ -16,14 +16,21 @@ public class PositionListBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// Dependency injection via Spring
-	@ManagedProperty(name="positionBo", value="#{positionBo}")
+	@ManagedProperty(name = "positionBo", value = "#{positionBo}")
 	PositionBo positionBo;
-	
+	private List<Position> allPositions;
+
 	public void setPositionBo(PositionBo positionBo) {
 		this.positionBo = positionBo;
 	}
 	
+	public void setAllPositions(List<Position> allPositions) {
+		this.allPositions = allPositions;
+	}
+
 	public List<Position> getAllPositions() {
-		return positionBo.findAllPositions();
+		if (allPositions == null)
+			allPositions = positionBo.findAllPositions();
+		return allPositions;
 	}
 }

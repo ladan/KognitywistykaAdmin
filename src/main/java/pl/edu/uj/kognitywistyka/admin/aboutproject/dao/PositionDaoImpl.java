@@ -20,5 +20,10 @@ public class PositionDaoImpl extends HibernateDaoSupport
 	public List<Position> findAllPositions() {
 		return getHibernateTemplate().find("from Position");
 	}
+
+	@Override
+	public void removePosition(Position position) {
+		getHibernateTemplate().delete(position);
+	}
 	
 }
