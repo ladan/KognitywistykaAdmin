@@ -19,16 +19,21 @@ public class EmployeeBean implements Serializable {
 	// Dependency injection via Spring
 	@ManagedProperty(name="employeeBo", value="#{employeeBo}")
 	EmployeeBo employeeBo;
-
+	@ManagedProperty(name="positionListBean", value="#{positionListBean}")
+	PositionListBean positionListBean;
+	
 	private String name;
 	private String surname;
 	private String title;
 	private String description;
 	private Position position;
+	private long positionId;
 	private String photo;
 
+	public void setPositionListBean(PositionListBean positionListBean) {
+		this.positionListBean = positionListBean;
+	}
 	
-
 	public String getName() {
 		return name;
 	}
@@ -85,19 +90,35 @@ public class EmployeeBean implements Serializable {
 		return employeeBo.findAllEmployees();
 	}
 	
+
+	public void setPositionId(long positionId) {
+		this.positionId = positionId;
+	}
+
+	public long getPositionId() {
+		return positionId;
+	}
+	
 	public String addEmployee() {
 		Employee employee = new Employee();
 		employee.setFirstName(name);
 		employee.setLastName(surname);
 		employee.setDescription(description);
-		employee.setPhoto(photo);
-		employee.setPosition(position);
+		employee.setPosition(getRightPosition());
 		employee.setTitle(title);
+		//Nie dodajemy zdjęcia - bedzie można zrobić to później
 		
 		employeeBo.addEmployee(employee);
 		
 		clearForm();
 		return "";
+	}
+
+	private Position getRightPosition() {
+		for (Position position : positionListBean.getAllPositions()) {
+			if(position.getPositionId() == positionId) return position;
+		}
+		return null;
 	}
 
 	private void clearForm() {
@@ -107,8 +128,6 @@ public class EmployeeBean implements Serializable {
 		setPhoto("");
 		setPosition(new Position());
 		setTitle("");
-		
 	}
 	
-
 }

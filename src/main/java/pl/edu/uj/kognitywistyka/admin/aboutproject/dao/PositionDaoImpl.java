@@ -21,6 +21,4 @@ public class PositionDaoImpl extends HibernateDaoSupport
 		return getHibernateTemplate().find("from Position");
 	}
 	
-
-
 }
