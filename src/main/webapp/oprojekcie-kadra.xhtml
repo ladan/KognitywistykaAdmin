@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 		  xmlns:ui="http://java.sun.com/jsf/facelets"
 		  xmlns:h="http://java.sun.com/jsf/html"
-		  xmlns:f="http://java.sun.com/jsf/core">
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:t="http://myfaces.apache.org/tomahawk">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -19,7 +20,7 @@
         <section class="kadra-form">
         	<h2>Kadra projektu</h2>
         	<h:inputText value="Dodaj zadanie by móc dodawać pracowników" rendered="#{empty positionListBean.allPositions}" />
-            <h:form rendered="#{not empty positionListBean.allPositions}">
+            <h:form rendered="#{not empty positionListBean.allPositions}" enctype="multipart/form-data">
                 <div>
                 	<h:outputLabel for="zadanie" value="Zadanie:" />
                 	<h:selectOneMenu id="zadanie" value="#{employeeBean.positionId}">
@@ -43,6 +44,10 @@
                 	<h:outputLabel for="opis" value="Opis: " />
                     <h:inputTextarea id="opis" value="#{employeeBean.description}" rows="5" required="true">
                 	</h:inputTextarea>
+                </div>
+                <div>
+                	<h:outputLabel for="foto" value="Zdjęcie: "/>
+		            <t:inputFileUpload id="foto" value="#{employeeBean.uploadedFile}" />
                 </div>
                 <div>
                 	<h:commandButton class="kadra-form-button" value="Dodaj" action="#{employeeBean.addEmployee}" />
@@ -82,10 +87,8 @@
 		                <p class="tytul-naukowy">#{employee.title}</p>
 		                <p>#{employee.description}</p>
 		                <div class="kadra-options">
-	                	<h:form>
-	                        <label for="foto">Dodaj zdjęcie:</label>
-	                        <input type="file" name="foto" />
-	                        <input type="submit" value="Zapisz zdjęcie" />
+		                
+	                	<h:form enctype="multipart/form-data">
 	                        <h:commandButton value="Usuń członka kadry" class="kadra-delete" action="#{employeeBean.removeEmployee(employee.employeeId)}"/>
 	                    </h:form>
 	                </div>

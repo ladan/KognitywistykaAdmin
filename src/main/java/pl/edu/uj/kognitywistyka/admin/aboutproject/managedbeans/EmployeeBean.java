@@ -1,15 +1,22 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.managedbeans;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.imageio.ImageIO;
+
+import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBo;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position;
+import pl.edu.uj.kognitywistyka.admin.util.ImageConverter;
 
 @ManagedBean
 @RequestScoped
@@ -29,53 +36,66 @@ public class EmployeeBean implements Serializable {
 	private Position position;
 	private long positionId;
 	private String photo;
+	private UploadedFile uploadedFile;
 
-	public void setPositionListBean(PositionListBean positionListBean) {
-		this.positionListBean = positionListBean;
-	}
-	
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSurname() {
 		return surname;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
 	public String getTitle() {
 		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Position getPosition() {
 		return position;
 	}
 
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-
 	public String getPhoto() {
 		return photo;
+	}
+
+	public List<Employee> getAllEmployees() {
+		return employeeBo.findAllEmployees();
+	}
+
+	public long getPositionId() {
+		return positionId;
+	}
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setPositionListBean(PositionListBean positionListBean) {
+		this.positionListBean = positionListBean;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public void setPhoto(String photo) {
@@ -86,19 +106,14 @@ public class EmployeeBean implements Serializable {
 		this.employeeBo = employeeBo;
 	}
 
-	public List<Employee> getAllEmployees() {
-		return employeeBo.findAllEmployees();
-	}
-	
-
 	public void setPositionId(long positionId) {
 		this.positionId = positionId;
 	}
 
-	public long getPositionId() {
-		return positionId;
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
 	}
-	
+
 	public String addEmployee() {
 		Employee employee = new Employee();
 		employee.setFirstName(name);
@@ -106,12 +121,36 @@ public class EmployeeBean implements Serializable {
 		employee.setDescription(description);
 		employee.setPosition(getRightPosition());
 		employee.setTitle(title);
-		//Nie dodajemy zdjęcia - bedzie można zrobić to później
+		if(uploadedFile != null)
+			employee.setPhoto(serveImage());
 		
 		employeeBo.addEmployee(employee);
-		
+				
 		resetView();
 		return "";
+	}
+
+	private Position getRightPosition() {
+		for (Position position : positionListBean.getAllPositions()) {
+			if(position.getPositionId() == positionId) return position;
+		}
+		return null;
+	}
+
+	private String serveImage()  {
+		try {
+			String filename = System.currentTimeMillis() + uploadedFile.getName();
+			File destFile = new File("/var/tmp/" + filename);
+			BufferedImage imageBuffer = ImageIO.read(uploadedFile.getInputStream());
+			
+			imageBuffer = ImageConverter.resize(imageBuffer, 100,100);
+			ImageIO.write(imageBuffer, ImageConverter.getFormat(filename).toString(), destFile);
+			
+			return destFile.getPath();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 	public String removeEmployee(long employeeId) {
@@ -121,13 +160,6 @@ public class EmployeeBean implements Serializable {
 		return "";
 	}
 	
-	private Position getRightPosition() {
-		for (Position position : positionListBean.getAllPositions()) {
-			if(position.getPositionId() == positionId) return position;
-		}
-		return null;
-	}
-
 	private void resetView() {
 		setDescription("");
 		setName("");
@@ -136,6 +168,7 @@ public class EmployeeBean implements Serializable {
 		setPosition(new Position());
 		setTitle("");
 		
+		setUploadedFile(null);
 		positionListBean.setAllPositions(null);
 	}
 	

@@ -1,5 +1,6 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.bo;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -27,6 +28,18 @@ public class EmployeeBoImpl implements EmployeeBo, Serializable {
 	@Override
 	public void removeEmployee(Employee employee) {
 		employeeDao.removeEmployee(employee);
+		
+		if(employee.getPhoto() != null) {
+			removeEmployeeImg(employee.getPhoto());
+		}
+	}
+
+	private void removeEmployeeImg(String photo) {
+		if(!photo.isEmpty()) {
+			File photoFile = new File(photo);
+			if(photoFile.exists())
+				photoFile.delete();
+		}
 	}
 
 	@Override

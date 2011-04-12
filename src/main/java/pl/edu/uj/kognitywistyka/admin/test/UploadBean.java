@@ -28,6 +28,7 @@ public class UploadBean {
     }
 
     public void setUploadedFile(UploadedFile uploadedFile) {
+    	System.out.println("Setter invoked");
         this.uploadedFile = uploadedFile;
     }
 
