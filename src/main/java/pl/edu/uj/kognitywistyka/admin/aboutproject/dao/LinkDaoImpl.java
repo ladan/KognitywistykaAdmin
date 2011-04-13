@@ -18,7 +18,7 @@ public class LinkDaoImpl extends HibernateDaoSupport
 
 	@SuppressWarnings("unchecked")
 	public List<Link> findAllLinks() {
-		return getHibernateTemplate().find("from Link");
+		return getHibernateTemplate().find("from Link order by linkId asc");
 	}
 
 	

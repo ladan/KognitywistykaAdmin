@@ -12,11 +12,11 @@
 		<property name="name" type="java.lang.String">
 			<column name="name" not-null="true" length="50"/>
 		</property>
-		<set name="employees" inverse="true" table="k_employee" fetch="select" lazy="false" order-by="id">
+		<bag name="employees" inverse="true" table="k_employee" fetch="select" lazy="false" order-by="lastName asc">
 			<key>
 				<column name="position" not-null="true"></column>
 			</key>
 			<one-to-many class="pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee"/>
-		</set>
+		</bag>
    </class>
 </hibernate-mapping>

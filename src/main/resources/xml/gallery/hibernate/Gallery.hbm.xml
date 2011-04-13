@@ -14,11 +14,11 @@
 		<property name="date" type="timestamp">
 			<column name="date" not-null="true" length="19"/>
 		</property>
-		<set name="photos" table="k_photo" fetch="select" inverse="true">
+		<bag name="photos" table="k_photo" fetch="select" inverse="true" order-by="photoId asc">
 			<key>
 				<column name="galleryId" not-null="true"></column>
 			</key>
 			<one-to-many class="pl.edu.uj.kognitywistyka.admin.gallery.model.Photo"/>
-		</set>
+		</bag>
    </class>
 </hibernate-mapping>

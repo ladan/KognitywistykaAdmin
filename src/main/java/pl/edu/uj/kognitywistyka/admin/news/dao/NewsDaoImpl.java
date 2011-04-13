@@ -21,8 +21,8 @@ public class NewsDaoImpl extends HibernateDaoSupport implements NewsDao {
 		return ht.find("from News order by date desc");
 	}
 
-	public News getNews(News news) {
-		return (News) getHibernateTemplate().get(News.class, news.getNewsId());
+	public News getNews(long id) {
+		return (News) getHibernateTemplate().get(News.class, id);
 	}
 
 	public void updateNews(News news) {

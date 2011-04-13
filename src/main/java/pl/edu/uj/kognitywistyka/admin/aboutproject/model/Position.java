@@ -1,8 +1,7 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class Position implements java.io.Serializable {
 	
@@ -10,7 +9,7 @@ public class Position implements java.io.Serializable {
 	
 	private long positionId;
 	private String name;
-	private Set<Employee> employees = new HashSet<Employee>();
+	private List<Employee> employees = new ArrayList<Employee>();
 	
 	public long getPositionId() {
 		return positionId;
@@ -28,15 +27,12 @@ public class Position implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public void setEmployees(Set<Employee> employees) {
+	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
 
-	public Set<Employee> getEmployees() {
+	public List<Employee> getEmployees() {
 		return employees;
 	}
 	
-	public ArrayList<Employee> getEmployeesList() {
-		return new ArrayList<Employee>(employees);
-	}
 }

@@ -59,10 +59,10 @@
             <ul class="zadania-kadry">
             	<ui:repeat var="pos" value="#{positionBunchBean.allPositions}">
                 	<li><span>#{pos.name}</span> 
-                		<h:form rendered="#{empty pos.employeesList}">
+                		<h:form rendered="#{empty pos.employees}">
                 			<h:commandLink value="Usuń" action="#{positionBean.removePosition(pos.positionId)}" />
                 		</h:form>
-                		<h:outputText rendered="#{not empty pos.employeesList}" value="Aby usunąć pozycję musisz usunąć wszystkich, którzy do niej należą"/>
+                		<h:outputText rendered="#{not empty pos.employees}" value="Aby usunąć pozycję musisz usunąć wszystkich, którzy do niej należą"/>
                		</li>
                	</ui:repeat>
             </ul>
@@ -80,7 +80,7 @@
         	<h2>Kadra projektu</h2>
         	<ui:repeat var="pos" value="#{positionBunchBean.allPositions}">
 	        	<h3>#{pos.name}</h3>
-	        	<ui:repeat var="employee" value="#{pos.employeesList}">
+	        	<ui:repeat var="employee" value="#{pos.employees}">
 		        	<article>
 		        		<div class="kadra-zdjecie"><h:graphicImage value="#{employee.photo}" rendered="#{not empty employee.photo}" /></div>
 		        		<h4>#{employee.firstName} #{employee.lastName}</h4>

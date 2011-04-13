@@ -18,7 +18,7 @@ public class PositionDaoImpl extends HibernateDaoSupport
 
 	@SuppressWarnings("unchecked")
 	public List<Position> findAllPositions() {
-		return getHibernateTemplate().find("from Position");
+		return getHibernateTemplate().find("from Position order by positionId asc");
 	}
 
 	@Override
