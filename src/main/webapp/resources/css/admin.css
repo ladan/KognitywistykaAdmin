@@ -276,7 +276,8 @@
 
 .raporty-form div p,
 .news-form div p,
-.galeria-form p {
+.galeria-form p,
+.linki-form div p {
 	font-size: 13px;
 	padding: 7px;
 	float: left;
@@ -441,7 +442,8 @@
 	float: left;
 }
 
-.raporty-form p.warning {
+.raporty-form p.warning,
+.linki-form p.warning {
 	margin-left: 150px;
 	clear: both;
 	float: left;

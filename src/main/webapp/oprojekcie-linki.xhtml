@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -16,27 +18,45 @@
 	<ui:define name="siteContent">
     	<section class="linki-form">
         	<h2>Linki</h2>
-            <form>
-            	<div>
-                    <label for="nazwa">Nazwa:</label>
-                    <input type="text" name="nazwa" />
+        	<h:form>
+        		<div>
+        			<h:outputLabel for="nazwa" value="Nazwa:" />
+                    <h:inputText id="nazwa" value="#{linkBean.name}" required="true"/>
+                    <p class="warning"><h:message for="nazwa" /></p>
                 </div>
                 <div>
-                    <label for="url">Adres URL:</label>
-                    <input type="text" name="url" value="http://" />
+        			<h:outputLabel for="url" value="Adres URL:" />
+                    <h:inputText id="url" value="#{linkBean.url}" required="true">
+                    </h:inputText>
+                    <p class="warning"><h:message for="url" /></p>
                 </div>
                 <div>
-                    <label for="opis">Opis:</label>
-                    <textarea rows="5" name="" id="opis"></textarea>
+                	<h:outputLabel for="opis" value="Opis: " />
+                    <h:inputTextarea id="opis" value="#{linkBean.description}" rows="5" required="true">
+                	</h:inputTextarea>
+                	<p class="warning"><h:message for="opis" /></p>
                 </div>
-                
                 <div>
-                    <input type="submit" value="Dodaj" class="linki-form-button" />
+                	<h:commandButton class="linki-form-button" value="Dodaj" action="#{linkBean.addLink}" />
                 </div>
-            </form>
+        	</h:form>
         </section>
         <section class="linki-preview">
         	<h2>Baza linków</h2>
+        	<ui:repeat var="link" value="#{linkBunchBean.allLinks}">
+        		<h:outputLink  />
+        		<article class="link-baza">
+	            	<header>
+	                	<h3><h:outputLink class="link1" value="#{link.url}">#{link.name}</h:outputLink></h3>
+	                </header>
+	                <pre>#{link.description}</pre>
+	                <div class="linki-options">
+	                	<h:form>
+                			<p><h:commandLink value="Usuń" action="#{linkBean.removeLink(link.linkId)}" /></p>
+                		</h:form>
+	                </div>
+	            </article>
+        	</ui:repeat>
             <article class="link-baza">
             	<header>
                 	<h3><a href="#" class="link1">Link</a></h3>
@@ -59,33 +79,6 @@
                             <input type="submit" value="Zapisz" class="linki-form-button" />
                         </div>
                     </form>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
                 </div>
             </article>
         </section>
