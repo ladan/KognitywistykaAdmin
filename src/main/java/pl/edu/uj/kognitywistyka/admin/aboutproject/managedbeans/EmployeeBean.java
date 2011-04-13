@@ -26,8 +26,8 @@ public class EmployeeBean implements Serializable {
 	// Dependency injection via Spring
 	@ManagedProperty(name="employeeBo", value="#{employeeBo}")
 	EmployeeBo employeeBo;
-	@ManagedProperty(name="positionListBean", value="#{positionListBean}")
-	PositionListBean positionListBean;
+	@ManagedProperty(name="positionBunchBean", value="#{positionBunchBean}")
+	PositionBunchBean positionBunchBean;
 	
 	private String name;
 	private String surname;
@@ -74,8 +74,8 @@ public class EmployeeBean implements Serializable {
 		return uploadedFile;
 	}
 
-	public void setPositionListBean(PositionListBean positionListBean) {
-		this.positionListBean = positionListBean;
+	public void setPositionBunchBean(PositionBunchBean positionBunchBean) {
+		this.positionBunchBean = positionBunchBean;
 	}
 	
 	public void setName(String name) {
@@ -131,7 +131,7 @@ public class EmployeeBean implements Serializable {
 	}
 
 	private Position getRightPosition() {
-		for (Position position : positionListBean.getAllPositions()) {
+		for (Position position : positionBunchBean.getAllPositions()) {
 			if(position.getPositionId() == positionId) return position;
 		}
 		return null;
@@ -169,7 +169,7 @@ public class EmployeeBean implements Serializable {
 		setTitle("");
 		
 		setUploadedFile(null);
-		positionListBean.setAllPositions(null);
+		positionBunchBean.setAllPositions(null);
 	}
 	
 }

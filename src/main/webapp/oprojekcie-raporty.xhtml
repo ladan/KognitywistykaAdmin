@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -16,32 +18,48 @@
 	<ui:define name="siteContent">
     	<section class="raporty-form">
         	<h2>Raporty</h2>
-            <form>
-            	<div>
-                    <label for="nazwa">Nazwa:</label>
-                    <input type="text" name="nazwa" />
+        	<h:form>
+        		<div>
+        			<h:outputLabel for="nazwa" value="Nazwa:" />
+                    <h:inputText id="nazwa" value="#{reportBean.title}" required="true"/>
+                    <p class="warning"><h:message for="nazwa" /></p>
                 </div>
                 <div>
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" />
+        			<h:outputLabel for="data" value="Data:" />
+                    <h:inputText id="data" value="#{reportBean.date}" required="true">
+                    	<f:convertDateTime pattern="dd/mm/yyyy" />
+                    </h:inputText>
                     <p>Format: DD/MM/YYYY</p>
+                    <p class="warning"><h:message for="data" /></p>
                 </div>
                 <div>
-                    <label for="raport">Załącznik:</label>
-                    <input type="file" name="raport" />
+                	<h:outputLabel for="opis" value="Opis: " />
+                    <h:inputTextarea id="opis" value="#{reportBean.content}" rows="5" required="true">
+                	</h:inputTextarea>
+                	<p class="warning"><h:message for="opis" /></p>
                 </div>
                 <div>
-                    <label for="opis">Opis:</label>
-                    <textarea rows="5" name="opis"></textarea>
+                	<h:commandButton class="raporty-form-button" value="Dodaj" action="#{reportBean.addReport}" />
                 </div>
-                
-                <div>
-                    <input type="submit" value="Dodaj" class="raporty-form-button" />
-                </div>
-            </form>
+        	</h:form>
         </section>
         <section class="raporty-preview">
         	<h2>Raporty</h2>
+        	<ui:repeat var="report" value="#{reportBunchBean.allReports}">
+        		<article class="raport">
+	            	<header>
+	                	<h3><a href="#" class="link1">#{report.title}</a></h3>
+	                    <time datetime="#{report.date}">#{report.shortDate}</time>
+	                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
+	                </header>
+	                <pre>#{report.content}</pre>
+	                <div class="raporty-options">
+	                	<h:form>
+                			<p><h:commandLink value="Usuń" action="#{reportBean.removeReport(report.reportId)}" /></p>
+                		</h:form>
+	                </div>
+	            </article>
+        	</ui:repeat>
             <article class="raport">
             	<header>
                 	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
@@ -67,39 +85,6 @@
                             <input type="submit" value="Zapisz" class="raporty-form-button" />
                         </div>
                     </form>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
                 </div>
             </article>
         </section>

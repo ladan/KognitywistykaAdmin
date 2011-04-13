@@ -18,8 +18,8 @@ public class PositionBean implements Serializable {
 	
 	@ManagedProperty(name="positionBo", value="#{positionBo}")
 	PositionBo positionBo;
-	@ManagedProperty(name="positionListBean", value="#{positionListBean}")
-	PositionListBean positionListBean;
+	@ManagedProperty(name="positionBunchBean", value="#{positionBunchBean}")
+	PositionBunchBean positionBunchBean;
 	
 	public String getName() {
 		return name;
@@ -32,8 +32,8 @@ public class PositionBean implements Serializable {
 		this.positionBo = positionBo;
 	}
 	
-	public void setPositionListBean(PositionListBean positionListBean) {
-		this.positionListBean = positionListBean;
+	public void setPositionBunchBean(PositionBunchBean positionBunchBean) {
+		this.positionBunchBean = positionBunchBean;
 	}
 	
 	public String addPosition() {
@@ -47,7 +47,7 @@ public class PositionBean implements Serializable {
 	}
 	
 	public String removePosition(long positionId) {
-		for (Position position : positionListBean.getAllPositions()) {
+		for (Position position : positionBunchBean.getAllPositions()) {
 			if(position.getPositionId() == positionId)
 				positionBo.removePosition(position);
 		}
@@ -56,7 +56,7 @@ public class PositionBean implements Serializable {
 	}
 	
 	private void resetData() {
-		positionListBean.setAllPositions(null);
+		positionBunchBean.setAllPositions(null);
 		setName("");
 	}
 	

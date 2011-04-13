@@ -12,7 +12,7 @@ import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Position;
 
 @ManagedBean
 @RequestScoped
-public class PositionListBean implements Serializable {
+public class PositionBunchBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// Dependency injection via Spring

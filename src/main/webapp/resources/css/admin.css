@@ -441,6 +441,15 @@
 	float: left;
 }
 
+.raporty-form p.warning {
+	margin-left: 150px;
+	clear: both;
+	float: left;
+	color: red;
+	font-size: 11px;
+	display: block;	
+}
+
 .newsy-preview {
 	overflow: auto;	
 	padding: 10px 0;
