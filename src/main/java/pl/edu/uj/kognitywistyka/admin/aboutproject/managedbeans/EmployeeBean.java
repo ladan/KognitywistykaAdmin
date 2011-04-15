@@ -24,11 +24,11 @@ public class EmployeeBean implements Serializable {
 	private static final long serialVersionUID = 4241366958741596166L;
 
 	// Dependency injection via Spring
-	@ManagedProperty(name="employeeBo", value="#{employeeBo}")
+	@ManagedProperty(name = "employeeBo", value = "#{employeeBo}")
 	EmployeeBo employeeBo;
-	@ManagedProperty(name="positionBunchBean", value="#{positionBunchBean}")
+	@ManagedProperty(name = "positionBunchBean", value = "#{positionBunchBean}")
 	PositionBunchBean positionBunchBean;
-	
+
 	private String name;
 	private String surname;
 	private String title;
@@ -77,7 +77,7 @@ public class EmployeeBean implements Serializable {
 	public void setPositionBunchBean(PositionBunchBean positionBunchBean) {
 		this.positionBunchBean = positionBunchBean;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -121,31 +121,35 @@ public class EmployeeBean implements Serializable {
 		employee.setDescription(description);
 		employee.setPosition(getRightPosition());
 		employee.setTitle(title);
-		if(uploadedFile != null)
+		if (uploadedFile != null)
 			employee.setPhoto(serveImage());
-		
+
 		employeeBo.addEmployee(employee);
-				
+
 		resetView();
 		return "";
 	}
 
 	private Position getRightPosition() {
 		for (Position position : positionBunchBean.getAllPositions()) {
-			if(position.getPositionId() == positionId) return position;
+			if (position.getPositionId() == positionId)
+				return position;
 		}
 		return null;
 	}
 
-	private String serveImage()  {
+	private String serveImage() {
 		try {
-			String filename = System.currentTimeMillis() + uploadedFile.getName();
+			String filename = System.currentTimeMillis()
+					+ uploadedFile.getName();
 			File destFile = new File("/var/tmp/" + filename);
-			BufferedImage imageBuffer = ImageIO.read(uploadedFile.getInputStream());
-			
-			imageBuffer = ImageConverter.resize(imageBuffer, 100,100);
-			ImageIO.write(imageBuffer, ImageConverter.getFormat(filename).toString(), destFile);
-			
+			BufferedImage imageBuffer = ImageIO.read(uploadedFile
+					.getInputStream());
+
+			imageBuffer = ImageConverter.resize(imageBuffer, 100, 100);
+			ImageIO.write(imageBuffer, ImageConverter.getFormat(filename)
+					.toString(), destFile);
+
 			return destFile.getPath();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -155,11 +159,11 @@ public class EmployeeBean implements Serializable {
 
 	public String removeEmployee(long employeeId) {
 		employeeBo.removeEmployee(employeeId);
-		
+
 		resetView();
 		return "";
 	}
-	
+
 	private void resetView() {
 		setDescription("");
 		setName("");
@@ -167,9 +171,9 @@ public class EmployeeBean implements Serializable {
 		setPhoto("");
 		setPosition(new Position());
 		setTitle("");
-		
+
 		setUploadedFile(null);
 		positionBunchBean.setAllPositions(null);
 	}
-	
+
 }

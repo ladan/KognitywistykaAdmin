@@ -1,18 +1,17 @@
-package pl.edu.uj.kognitywistyka.admin.news.dao;
+package pl.edu.uj.kognitywistyka.admin.news.bo;
 
 import java.util.List;
 
 import pl.edu.uj.kognitywistyka.admin.news.model.News;
 
-public interface NewsDao {
-	
+public interface NewsBo {
 	void addNews(News news);
-
-	List<News> findAllNews();
-
-	News getNews(long id);
 
 	void updateNews(News news);
 
 	void removeNews(News news);
+
+	void removeNews(long newsId);
+
+	List<News> findAllNews();
 }

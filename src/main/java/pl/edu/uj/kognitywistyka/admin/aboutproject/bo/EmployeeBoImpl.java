@@ -25,7 +25,6 @@ public class EmployeeBoImpl implements EmployeeBo, Serializable {
 		return employeeDao.findAllEmployees();
 	}
 
-	@Override
 	public void removeEmployee(Employee employee) {
 		employeeDao.removeEmployee(employee);
 		
@@ -42,7 +41,6 @@ public class EmployeeBoImpl implements EmployeeBo, Serializable {
 		}
 	}
 
-	@Override
 	public void removeEmployee(long employeeId) {
 		for (Employee employee : findAllEmployees()) {
 			if(employee.getEmployeeId() == employeeId)

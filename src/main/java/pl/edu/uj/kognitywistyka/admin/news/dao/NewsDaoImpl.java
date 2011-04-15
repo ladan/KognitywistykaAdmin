@@ -11,7 +11,7 @@ public class NewsDaoImpl extends HibernateDaoSupport implements NewsDao {
 
 	public void addNews(News news) {
 		getHibernateTemplate().save(news);
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -27,7 +27,12 @@ public class NewsDaoImpl extends HibernateDaoSupport implements NewsDao {
 
 	public void updateNews(News news) {
 		getHibernateTemplate().update(news);
-		
+
+	}
+
+	public void removeNews(News news) {
+		// TODO Ładan do roboty :P
+
 	}
 
 }
