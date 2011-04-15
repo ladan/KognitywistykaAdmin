@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition>
+	<aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="Wyszukiwarka" onFocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
+		</form>
+		<hr/>
+		<h3>O projekcie</h3>
+		<ul class="toggle">
+			<li class="icn_edit_article"><h:link value="Opis o projekcie" outcome="oprojekcie" /></li>
+			<li class="icn_view_users"><h:link value="Kadra projektu" outcome="oprojekcie-kadra" /></li>
+			<li class="icn_categories"><a href="#">Raporty (jeszcze nie działa)</a></li>
+			<li class="icn_tags"><a href="#">Linki (jeszcze nie działa)</a></li>
+		</ul>
+		<h3>Aktualności</h3>
+		<ul class="toggle">
+			<li class="icn_categories"><a href="#">Lista newsów (jeszcze nie działa)</a></li>
+			<li class="icn_categories"><a href="#">Galerie (jeszcze nie działa)</a></li>
+		</ul>
+		
+		<footer>
+			<hr />
+			<p><strong>Copyright (C) 2011 Kognitywistyka FORESIGHT</strong></p>
+		</footer>
+	</aside><!-- end of sidebar -->
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>

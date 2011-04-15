@@ -389,7 +389,7 @@ section#main {
 .module {
 	border: 1px solid #9BA0AF;
 	width: 100%;
-	margin: 20px 3% 0 3%;
+	margin: 10px 3% 10px 3%;
 	margin-top: 20px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -416,10 +416,10 @@ section#main {
 }
 
 .module footer {
-	height: 32px;
+	overflow: auto;
 	width: 100%;
 	border-top: 1px solid #9CA1B0;
-	background: #F1F1F4 url(../images/module_footer_bg.png) repeat-x;
+	background: white url(../images/module_footer_bg.png) repeat-x bottom;
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	-moz-border-radius-bottomleft: 5px;
@@ -565,6 +565,10 @@ ul.tabs li a {
 
 ul.tabs li a:hover {
 	color: #44474F;
+}
+
+.command_img {
+	border: 0 !important;	
 }
 
 html ul.tabs li.active a {
@@ -770,7 +774,8 @@ p.warning {
 	color: red;
 }
 
-fieldset input[type=text] {
+fieldset input[type=text],
+fieldset input[type=file] {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -789,7 +794,8 @@ fieldset input[type=text] {
 	margin: 0 10px;
 }
 
-fieldset input[type=text]:focus {
+fieldset input[type=text]:focus,
+fieldset input[type=file]:focus {
 	outline: none;
 	border: 1px solid #77BACE;
 	-webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
@@ -814,12 +820,12 @@ fieldset textarea {
 	-webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
 	-moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
 	box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
-	padding-left: 10px;
+	padding: 10px;
 	background-position: 10px 6px;
 	margin: 0 0.5%;
 	display: block;
 	float: left;
-	width: 96%;
+	width: 95%;
 	margin: 0 10px;
 }
 
@@ -848,8 +854,9 @@ fieldset textarea:focus {
 }
 
 .submit_link {
-	float: right;
-	margin-right: 3%;
+	float: left;
+	margin: 5px 0;
+	margin-left: 3%;
 	padding: 5px 0;
 }
 

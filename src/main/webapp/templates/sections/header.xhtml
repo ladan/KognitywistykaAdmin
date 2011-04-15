@@ -11,19 +11,27 @@
 
 <ui:composition>
 
-<header>
-	<div id="head-wrapper">
-        <h1>Panel administracyjny - Kognitywistyka</h1>  
-        <nav>  
-            <ul>  
-                <li class="nav-1-link"><h:link value="Strona główna" outcome="index" /></li>  
-                <li class="nav-2-link"><h:link value="O projekcie" outcome="oprojekcie" /></li>  
-                <li class="nav-3-link"><h:link value="Aktualności" outcome="newsy" /></li>
-            </ul>
-            <a href="j_spring_security_logout" class="wyloguj">Wyloguj</a>
-        </nav>
-    </div>
-</header>
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><h:link value="Panel administracyjny" outcome="index" /></h1>
+			<h2 class="section_title">#{siteName}</h2>
+			<div class="btn_view_site"><a href="#">Przejdź do strony</a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p>Administrator</p>
+			<a class="logout_user" href="j_spring_security_logout" title="Logout">Wyloguj</a>
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+            	<a href="index.html">Panel administracyjny</a> 
+                <div class="breadcrumb_divider"></div> 
+                <a class="current">Strona główna</a>
+            </article>
+		</div>
+	</section><!-- end of secondary bar -->
 
 </ui:composition>
 
