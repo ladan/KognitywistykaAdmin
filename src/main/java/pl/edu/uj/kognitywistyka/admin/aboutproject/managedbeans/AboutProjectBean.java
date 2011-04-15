@@ -53,11 +53,11 @@ public class AboutProjectBean implements Serializable {
 		
 		aboutProjectBo.addAboutProject(aboutProject);
 		
-		clearForm();
+		resetView();
 		return "";
 	}
 
-	private void clearForm() {
+	private void resetView() {
 		setDescription("");
 	}
 	

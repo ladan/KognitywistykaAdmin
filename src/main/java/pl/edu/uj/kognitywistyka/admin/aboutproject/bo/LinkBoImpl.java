@@ -15,22 +15,18 @@ public class LinkBoImpl implements Serializable, LinkBo {
 		this.linkDao = linkDao;
 	}
 
-	@Override
 	public void addLink(Link link) {
 		linkDao.addLink(link);
 	}
 
-	@Override
 	public void updateLink(Link link) {
 		linkDao.addLink(link);
 	}
 
-	@Override
 	public void removeLink(Link link) {
 		linkDao.removeLink(link);
 	}
 
-	@Override
 	public void removeLink(long linkId) {
 		for (Link link : findAllLinks()) {
 			if(link.getLinkId() == linkId)
@@ -38,7 +34,6 @@ public class LinkBoImpl implements Serializable, LinkBo {
 		}
 	}
 
-	@Override
 	public List<Link> findAllLinks() {
 		return linkDao.findAllLinks();
 	}

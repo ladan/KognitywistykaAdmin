@@ -23,7 +23,7 @@ public class PositionBunchBean implements Serializable {
 	public void setPositionBo(PositionBo positionBo) {
 		this.positionBo = positionBo;
 	}
-	
+
 	public void setAllPositions(List<Position> allPositions) {
 		this.allPositions = allPositions;
 	}

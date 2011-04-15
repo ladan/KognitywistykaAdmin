@@ -42,7 +42,7 @@ public class PositionBean implements Serializable {
 		
 		positionBo.addNewPosion(position);
 
-		resetData();
+		resetView();
 		return "";
 	}
 	
@@ -51,11 +51,11 @@ public class PositionBean implements Serializable {
 			if(position.getPositionId() == positionId)
 				positionBo.removePosition(position);
 		}
-		resetData();
+		resetView();
 		return "";
 	}
 	
-	private void resetData() {
+	private void resetView() {
 		positionBunchBean.setAllPositions(null);
 		setName("");
 	}
