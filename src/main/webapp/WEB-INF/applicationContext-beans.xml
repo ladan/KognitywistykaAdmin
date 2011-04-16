@@ -13,4 +13,6 @@
 	<import resource="classes/xml/aboutProject/spring/LinkBean.xml" />
 	<import resource="classes/xml/aboutProject/spring/PositionBean.xml" />
 	<import resource="classes/xml/aboutProject/spring/ReportBean.xml" />
+	
+	<import resource="classes/xml/news/spring/NewsBean.xml" />
 </beans>

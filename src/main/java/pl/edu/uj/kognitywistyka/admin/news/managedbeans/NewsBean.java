@@ -33,7 +33,8 @@ public class NewsBean implements Serializable {
 		news.setTitle(title);
 		news.setContent(content);
 		news.setDate(new Date());
-		news.setGallery(gallery);
+		if(gallery != null)
+			news.setGallery(gallery);
 
 		newsBo.addNews(news);
 		resetView();
