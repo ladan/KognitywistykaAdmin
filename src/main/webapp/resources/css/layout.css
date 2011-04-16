@@ -848,6 +848,15 @@ fieldset textarea:focus {
 	float: left;
 }
 
+.quarter_field label{
+	width: 100px;
+}
+
+.quarter_field input {
+	width: 85% !important;		
+}
+
+
 .first_half_field input[type=text],.second_half_field input[type=text],.first_half_field select,.second_half_field select
 	{
 	width: 92%;

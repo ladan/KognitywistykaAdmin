@@ -16,6 +16,24 @@
 	<ui:param name="siteName" value="Kadra projektu" />
 	
 	<ui:define name="siteContent">
+		<article class="module width_quarter">
+			<header><h3>Dodaj zadanie</h3></header>
+			<h:form>
+				<div class="module_content">
+	                <fieldset class="quarter_field">
+	                	<h:outputLabel for="zadanie" value="Dodaj zadanie:" />
+	                    <h:inputText id="zadanie" value="#{positionBean.name}" required="true"/>
+	                    <p class="warning"><h:message for="zadanie" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	            </div>
+	            <footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{positionBean.addPosition}" />
+					</div>
+				</footer>
+            </h:form>
+		</article>
 		<article class="module width_3_quarter">
 		<header><h3 class="tabs_involved">Kadra projektu</h3>
 		<ul class="tabs">
@@ -86,25 +104,7 @@
 			</div><!-- end of #tab2 -->
 		</div><!-- end of .tab_container -->
 		</article><!-- end of content manager article -->
-		<div class="clear"></div>
-		<article class="module width_half">
-			<header><h3>Dodaj zadanie</h3></header>
-			<h:form>
-				<div class="module_content">
-	                <fieldset class="first_half_field">
-	                	<h:outputLabel for="zadanie" value="Dodaj zadanie:" />
-	                    <h:inputText id="zadanie" value="#{positionBean.name}" required="true"/>
-	                    <p class="warning"><h:message for="zadanie" /></p>
-	                </fieldset>
-	                <div class="clear"></div>
-	            </div>
-	            <footer>
-					<div class="submit_link">
-						<h:commandButton class="alt_btn2" value="Dodaj" action="#{positionBean.addPosition}" />
-					</div>
-				</footer>
-            </h:form>
-		</article>
+		
 		<div class="clear"></div>
 		<article class="module width_full">
 			<header><h3>Dodaj członka kadry</h3></header>
