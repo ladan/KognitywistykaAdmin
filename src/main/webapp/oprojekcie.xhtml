@@ -14,6 +14,16 @@
 	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
 	<ui:param name="siteName" value="Opis o projekcie" />
 	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">O projekcie</a>
+            </article>
+		</div>
+	</ui:define>
+	
 	<ui:define name="siteContent">
 		<article class="module width_full">
 			<h:form>

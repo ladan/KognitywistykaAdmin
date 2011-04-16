@@ -15,6 +15,18 @@
 	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
 	<ui:param name="siteName" value="Kadra projektu" />
 	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="O projekcie" outcome="oprojekcie" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Kadra projektu</a>
+            </article>
+		</div>
+	</ui:define>
+	
 	<ui:define name="siteContent">
 		<article class="module width_quarter">
 			<header><h3>Dodaj zadanie</h3></header>
@@ -35,7 +47,7 @@
             </h:form>
 		</article>
 		<article class="module width_3_quarter">
-		<header><h3 class="tabs_involved">Kadra projektu</h3>
+		<header><h3 class="tabs_involved">Kadra i zadania</h3>
 		<ul class="tabs">
    			<li><a href="#tab1">Kadra</a></li>
     		<li><a href="#tab2">Pozycje kadry</a></li>

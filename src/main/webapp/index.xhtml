@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
 <!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
 
 <ui:composition template="/templates/masterLayout.xhtml">
+
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Panel administracyjny" />
+
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+                <a class="current">Panel administracyjny</a>
+            </article>
+		</div>
+	</ui:define>
 
 	<ui:define name="siteContent">
 	
