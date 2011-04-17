@@ -31,7 +31,7 @@ public class NewsDaoImpl extends HibernateDaoSupport implements NewsDao {
 	}
 
 	public void removeNews(News news) {
-		// TODO Ładan do roboty :P
+		getHibernateTemplate().delete(news);
 
 	}
 
