@@ -33,6 +33,8 @@ public class LinkDaoImpl extends HibernateDaoSupport
 		
 	}
 	
-
+	public Link getLink(long id) {
+		return (Link) getHibernateTemplate().get(Link.class, id);
+	}
 
 }

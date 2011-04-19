@@ -10,4 +10,5 @@ public interface AboutProjectDao {
 	List<AboutProject> findAllAboutProjects();
 
 	AboutProject findLatestAboutProject();
+	AboutProject getAboutProject(long id);
 }

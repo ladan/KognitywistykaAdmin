@@ -6,5 +6,5 @@ public interface PhotoDao {
 
 	void addPhoto(Photo photo);
 	void removePhoto(Photo photo);
-	
+	Photo getPhoto(long id);
 }
