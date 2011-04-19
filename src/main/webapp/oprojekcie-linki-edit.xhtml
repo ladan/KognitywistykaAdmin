@@ -21,14 +21,16 @@
                 <div class="breadcrumb_divider"></div>
                 <h:link value="O projekcie" outcome="oprojekcie" />
                 <div class="breadcrumb_divider"></div>
-                <a class="current">Baza linków</a>
+                <h:link value="Baza linków" outcome="oprojekcie-linki" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Link - edycja</a>
             </article>
 		</div>
 	</ui:define>
 	
 	<ui:define name="siteContent">
 		<article class="module width_full">
-			<header><h3>Dodaj nowy link</h3></header>
+			<header><h3>Edytuj link</h3></header>
 			<h:form>
 				<div class="module_content">
 	        		<fieldset class="first_half_field">
@@ -53,72 +55,10 @@
 				</div>				
 				<footer>
 					<div class="submit_link">
-						<h:commandButton class="alt_btn2" value="Dodaj" action="#{linkBean.addLink}" />
+						<h:commandButton class="alt_btn" value="Edytuj" action="#{linkBean.updateLink}" />
 					</div>
 				</footer>
 			</h:form>
-		</article><!-- end of post new article -->
-	
-		<article class="module width_full">
-		<header><h3 class="tabs_involved">Lista linków</h3>
-		<ul class="tabs">
-   			<li><a href="#tab1">Linki</a></li>
-		</ul>
-		</header>
-
-		<div class="tab_container">
-			<div id="tab1" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>Nazwa</th> 
-    				<th>Url</th>
-    				<th>Akcje</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-				<ui:repeat var="link" value="#{linkBunchBean.allLinks}">
-					<tr> 
-	   					<td><input type="checkbox" /></td> 
-	    				<td>#{link.name}</td> 
-	    				<td>#{link.url}</td>  
-	    				<td>
-	    					<h:form>
-	    						<h:link outcome="oprojekcie-linki-edit" includeViewParams="true">
-	    							<f:param name="linkid" value="#{link.linkId}"/>
-                					<img src="resources/images/icn_edit.png" class="command_img" />
-                				</h:link>
-                				<h:commandLink action="#{linkBean.removeLink(link.linkId)}">
-                					<img src="resources/images/icn_trash.png" class="command_img" />
-                				</h:commandLink>
-	                		</h:form>
-	    				</td> 
-					</tr>  
-				</ui:repeat>
-			</tbody> 
-			</table>
-			</div><!-- end of #tab1 -->
-		</div><!-- end of .tab_container -->
-		
-		</article><!-- end of content manager article -->
-	
-		<article class="module width_full">
-			<header><h3>Podgląd</h3></header>
-			<section id="linki-preview">
-	        	<h2>Baza linków</h2>
-	        	<ui:repeat var="link" value="#{linkBunchBean.allLinks}">
-        		<article class="link-baza">
-                	<h3><h:outputLink class="link1" value="#{link.url}">#{link.name}</h:outputLink></h3>
-	                <pre>#{link.description}</pre>
-	                <div class="linki-options">
-	                	<h:form>
-                			<p><h:commandLink value="Usuń" action="#{linkBean.removeLink(link.linkId)}" /></p>
-                		</h:form>
-	                </div>
-	            </article>
-        	</ui:repeat>
-	        </section>
 		</article><!-- end of post new article -->
         <div class="clear"></div>
     </ui:define>

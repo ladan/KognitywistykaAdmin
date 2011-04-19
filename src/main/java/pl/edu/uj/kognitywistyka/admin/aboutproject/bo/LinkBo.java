@@ -10,4 +10,5 @@ public interface LinkBo {
 	void removeLink(Link link);
 	void removeLink(long linkId);
 	List<Link> findAllLinks();
+	Link getLink(long linkId);
 }

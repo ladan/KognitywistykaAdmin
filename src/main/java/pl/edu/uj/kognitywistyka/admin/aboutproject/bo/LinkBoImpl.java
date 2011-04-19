@@ -20,7 +20,7 @@ public class LinkBoImpl implements Serializable, LinkBo {
 	}
 
 	public void updateLink(Link link) {
-		linkDao.addLink(link);
+		linkDao.updateLink(link);
 	}
 
 	public void removeLink(Link link) {
@@ -36,5 +36,9 @@ public class LinkBoImpl implements Serializable, LinkBo {
 
 	public List<Link> findAllLinks() {
 		return linkDao.findAllLinks();
+	}
+
+	public Link getLink(long linkId) {
+		return linkDao.getLink(linkId);
 	}
 }

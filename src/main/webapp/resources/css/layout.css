@@ -568,7 +568,8 @@ ul.tabs li a:hover {
 }
 
 .command_img {
-	border: 0 !important;	
+	border: 0 !important;
+	margin-right: 5px;
 }
 
 html ul.tabs li.active a {

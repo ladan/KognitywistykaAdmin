@@ -1,11 +1,15 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.managedbeans;
 
 import java.io.Serializable;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.LinkBo;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Link;
@@ -25,7 +29,31 @@ public class LinkBean implements Serializable{
 	private LinkBo linkBo;
 	@ManagedProperty(name="linkBunchBean", value="#{linkBunchBean}")
 	private LinkBunchBean linkBunchBean;
+		
 	
+	@PostConstruct
+	@SuppressWarnings("unused")
+	private void init() {
+		Map<String, String> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String linkId = requestMap.get("linkid");
+		if(linkId != null)
+			preinitializeBean(new Long(linkId));
+	}
+	
+	private void preinitializeBean(long linkId) {
+		Link link = linkBo.getLink(linkId);
+		if(link != null) {
+			try {
+				this.linkId = link.getLinkId();
+				this.name = link.getName();
+				this.url = new URL(link.getUrl());
+				this.description = link.getDescription();
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public long getLinkId() {
 		return linkId;
 	}
@@ -76,6 +104,19 @@ public class LinkBean implements Serializable{
 		
 		resetView();
 		return "";
+	}
+	
+	public String updateLink() {
+		Link link = new Link();
+		link.setLinkId(linkId);
+		link.setName(name);
+		link.setUrl(url.toString());
+		link.setDescription(description);
+		
+		linkBo.updateLink(link);
+		
+		resetView();
+		return "success";
 	}
 	
 	public String removeLink(long linkId) {

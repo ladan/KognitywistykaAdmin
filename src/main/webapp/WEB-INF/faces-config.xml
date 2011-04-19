@@ -5,6 +5,15 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
 	version="2.0">
 
+	<navigation-rule>
+		<from-view-id>/oprojekcie-linki-edit*</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/oprojekcie-linki</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 		<message-bundle>messages</message-bundle>
