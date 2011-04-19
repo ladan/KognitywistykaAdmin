@@ -30,4 +30,8 @@ public class EmployeeDaoImpl extends HibernateDaoSupport
 		
 	}
 	
+	public Employee getEmployee(long id) {
+		return (Employee) getHibernateTemplate().get(Employee.class, id);
+	}
+	
 }

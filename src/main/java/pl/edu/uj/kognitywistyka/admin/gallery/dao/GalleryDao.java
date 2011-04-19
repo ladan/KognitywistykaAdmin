@@ -8,5 +8,5 @@ public interface GalleryDao {
 	void addGallery(Gallery gallery);
 	void removeGallery(Gallery gallery);
 	List<Gallery> findAllGalleries();
-	
+	Gallery getGallery(long id);
 }

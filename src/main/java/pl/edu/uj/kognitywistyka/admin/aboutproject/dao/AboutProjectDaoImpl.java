@@ -25,5 +25,9 @@ public class AboutProjectDaoImpl extends HibernateDaoSupport implements
 		List<AboutProject> list = findAllAboutProjects(); 
 		return list.isEmpty() ? null : list.get(0);
 	}
+	
+	public AboutProject getAboutProject(long id) {
+		return (AboutProject) getHibernateTemplate().get(AboutProject.class, id);
+	}
 
 }

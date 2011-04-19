@@ -15,5 +15,10 @@ public class PhotoDaoImpl extends HibernateDaoSupport implements PhotoDao {
 		getHibernateTemplate().delete(photo);
 		
 	}
+	
+	public Photo getPhoto(long id) {
+		return (Photo) getHibernateTemplate().get(Photo.class, id);
+	}
+
 
 }

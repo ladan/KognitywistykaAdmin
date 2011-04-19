@@ -8,4 +8,5 @@ public interface PositionDao {
 	void addPosition(Position position);
 	void removePosition(Position position);
 	List<Position> findAllPositions();
+	Position getPosition(long id);
 }

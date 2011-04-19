@@ -24,5 +24,9 @@ public class GalleryDaoImpl extends HibernateDaoSupport implements GalleryDao{
 		ht.setMaxResults(8);
 		return ht.find("from Gallery order by date desc");
 	}
+	
+	public Gallery getGallery(long id) {
+		return (Gallery) getHibernateTemplate().get(Gallery.class, id);
+	}
 
 }

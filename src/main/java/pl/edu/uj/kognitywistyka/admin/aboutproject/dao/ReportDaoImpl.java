@@ -32,6 +32,8 @@ public class ReportDaoImpl extends HibernateDaoSupport
 		
 	}
 	
-
+	public Report getReport(long id) {
+		return (Report) getHibernateTemplate().get(Report.class, id);
+	}
 
 }

@@ -9,4 +9,5 @@ public interface LinkDao {
 	void removeLink(Link link);
 	void updateLink(Link link);
 	List<Link> findAllLinks();
+	Link getLink(long id);
 }
