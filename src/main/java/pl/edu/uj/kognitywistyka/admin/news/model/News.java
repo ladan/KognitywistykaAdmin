@@ -15,7 +15,7 @@ public class News  implements java.io.Serializable {
 	private String content;
 	private Gallery gallery;
 
-	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-mm-yyyy");
+	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public long getNewsId() {
 		return newsId;

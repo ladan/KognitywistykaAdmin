@@ -112,7 +112,7 @@ public class LinkBean implements Serializable{
 		link.setName(name);
 		link.setUrl(url.toString());
 		link.setDescription(description);
-		
+				
 		linkBo.updateLink(link);
 		
 		resetView();
@@ -127,6 +127,7 @@ public class LinkBean implements Serializable{
 	}
 
 	private void resetView() {
+		setLinkId(0);
 		setName("");
 		setUrl(null);
 		setDescription("");

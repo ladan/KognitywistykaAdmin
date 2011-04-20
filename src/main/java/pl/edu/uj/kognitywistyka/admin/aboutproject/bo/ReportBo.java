@@ -10,4 +10,5 @@ public interface ReportBo {
 	void removeReport(long reportId);
 	void updateReport(Report report);
 	List<Report> findAllReports();
+	Report getReport(long reportId);
 }

@@ -12,7 +12,7 @@ public class Report implements java.io.Serializable{
 	private Date date;
 	private String content;
 	
-	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-mm-yyyy");
+	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public long getReportId() {
 		return reportId;

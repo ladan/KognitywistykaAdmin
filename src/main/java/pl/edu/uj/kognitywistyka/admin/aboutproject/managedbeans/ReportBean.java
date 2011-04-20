@@ -2,10 +2,13 @@ package pl.edu.uj.kognitywistyka.admin.aboutproject.managedbeans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.ReportBo;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Report;
@@ -25,6 +28,25 @@ public class ReportBean implements Serializable {
 	ReportBo reportBo;
 	@ManagedProperty(name="reportBunchBean", value="#{reportBunchBean}")
 	ReportBunchBean reportBunchBean;
+	
+	@PostConstruct
+	@SuppressWarnings("unused")
+	private void init() {
+		Map<String, String> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String reportId = requestMap.get("reportid");
+		if(reportId != null)
+			preinitializeBean(new Long(reportId));
+	}
+	
+	private void preinitializeBean(long reportId) {
+		Report report = reportBo.getReport(reportId);
+		if(report != null) {
+			this.reportId = report.getReportId();
+			this.title = report.getTitle();
+			this.date = report.getDate();
+			this.content = report.getContent();
+		}
+	}
 	
 	public long getReportId() {
 		return reportId;
@@ -78,6 +100,19 @@ public class ReportBean implements Serializable {
 		return "";
 	}
 	
+	public String updateReport() {
+		Report report = new Report();
+		report.setReportId(reportId);
+		report.setTitle(title);
+		report.setDate(date);
+		report.setContent(content);
+		
+		reportBo.updateReport(report);
+		
+		resetView();
+		return "success";
+	}
+	
 	public String removeReport(long reportId) {
 		reportBo.removeReport(reportId);
 		
@@ -86,6 +121,7 @@ public class ReportBean implements Serializable {
 	}
 
 	private void resetView() {
+		setReportId(0);
 		setContent("");
 		setDate(null);
 		setTitle("");

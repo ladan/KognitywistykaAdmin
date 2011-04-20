@@ -2,10 +2,13 @@ package pl.edu.uj.kognitywistyka.admin.news.managedbeans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery;
 import pl.edu.uj.kognitywistyka.admin.news.bo.NewsBo;
@@ -27,41 +30,25 @@ public class NewsBean implements Serializable {
 	private NewsBo newsBo;
 	@ManagedProperty(name = "newsBunchBean", value = "#{newsBunchBean}")
 	private NewsBunchBean newsBunchBean;
-
-	public String addNews() {
-		News news = new News();
-		news.setTitle(title);
-		news.setContent(content);
-		news.setDate(new Date());
-		if(gallery != null)
-			news.setGallery(gallery);
-
-		newsBo.addNews(news);
-		resetView();
-
-		return "";
+	
+	@PostConstruct
+	@SuppressWarnings("unused")
+	private void init() {
+		Map<String, String> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String newsId = requestMap.get("newsid");
+		if(newsId != null)
+			preinitializeBean(new Long(newsId));
 	}
-
-	public String removeNews(long newsId) {
-		newsBo.removeNews(newsId);
-
-		resetView();
-		return "";
-	}
-
-	public String updateNews(News news) {
-		newsBo.updateNews(news);
-
-		resetView();
-		return "";
-	}
-
-	private void resetView() {
-		setTitle("");
-		setContent("");
-		setGallery(null);
-
-		newsBunchBean.setAllNews(null);
+	
+	private void preinitializeBean(long linkId) {
+		News news = newsBo.getNews(linkId);
+		if(news != null) {
+			this.newsId = news.getNewsId();
+			this.title = news.getTitle();
+			this.date = news.getDate();
+			this.gallery = news.getGallery();
+			this.content = news.getContent();
+		}
 	}
 
 	public void setNewsBo(NewsBo newsBo) {
@@ -110,6 +97,52 @@ public class NewsBean implements Serializable {
 
 	public void setGallery(Gallery gallery) {
 		this.gallery = gallery;
+	}
+	
+	public String addNews() {
+		News news = new News();
+		news.setTitle(title);
+		news.setContent(content);
+		news.setDate(new Date());
+		if(gallery != null)
+			news.setGallery(gallery);
+
+		newsBo.addNews(news);
+		resetView();
+
+		return "";
+	}
+
+	public String removeNews(long newsId) {
+		newsBo.removeNews(newsId);
+
+		resetView();
+		return "";
+	}
+
+	public String updateNews() {
+		News news = new News();
+		news.setNewsId(newsId);
+		news.setTitle(title);
+		news.setContent(content);
+		news.setDate(new Date());
+		news.setGallery(gallery);
+		
+		System.out.println(newsId + " " + title);
+		
+		newsBo.updateNews(news);
+
+		resetView();
+		return "success";
+	}
+
+	private void resetView() {
+		setNewsId(0);
+		setTitle("");
+		setContent("");
+		setGallery(null);
+
+		newsBunchBean.setAllNews(null);
 	}
 
 }

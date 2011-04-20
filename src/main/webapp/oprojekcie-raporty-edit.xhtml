@@ -21,7 +21,9 @@
                 <div class="breadcrumb_divider"></div>
                 <h:link value="O projekcie" outcome="oprojekcie" />
                 <div class="breadcrumb_divider"></div>
-                <a class="current">Raporty</a>
+                <h:link value="Raporty" outcome="oprojekcie-raporty" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Raporty - edycja</a>
             </article>
 		</div>
 	</ui:define>
@@ -29,7 +31,7 @@
 	<ui:define name="siteContent">
 	
 		<article class="module width_full">
-			<header><h3>Dodaj nowy raport</h3></header>
+			<header><h3>Edytuj raport</h3></header>
 			<h:form>
 				<div class="module_content">
 	        		<fieldset class="first_half_field">
@@ -52,74 +54,17 @@
 	                	</h:inputTextarea>
 	                	<p class="warning"><h:message for="opis" /></p>
 	                </fieldset>
+	                <h:inputHidden value="#{reportBean.reportId}" />
 	                <div class="clear"></div>
 				</div>				
 				<footer>
 					<div class="submit_link">
-						<h:commandButton class="alt_btn2" value="Dodaj" action="#{reportBean.addReport}" />
+						<h:commandButton class="alt_btn" value="Zapisz" action="#{reportBean.updateReport}" />
 					</div>
 				</footer>
 			</h:form>
 		</article><!-- end of post new article -->
 	
-		<article class="module width_full">
-		<header><h3 class="tabs_involved">Lista raportów</h3>
-		<ul class="tabs">
-   			<li><a href="#tab1">Raporty</a></li>
-		</ul>
-		</header>
-
-		<div class="tab_container">
-			<div id="tab1" class="tab_content">
-			<table class="tablesorter" cellspacing="0"> 
-			<thead> 
-				<tr> 
-   					<th></th> 
-    				<th>Nazwa</th> 
-    				<th>Data</th>
-    				<th>Akcje</th> 
-				</tr> 
-			</thead> 
-			<tbody> 
-				<ui:repeat var="report" value="#{reportBunchBean.allReports}">
-					<tr> 
-	   					<td><input type="checkbox" /></td> 
-	    				<td>#{report.title}</td> 
-	    				<td>#{report.shortDate}</td>  
-	    				<td>
-	    					<h:form>
-	    						<h:link outcome="oprojekcie-raporty-edit" includeViewParams="true">
-	    							<f:param name="reportid" value="#{report.reportId}"/>
-                					<img src="resources/images/icn_edit.png" class="command_img" />
-                				</h:link>
-                				<h:commandLink action="#{reportBean.removeReport(report.reportId)}">
-                					<img src="resources/images/icn_trash.png" class="command_img" />
-                				</h:commandLink>
-	                		</h:form>
-	    				</td> 
-					</tr>  
-				</ui:repeat>
-			</tbody> 
-			</table>
-			</div><!-- end of #tab1 -->
-		</div><!-- end of .tab_container -->
-		
-		</article><!-- end of content manager article -->
-	
-		<article class="module width_full">
-			<header><h3>Podgląd</h3></header>
-			<section id="raporty-preview">
-        	<h2>Raporty</h2>
-        	<ui:repeat var="report" value="#{reportBunchBean.allReports}">
-        		<article class="raport">
-                	<h3><a href="#" class="link1">#{report.title}</a></h3>
-                    <time datetime="#{report.date}">#{report.shortDate}</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-	                <pre>#{report.content}</pre>
-	            </article>
-        	</ui:repeat>
-	        </section>
-		</article><!-- end of post new article -->
         <div class="clear"></div>
     </ui:define>
 	

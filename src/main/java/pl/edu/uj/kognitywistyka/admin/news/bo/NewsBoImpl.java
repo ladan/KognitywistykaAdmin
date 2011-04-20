@@ -41,4 +41,9 @@ public class NewsBoImpl implements NewsBo, Serializable {
 		return newsDao.findAllNews();
 	}
 
+	@Override
+	public News getNews(long newsId) {
+		return newsDao.getNews(newsId);
+	}
+
 }

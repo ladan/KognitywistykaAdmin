@@ -39,7 +39,7 @@
 	        			<h:outputLabel for="data" value="Data:" />
 	                    <p class="input_hint">Format: DD/MM/YYYY</p>
 	                    <h:inputText id="data" value="#{newsBean.date}" required="true" >
-	                    	<f:convertDateTime pattern="dd/mm/yyyy" />
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <p class="warning"><h:message for="data" /></p>
 	                </fieldset>
@@ -94,7 +94,11 @@
 		                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
 		                    	</select>
 		                        <input type="submit" value="Podepnij" class="alt_btn2" />
-		                        <h:commandLink action="#{newsBean.removeNews(news.newsId)}" style="border-left: 1px dotted gray; margin: 0 10px; padding: 0 10px;">
+		                        <h:link outcome="newsy-edit" includeViewParams="true">
+	    							<f:param name="newsid" value="#{news.newsId}"/>
+                					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />
+                				</h:link>
+		                        <h:commandLink action="#{newsBean.removeNews(news.newsId)}">
                 					<img src="resources/images/icn_trash.png" class="command_img" />
                					</h:commandLink>
 	                		</h:form>
