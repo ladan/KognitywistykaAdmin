@@ -29,6 +29,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 				<value>xml/news/hibernate/News.hbm.xml</value>
 				<value>xml/gallery/hibernate/Gallery.hbm.xml</value>
 				<value>xml/gallery/hibernate/Photo.hbm.xml</value>
+				<value>xml/contact/hibernate/ContactRecipient.hbm.xml</value>
 			</list>
 		</property>
 
