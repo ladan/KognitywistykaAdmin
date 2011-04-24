@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
  
-   	<bean id="empoloyeeBo" 
+   	<bean id="employeeBo" 
          class="pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBoImpl" >
    		<property name="employeeDao" ref="employeeDao" />
    	</bean>

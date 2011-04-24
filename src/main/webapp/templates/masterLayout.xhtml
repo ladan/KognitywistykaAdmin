@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 		  xmlns:f="http://java.sun.com/jsf/core"
 		  xmlns:ui="http://java.sun.com/jsf/facelets"
-		  xmlns:h="http://java.sun.com/jsf/html">
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:t="http://myfaces.apache.org/tomahawk">
 
 <h:head>
 	<ui:insert name="headDate">
@@ -11,24 +12,16 @@
 	</ui:insert>
 </h:head>
 
-<h:body class="#{bodyClass}">
+<h:body>
 	<ui:insert name="siteHeader">
 		<ui:include src="/templates/sections/header.xhtml" />
 	</ui:insert>
-	
-	<div id="site-wrapper">
-		<div id="content">
-			<ui:insert name="siteContent" />
-		</div>
-		
-		<aside id="site-sidebar">
-			<ui:insert name="siteSidebar" />
-		</aside>
-	</div>	
-	
-	
-	<ui:insert name="siteFooter">
-		<ui:include src="/templates/sections/footer.xhtml" />
+	<ui:insert name="siteHeader">
+		<ui:include src="/templates/sections/sidebar.xhtml" />
 	</ui:insert>
+	
+	<section id="main" class="column">
+		<ui:insert name="siteContent" />
+	</section>
 </h:body>
 </html>

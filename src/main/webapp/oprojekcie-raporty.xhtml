@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -9,105 +11,117 @@
 
 <ui:composition template="/templates/masterLayout.xhtml">
 
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie -->
-	<ui:param name="bodyClass" value="oprojekcie" />
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Raporty" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="O projekcie" outcome="oprojekcie" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Raporty</a>
+            </article>
+		</div>
+	</ui:define>
 	
 	<ui:define name="siteContent">
-    	<section class="raporty-form">
+	
+		<article class="module width_full">
+			<header><h3>Dodaj nowy raport</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{reportBean.title}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#{reportBean.date}" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis: " />
+	                    <h:inputTextarea id="opis" value="#{reportBean.content}" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{reportBean.addReport}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">Lista raportów</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Raporty</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Nazwa</th> 
+    				<th>Data</th>
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<ui:repeat var="report" value="#{reportBunchBean.allReports}">
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>#{report.title}</td> 
+	    				<td>#{report.shortDate}</td>  
+	    				<td>
+	    					<h:form>
+	    						<h:link outcome="oprojekcie-raporty-edit" includeViewParams="true">
+	    							<f:param name="reportid" value="#{report.reportId}"/>
+                					<img src="resources/images/icn_edit.png" class="command_img" />
+                				</h:link>
+                				<h:commandLink action="#{reportBean.removeReport(report.reportId)}">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+                				</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>  
+				</ui:repeat>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		</div><!-- end of .tab_container -->
+		
+		</article><!-- end of content manager article -->
+	
+		<article class="module width_full">
+			<header><h3>Podgląd</h3></header>
+			<section id="raporty-preview">
         	<h2>Raporty</h2>
-            <form>
-            	<div>
-                    <label for="nazwa">Nazwa:</label>
-                    <input type="text" name="nazwa" />
-                </div>
-                <div>
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" />
-                    <p>Format: DD/MM/YYYY</p>
-                </div>
-                <div>
-                    <label for="raport">Załącznik:</label>
-                    <input type="file" name="raport" />
-                </div>
-                <div>
-                    <label for="opis">Opis:</label>
-                    <textarea rows="5" name="opis"></textarea>
-                </div>
-                
-                <div>
-                    <input type="submit" value="Dodaj" class="raporty-form-button" />
-                </div>
-            </form>
-        </section>
-        <section class="raporty-preview">
-        	<h2>Raporty</h2>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
+        	<ui:repeat var="report" value="#{reportBunchBean.allReports}">
+        		<article class="raport">
+                	<h3><a href="#" class="link1">#{report.title}</a></h3>
+                    <time datetime="#{report.date}">#{report.shortDate}</time>
                     <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                    <form>
-                        <div>
-                            <input type="text" name="nazwa" value="Raport z konferencji"/>
-                        </div>
-                        <div>
-                            <input type="date" name="data" class="raporty-data" value="14/06/2010"/>
-                            <p>Format: DD/MM/YYYY</p>
-                        </div>
-                        <div>
-                            <textarea rows="5" name="opis">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</textarea>
-                        </div>
-                        
-                        <div>
-                            <input type="submit" value="Zapisz" class="raporty-form-button" />
-                        </div>
-                    </form>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="raport">
-            	<header>
-                	<h3><a href="#" class="link1">Raport z konferencji</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                    <p class="raport-download"><a href="#" class="link1">Pobierz</a></p>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="raporty-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-        </section>
+	                <pre>#{report.content}</pre>
+	            </article>
+        	</ui:repeat>
+	        </section>
+		</article><!-- end of post new article -->
+        <div class="clear"></div>
     </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/oprojekcie-sidebar.xhtml" />
-	</ui:define>
 	
 </ui:composition>
 

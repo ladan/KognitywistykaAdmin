@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -9,98 +11,122 @@
 
 <ui:composition template="/templates/masterLayout.xhtml">
 
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie, newsy -->
-	<ui:param name="bodyClass" value="newsy" />
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Lista newsów" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Newsy</a>
+            </article>
+		</div>
+	</ui:define>
 	
 	<ui:define name="siteContent">
-    	<h2>Dodaj newsa</h2>
-        <section class="news-form">
-        	<form>
-            	<div>
-                    <label for="tytul">Tytuł:</label>
-                    <input type="text" name="tytul" />
-                </div>
-                <div>
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" />
-                    <p>Format: DD/MM/YYYY</p>
-                </div>
-            	<div>
-                	<label for="tresc">Treść</label>
-                    <textarea rows="10" name="tresc"></textarea>
-                </div>
-                <div>
-                	<input type="submit" value="Dodaj" class="news-form-button" />
-                </div>
-            </form>
-        </section>
-    	
-        <h2>Podgląd</h2>
-        <section class="newsy-preview">
-        	<div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
-                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
-                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-            <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
-                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
-                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-            <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł newsa</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam.</p>
-                    <p class="link-right"><a href="#" class="link3">Czytaj dalej</a></p>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Edytuj wpis" />
-                        <input type="submit" value="Usuń wpis" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-        </section>
+	
+		<article class="module width_full">
+			<header><h3>Dodaj newsa</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{newsBean.title}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#{newsBean.date}" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis: " />
+	                    <h:inputTextarea id="opis" value="#{newsBean.content}" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{newsBean.addNews}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	    
+	    <article class="module width_full">
+		<header><h3 class="tabs_involved">Lista newsów</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Newsy</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Nazwa</th> 
+    				<th>Data</th>
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<ui:repeat var="news" value="#{newsBunchBean.allNews}">
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>#{news.title}</td> 
+	    				<td>#{news.shortDate}</td>  
+	    				<td>
+	    					<h:form>
+               					<label for="foto">Podpięta galeria:</label>
+		                        <select name="foto">
+		                            <option value="g1">brak</option>
+		                            <option disabled="true">---</option>
+		                            <option value="g2">Galeria 2 - 16 sty. 2011</option>
+		                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
+		                    	</select>
+		                        <input type="submit" value="Podepnij" class="alt_btn2" />
+		                        <h:link outcome="newsy-edit" includeViewParams="true">
+	    							<f:param name="newsid" value="#{news.newsId}"/>
+                					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />
+                				</h:link>
+		                        <h:commandLink action="#{newsBean.removeNews(news.newsId)}">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+               					</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>  
+				</ui:repeat>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		</div><!-- end of .tab_container -->
+	   	
+		</article><!-- end of content manager article -->
+		
+ 	    <article class="module width_full">
+			<header><h3>Podgląd</h3></header>
+			<section id="raporty-preview">
+        	<h2>Newsy</h2>
+        	<ui:repeat var="news" value="#{newsBunchBean.allNews}">
+        		<article class="raport">
+                	<h3><a href="#" class="link1">#{news.title}</a></h3>
+                    <time datetime="#{report.date}">#{news.shortDate}</time>
+	                <pre>#{news.content}</pre>
+	            </article>
+        	</ui:repeat>
+	        </section>
+		</article><!-- end of post new article -->
+        <div class="clear"></div>
     </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/glowna-sidebar.xhtml" />
-	</ui:define>
 	
 </ui:composition>
 

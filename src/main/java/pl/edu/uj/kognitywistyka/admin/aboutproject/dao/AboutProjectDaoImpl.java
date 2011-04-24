@@ -18,11 +18,16 @@ public class AboutProjectDaoImpl extends HibernateDaoSupport implements
 	public List<AboutProject> findAllAboutProjects() {
 		HibernateTemplate ht = getHibernateTemplate();
 		ht.setMaxResults(3);
-		return getHibernateTemplate().find("from AboutProject order by Data desc");
+		return getHibernateTemplate().find("from AboutProject order by date desc");
 	}
 
 	public AboutProject findLatestAboutProject() {
-		return findAllAboutProjects().get(0);
+		List<AboutProject> list = findAllAboutProjects(); 
+		return list.isEmpty() ? null : list.get(0);
+	}
+	
+	public AboutProject getAboutProject(long id) {
+		return (AboutProject) getHibernateTemplate().get(AboutProject.class, id);
 	}
 
 }

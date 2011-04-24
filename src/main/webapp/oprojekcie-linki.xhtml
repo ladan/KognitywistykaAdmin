@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -9,91 +11,117 @@
 
 <ui:composition template="/templates/masterLayout.xhtml">
 
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie -->
-	<ui:param name="bodyClass" value="oprojekcie" />
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Baza linków" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="O projekcie" outcome="oprojekcie" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Baza linków</a>
+            </article>
+		</div>
+	</ui:define>
 	
 	<ui:define name="siteContent">
-    	<section class="linki-form">
-        	<h2>Linki</h2>
-            <form>
-            	<div>
-                    <label for="nazwa">Nazwa:</label>
-                    <input type="text" name="nazwa" />
-                </div>
-                <div>
-                    <label for="url">Adres URL:</label>
-                    <input type="text" name="url" value="http://" />
-                </div>
-                <div>
-                    <label for="opis">Opis:</label>
-                    <textarea rows="5" name="" id="opis"></textarea>
-                </div>
-                
-                <div>
-                    <input type="submit" value="Dodaj" class="linki-form-button" />
-                </div>
-            </form>
-        </section>
-        <section class="linki-preview">
-        	<h2>Baza linków</h2>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                    <form>
-                        <div>
-                            <input type="text" name="nazwa" value="Link1"/>
-                        </div>
-                        <div>
-                            <input type="text" name="url" value="http://www.google.com"/>
-                        </div>
-                        <div>
-                            <textarea rows="5" name="opis">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</textarea>
-                        </div>
-                        
-                        <div>
-                            <input type="submit" value="Zapisz" class="linki-form-button" />
-                        </div>
-                    </form>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-            <article class="link-baza">
-            	<header>
-                	<h3><a href="#" class="link1">Link</a></h3>
-                </header>
-                <pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore consectetur adipisicing elit. Neque prrp quiosqam est, qui dolorem uipsum dolor sit amet, consectetur, adipisci sed quia non</pre>
-                <div class="linki-options">
-                	<p><a href="#">Edytuj opis</a> <a href="#">Usuń</a></p>
-                </div>
-            </article>
-        </section>
+		<article class="module width_full">
+			<header><h3>Dodaj nowy link</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{linkBean.name}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="url" value="Adres URL:" />
+	                    <h:inputText id="url" value="#{linkBean.url}" required="true">
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="url" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis: " />
+	                    <h:inputTextarea id="opis" value="#{linkBean.description}" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{linkBean.addLink}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">Lista linków</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Linki</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Nazwa</th> 
+    				<th>Url</th>
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<ui:repeat var="link" value="#{linkBunchBean.allLinks}">
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>#{link.name}</td> 
+	    				<td>#{link.url}</td>  
+	    				<td>
+	    					<h:form>
+	    						<h:link outcome="oprojekcie-linki-edit" includeViewParams="true">
+	    							<f:param name="linkid" value="#{link.linkId}"/>
+                					<img src="resources/images/icn_edit.png" class="command_img" />
+                				</h:link>
+                				<h:commandLink action="#{linkBean.removeLink(link.linkId)}">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+                				</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>  
+				</ui:repeat>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		</div><!-- end of .tab_container -->
+		
+		</article><!-- end of content manager article -->
+	
+		<article class="module width_full">
+			<header><h3>Podgląd</h3></header>
+			<section id="linki-preview">
+	        	<h2>Baza linków</h2>
+	        	<ui:repeat var="link" value="#{linkBunchBean.allLinks}">
+        		<article class="link-baza">
+                	<h3><h:outputLink class="link1" value="#{link.url}">#{link.name}</h:outputLink></h3>
+	                <pre>#{link.description}</pre>
+	                <div class="linki-options">
+	                	<h:form>
+                			<p><h:commandLink value="Usuń" action="#{linkBean.removeLink(link.linkId)}" /></p>
+                		</h:form>
+	                </div>
+	            </article>
+        	</ui:repeat>
+	        </section>
+		</article><!-- end of post new article -->
+        <div class="clear"></div>
     </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/oprojekcie-sidebar.xhtml" />
-	</ui:define>
 	
 </ui:composition>
 

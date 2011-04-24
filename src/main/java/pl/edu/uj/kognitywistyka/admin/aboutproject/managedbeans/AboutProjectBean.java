@@ -22,8 +22,15 @@ public class AboutProjectBean implements Serializable {
 	private String description;
 
 	public String getDescription() {
+		
 		if(aboutProjectBo != null)
-			return aboutProjectBo.findLatestAboutProject().getDescription();
+		{
+			AboutProject ap = aboutProjectBo.findLatestAboutProject();
+			if(ap != null)
+				return ap.getDescription();
+			else
+				return " "; 
+		}
 		else
 			return "";
 	}
@@ -46,11 +53,11 @@ public class AboutProjectBean implements Serializable {
 		
 		aboutProjectBo.addAboutProject(aboutProject);
 		
-		clearForm();
+		resetView();
 		return "";
 	}
 
-	private void clearForm() {
+	private void resetView() {
 		setDescription("");
 	}
 	

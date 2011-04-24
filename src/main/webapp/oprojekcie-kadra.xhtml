@@ -1,158 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:t="http://myfaces.apache.org/tomahawk">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
 <!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
 
 <ui:composition template="/templates/masterLayout.xhtml">
-
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie -->
-	<ui:param name="bodyClass" value="oprojekcie" />
+	
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Kadra projektu" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="O projekcie" outcome="oprojekcie" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Kadra projektu</a>
+            </article>
+		</div>
+	</ui:define>
 	
 	<ui:define name="siteContent">
-        <section class="kadra-form">
-        	<h2>Kadra projektu</h2>
-            <form>
-                <div>
-                    <label for="zadanie">Zadanie:</label>
-                    <select>
-                        <option value="wykonawca">Wykonawca</option>
-                        <option value="wspolpracownik">Współpracownik</option>
-                        <option value="">Lorem ipsum</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="imie">Imię:</label>
-                    <input type="text" name="imie" />
-                </div>
-                <div>
-                    <label for="nazwisko">Nazwisko:</label>
-                    <input type="text" name="nazwisko" />
-                </div>
-                <div>
-                    <label for="tytul">Tytuł naukowy:</label>
-                    <input type="text" name="tytul" />
-                </div>
-                <div>
-                    <label for="opis">Opis:</label>
-                    <textarea rows="5" name="opis"></textarea>
-                </div>
-                <div>
-                    <input type="submit" value="Dodaj" class="kadra-form-button" />
-                </div>
-            </form>
-        </section>
-        <section class="kadra-form">
-        	<h2>Zadania kadry</h2>
-            <ul class="zadania-kadry">
-            	<li><span>Wykonawca</span> <a href="#">Usuń</a></li>
-                <li><span>Współpracownik</span> <a href="#">Usuń</a></li>
-                <li><span>Lorem ipsum</span> <a href="#">Usuń</a></li>
-            </ul>
-            <form>
-                <div>
-                    <label for="zadanie">Dodaj zadanie:</label>
-                    <input type="text" name="zadanie" />
-                </div>
-                <div>
-                    <input type="submit" value="Dodaj" class="kadra-form-button" />
-                </div>
-            </form>
-        </section>
-        <section class="kadra-podglad">
-        	<h2>Kadra projektu</h2>
-            <h3>Wykonawcy</h3>
-        	<article>
-                <div class="kadra-zdjecie">
-                	<img src="#" alt="" />
-                </div>
-                <h4>Jan Kowalski</h4>
-                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-                    </form>
-                </div>
-            </article>
-            <article>
-                <div class="kadra-zdjecie">
-                	<img src="#" alt="" />
-                </div>
-                <h4>Jan Kowalski</h4>
-                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Dodaj zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-                    </form>
-                </div>
-            </article>
-            <h3>Współpracownicy</h3>
-            <article>
-                <div class="kadra-zdjecie">
-                	<img src="resources/images/kadra-foto.jpg" alt="" />
-                </div>
-                <h4>Jan Kowalski</h4>
-                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Zmień zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-                    </form>
-                </div>
-            </article>
-            <article>
-                <div class="kadra-zdjecie">
-                	<img src="resources/images/kadra-foto.jpg" alt="" />
-                </div>
-                <h4>Jan Kowalski</h4>
-                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Zmień zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-                    </form>
-                </div>
-            </article>
-            <article>
-                <div class="kadra-zdjecie">
-                	<img src="resources/images/kadra-foto.jpg" alt="" />
-                </div>
-                <h4>Jan Kowalski</h4>
-                <p class="tytul-naukowy">Prof. hab. Uniwersytet Jagielloński</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                <div class="kadra-options">
-                	<form>
-                        <label for="foto">Zmień zdjęcie:</label>
-                        <input type="file" name="foto" />
-                        <input type="submit" value="Zapisz zdjęcie" />
-                        <input type="submit" value="Usuń członka kadry" class="kadra-delete" />
-                    </form>
-                </div>
-            </article>
-        </section>
+		<article class="module width_quarter">
+			<header><h3>Dodaj zadanie</h3></header>
+			<h:form>
+				<div class="module_content">
+	                <fieldset class="quarter_field">
+	                	<h:outputLabel for="zadanie" value="Dodaj zadanie:" />
+	                    <h:inputText id="zadanie" value="#{positionBean.name}" required="true"/>
+	                    <p class="warning"><h:message for="zadanie" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	            </div>
+	            <footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{positionBean.addPosition}" />
+					</div>
+				</footer>
+            </h:form>
+		</article>
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">Kadra i zadania</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Kadra</a></li>
+    		<li><a href="#tab2">Pozycje kadry</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Członek kadry</th> 
+    				<th>Pozycja</th> 
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody>
+			<ui:repeat var="employee" value="#{employeeBean.allEmployees}">
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>#{employee.firstName} #{employee.lastName}</td> 
+    				<td>Pozycja</td> 
+    				<td>
+    					<h:form>
+    						<h:commandLink action="#{employeeBean.removeEmployee(employee.employeeId)}">
+    							<img src="resources/images/icn_trash.png" class="command_img" /> 
+   							</h:commandLink>
+	                    </h:form>
+   					</td> 
+				</tr> 
+			</ui:repeat>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+			
+			<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Pozycja</th> 
+    				<th>ilość członków</th> 
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody>
+				<ui:repeat var="position" value="#{positionBunchBean.allPositions}">
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>#{position.name}</td>
+	    				<td>#{position.employees.size()}</td>
+	    				<td>
+	    					<h:form rendered="#{empty position.employees}">
+                				<h:commandLink action="#{positionBean.removePosition(position.positionId)}">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+                				</h:commandLink>
+	                		</h:form>
+	                		<h:outputText rendered="#{not empty position.employees}" value="Aby usunąć pozycję musisz usunąć wszystkich, którzy do niej należą"/>
+						</td> 
+					</tr>
+				</ui:repeat>
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab2 -->
+		</div><!-- end of .tab_container -->
+		</article><!-- end of content manager article -->
+		
+		<div class="clear"></div>
+		<article class="module width_full">
+			<header><h3>Dodaj członka kadry</h3></header>
+			<h:outputText value="Dodaj zadanie by móc dodawać pracowników" rendered="#{empty positionBunchBean.allPositions}" />
+           	<h:form rendered="#{not empty positionBunchBean.allPositions}" enctype="multipart/form-data">
+				<div class="module_content">
+					<fieldset class="first_half_field">
+	                	<h:outputLabel for="imie" value="Imię:" />
+	                    <h:inputText id="imie" value="#{employeeBean.name}" required="true"/>
+	                    <p class="warning"><h:message for="imie" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	                	<h:outputLabel for="nazwisko" value="Nazwisko: " />
+	                    <h:inputText id="nazwisko" value="#{employeeBean.surname}" required="true"/>
+	                    <p class="warning"><h:message for="nazwisko" /></p>
+	                </fieldset>
+	                <fieldset class="first_half_field">
+	                    <h:outputLabel for="tytul" value="Tytuł naukowy: " />
+	                    <h:inputText id="tytul" value="#{employeeBean.title}"/>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+						<h:outputLabel for="zadanie" value="Zadanie:" />
+	                	<h:selectOneMenu id="zadanie" value="#{employeeBean.positionId}">
+	                		<f:selectItems var="pos" value="#{positionBunchBean.allPositions}"
+	                			itemValue="#{pos.positionId}" itemLabel="#{pos.name}" />
+	                	</h:selectOneMenu>
+					</fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis: " />
+	                    <h:inputTextarea id="opis" value="#{employeeBean.description}" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <fieldset class="first_half_field">
+	                	<h:outputLabel for="foto" value="Zdjęcie: "/>
+			            <t:inputFileUpload id="foto" value="#{employeeBean.uploadedFile}" />
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{employeeBean.addEmployee}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+        
+        
+        <div class="clear"></div>
+        <article class="module width_full">
+			<header><h3>Podgląd</h3></header>
+			<section id="kadra-podglad">
+	        	<h2>Kadra projektu</h2>
+	        	<ui:repeat var="pos" value="#{positionBunchBean.allPositions}">
+		        	<h3>#{pos.name}</h3>
+		        	<ui:repeat var="employee" value="#{pos.employees}">
+			        	<article>
+			        		<div class="kadra-zdjecie"><h:graphicImage value="#{employee.photo}" rendered="#{not empty employee.photo}" /></div>
+			        		<h4>#{employee.firstName} #{employee.lastName}</h4>
+			                <p class="tytul-naukowy">#{employee.title}</p>
+			                <p>#{employee.description}</p>
+			        	</article>
+		        	</ui:repeat>
+		        </ui:repeat>
+	        </section>
+		</article><!-- end of post new article -->
+        <div class="clear"></div>
+        
     </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/oprojekcie-sidebar.xhtml" />
-	</ui:define>
 	
 </ui:composition>
 

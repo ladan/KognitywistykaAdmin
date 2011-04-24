@@ -18,7 +18,7 @@ public class LinkDaoImpl extends HibernateDaoSupport
 
 	@SuppressWarnings("unchecked")
 	public List<Link> findAllLinks() {
-		return getHibernateTemplate().find("from Link");
+		return getHibernateTemplate().find("from Link order by linkId asc");
 	}
 
 	
@@ -33,6 +33,8 @@ public class LinkDaoImpl extends HibernateDaoSupport
 		
 	}
 	
-
+	public Link getLink(long id) {
+		return (Link) getHibernateTemplate().get(Link.class, id);
+	}
 
 }

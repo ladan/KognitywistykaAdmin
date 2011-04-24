@@ -1,5 +1,6 @@
 package pl.edu.uj.kognitywistyka.admin.aboutproject.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AboutProject implements java.io.Serializable {
@@ -9,6 +10,8 @@ public class AboutProject implements java.io.Serializable {
 	private long aboutProjectId;
 	private String description;
 	private Date date;
+	
+	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-mm-yyyy");
 	
 	public long getAboutProjectId() {
 		return aboutProjectId;
@@ -33,5 +36,11 @@ public class AboutProject implements java.io.Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public SimpleDateFormat getShortDateFormatter() {
+		return shortDateFormatter;
+	}
+	
+	
 
 }

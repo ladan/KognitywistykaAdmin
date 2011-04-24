@@ -17,7 +17,7 @@ public class EmployeeDaoImpl extends HibernateDaoSupport
 
 	@SuppressWarnings("unchecked")
 	public List<Employee> findAllEmployees() {
-		return getHibernateTemplate().find("from Employee");
+		return getHibernateTemplate().find("from Employee order by lastName asc");
 	}
 
 	public void removeEmployee(Employee employee) {
@@ -28,6 +28,10 @@ public class EmployeeDaoImpl extends HibernateDaoSupport
 	public void updateEmployee(Employee employee) {
 		getHibernateTemplate().update(employee);
 		
+	}
+	
+	public Employee getEmployee(long id) {
+		return (Employee) getHibernateTemplate().get(Employee.class, id);
 	}
 	
 }

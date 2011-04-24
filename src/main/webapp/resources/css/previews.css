@@ -1,0 +1,92 @@
+#oprojekcie-preview {
+	margin: 0 20px;	
+}
+
+#oprojekcie-preview h3 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	color: #000;
+	margin: 20px 0 15px;
+}
+
+#oprojekcie-preview pre {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000;
+	line-height: 20px;
+}
+
+#kadra-podglad {
+	margin: 0 20px;	
+}
+
+#kadra-podglad article {
+	overflow: auto;
+	margin: 10px 0;
+}
+
+#kadra-podglad h3{
+	font-family: Georgia, "Times New Roman", Times, serif !important;
+	font-size: 20px !important;
+	color: #000;
+	margin: 10px 0;
+}
+
+#kadra-podglad h4{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #000;
+	margin: 0;
+}
+
+#kadra-podglad p{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000;
+	line-height: 20px;
+	margin: 0;
+}
+
+#kadra-podglad p.tytul-naukowy{
+	margin-bottom: 10px;
+}
+
+.kadra-zdjecie {
+	float: left;
+	border: 1px solid #888888;
+	width: 98px;
+	min-height: 100px;
+	padding: 3px 3px 0;
+	height-min: 50px;
+	margin: 0 10px 10px 0;
+	background: url(../images/kadra-brak.png) no-repeat;
+}
+
+#linki-preview, #raporty-preview {
+	margin: 0 20px;	
+}
+
+#linki-preview h3,
+#raporty-preview h3 {
+	font-family: Arial, Helvetica, sans-serif;	
+	font-size: 15px;
+	border: 0 !important;
+	background: none !important;
+	color: #666666;
+	text-transform: none !important;
+	text-shadow: none !important;
+	margin: 0 !important;
+}
+
+.link-baza,
+.raport {
+	margin: 10px 0;
+	overflow: auto;	
+	border-bottom: 1px dashed  #9c9c9c;
+}
+
+.raport-download {
+	float: right;
+	margin: 0 10px;
+}

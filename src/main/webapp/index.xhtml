@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -9,18 +10,224 @@
 
 <ui:composition template="/templates/masterLayout.xhtml">
 
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie -->
-	<ui:param name="bodyClass" value="glowna" />
-	
-	<ui:define name="siteContent">
-    	<h2>Content header</h2>
-        <p>Na razie traktujemy tą stronę jako swego rodzaju szablon.</p>
-    </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/glowna-sidebar.xhtml" />
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Panel administracyjny" />
+
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+                <a class="current">Panel administracyjny</a>
+            </article>
+		</div>
 	</ui:define>
+
+	<ui:define name="siteContent">
+	
+    	<h4 class="alert_info">Wiadomość informacyjna</h4>
+		<h4 class="alert_warning">Ostrzeżenie</h4>
+		<h4 class="alert_error">Błąd</h4>
+		<h4 class="alert_success">Sukces</h4>
+        
+        <article class="module width_full">
+			<header><h3>Prezentacja styli (okno z pełną długością)</h3></header>
+				<div class="module_content">
+					<h1>Header 1 (znacznik &lt;h1&gt;)</h1>
+					<h2>Header 2 (znacznik &lt;h2&gt;)</h2>
+					<h3>Header 3 (znacznik &lt;h3&gt;)</h3>
+					<h4>Header 4 (znacznik &lt;h4&gt;)</h4>
+					<p>(znacznik &lt;p&gt; )Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+
+<p>Donec id elit non mi porta <a href="#">link text  (znacznik &lt;a&gt;)</a> gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+					<ul>
+						<li>Donec ullamcorper nulla non metus auctor fringilla.  (znacznik ul-&gt;li)</li>
+						<li>Cras mattis consectetur purus sit amet fermentum.</li>
+						<li>Donec ullamcorper nulla non metus auctor fringilla. </li>
+						<li>Cras mattis consectetur purus sit amet fermentum.</li>
+					</ul>
+				</div>
+		</article><!-- end of styles article -->
+        		
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">okno 3/4 długości + zakładki</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Kadra</a></li>
+    		<li><a href="#tab2">Pozycje kadry</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Członek kadry</th> 
+    				<th>Pozycja</th> 
+    				<th>Dodano</th> 
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Lorem Ipsum Dolor Sit Amet</td> 
+    				<td>Articles</td> 
+    				<td>5th April 2011</td> 
+    				<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Ipsum Lorem Dolor Sit Amet</td> 
+    				<td>Freebies</td> 
+    				<td>6th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr>
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Sit Amet Dolor Ipsum</td> 
+    				<td>Tutorials</td> 
+    				<td>10th April 2011</td> 
+    				<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Dolor Lorem Amet</td> 
+    				<td>Articles</td> 
+    				<td>16th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr>
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Dolor Lorem Amet</td> 
+    				<td>Articles</td> 
+    				<td>16th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr>  
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+			
+			<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Lorem </th> 
+    				<th>ipsum</th> 
+    				<th>dolor</th> 
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Lorem Ipsum Dolor Sit Amet</td> 
+    				<td>Mark Corrigan</td> 
+    				<td>5th April 2011</td> 
+    				<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Ipsum Lorem Dolor Sit Amet</td> 
+    				<td>Jeremy Usbourne</td> 
+    				<td>6th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr>
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Sit Amet Dolor Ipsum</td> 
+    				<td>Super Hans</td> 
+    				<td>10th April 2011</td> 
+    				<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Dolor Lorem Amet</td> 
+    				<td>Alan Johnson</td> 
+    				<td>16th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Dolor Lorem Amet</td> 
+    				<td>Dobby</td> 
+    				<td>16th April 2011</td> 
+   				 	<td><input type="image" src="resources/images/icn_edit.png" title="Edit" /><input type="image" src="resources/images/icn_trash.png" title="Trash" /></td> 
+				</tr> 
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab2 -->
+			<div class="submit_link">
+                <input type="submit" value="Button3" class="alt_btn3" />
+            </div>
+		</div><!-- end of .tab_container -->
+		
+		</article><!-- end of content manager article -->
+		
+		<article class="module width_quarter">
+			<header><h3>Okno 1/4 długości</h3></header>
+			<div class="message_list">
+				<div class="module_content">
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+				</div>
+			</div>
+			<footer>
+				<form class="post_message">
+					<input type="text" value="Message" onFocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
+					<input type="submit" class="btn_post_message" value=""/>
+				</form>
+			</footer>
+		</article><!-- end of messages article -->
+		
+		<div class="clear"></div>
+		
+		<article class="module width_full">
+			<header><h3>Okno z formularzem</h3></header>
+				<div class="module_content">
+						<fieldset>
+							<label>Pole tekstowe</label>
+							<input type="text" />
+							<p class="warning">Wystąpił problem z walidacją pola.</p>
+						</fieldset>
+						<fieldset>
+							<label>Textarea</label>
+							<textarea rows="12"></textarea>
+						</fieldset>
+						<fieldset class="first_half_field">
+							<label>Lista opcji (1/2 długości - pierwsza część)</label>
+							<select>
+								<option>Articles</option>
+								<option>Tutorials</option>
+								<option>Freebies</option>
+							</select>
+						</fieldset>
+						<fieldset class="second_half_field"> 
+							<label>Pole tekstowe (1/2 długości - druga część)</label>
+							<input type="text" />
+						</fieldset><div class="clear"></div>
+				</div>
+			<footer>
+				<div class="submit_link">
+					<input type="submit" value="Button1" class="alt_btn" />
+					<input type="submit" value="Button0" />
+                    <input type="submit" value="Button2" class="alt_btn2" />
+				</div>
+			</footer>
+		</article><!-- end of post new article -->
+		
+		<div class="spacer"></div>
+    </ui:define>
 	
 </ui:composition>
 

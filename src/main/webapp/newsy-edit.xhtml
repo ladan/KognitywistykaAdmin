@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Lista newsów" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="Newsy" outcome="newsy" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">News - edycja</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+	
+		<article class="module width_full">
+			<header><h3>Edytuj newsa</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{newsBean.title}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#{newsBean.date}" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis: " />
+	                    <h:inputTextarea id="opis" value="#{newsBean.content}" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <h:inputHidden value="#{newsBean.newsId}" />
+	                <h:inputHidden value="#{newsBean.gallery}" rendered="#{not empty newsBean.gallery}"/>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn" value="Zapisz" action="#{newsBean.updateNews}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	    
+        <div class="clear"></div>
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>

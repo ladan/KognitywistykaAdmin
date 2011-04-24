@@ -68,4 +68,12 @@ public class Employee implements java.io.Serializable {
 		this.photo = photo;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", title=" + title
+				+ ", description=" + description + ", position=" + position
+				+ ", photo=" + photo + "]";
+	}
+	
 }
