@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -9,153 +11,121 @@
 
 <ui:composition template="/templates/masterLayout.xhtml">
 
-<!-- Tu podajemy wartość klasy body, tak by podświetlany był odpowiedni link w nawigacji -->
-<!-- Dostępne wartości: glowna, oprojekcie, newsy -->
-	<ui:param name="bodyClass" value="newsy" />
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Galerie" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Galerie</a>
+            </article>
+		</div>
+	</ui:define>
 	
 	<ui:define name="siteContent">
-    	<h2>Dodaj galerię</h2>
-        <section class="galeria-form">
-        	<form>
-            	<div>
-                    <label for="tytul">Tytuł:</label>
-                    <input type="text" name="tytul" />
-                </div>
-                <div>
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" />
-                    <p>Format: DD/MM/YYYY</p>
-                </div>
-            	<div>
-                	<label for="zdjecie">Dodaj zdjęcie</label>
-                    <input type="file" name="zdjecie" />
-                    <input type="submit" value="Dodaj" class="galerie-form-button" />
-                </div>
-                <div class="dodane-zdjecia">
-                	<h3>Dodane zdjęcia</h3>
-                    <div>
-                    	<a href="#">Usuń</a>
-                    	<img src="resources/images/kadra-brak.png" alt="brak" />
-                    </div>
-                    <div>
-                    	<a href="#">Usuń</a>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                    	<a href="#">Usuń</a>
-                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
-                    </div>
-                </div>
-                <div>
-                	<input type="submit" value="Zapisz galerię" class="galerie-form-button" />
-                </div>
-            </form>
-        </section>
-    	
-        <h2>Galerie</h2>
-        <section class="newsy-preview">
-        	<div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <div class="galeria">
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                </div>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-            <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <div class="galeria">
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                </div>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-            <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <div class="galeria">
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                </div>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-            <div class="news">
-            	<header>
-                	<h3><a href="#" class="link1">Tytuł Galerii</a></h3>
-                    <time datetime="14-06-2010">14 czerwca 2010</time>
-                </header>
-                <section>
-                    <div class="galeria">
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                    <div>
-                        <img src="resources/images/baza.png" alt="brak" />
-                    </div>
-                </div>
-                </section>
-                <div class="kadra-options">
-                	<form>
-                    	<input type="submit" value="Usuń galerię" class="kadra-delete" />
-                    </form>
-                </div>
-            </div>
-        </section>
+	
+		<article class="module width_full">
+			<header><h3>Dodaj galerię</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<div class="submit_link">
+	               			<label for="zdjecie">Dodaj zdjęcie</label>
+                    		<input type="file" name="zdjecie" class="alt_btn2" />
+                    		<input type="submit" value="Dodaj" class="alt_btn2" />
+	                	</div>
+	                	<div>
+			                	<h3>Dodane zdjęcia</h3>
+		                    <div>
+		                    	<a href="#">Usuń</a>
+		                    	<img src="resources/images/kadra-brak.png" alt="brak" />
+		                    </div>
+		                    <div>
+		                    	<a href="#">Usuń</a>
+		                        <img src="resources/images/baza.png" alt="brak" />
+		                    </div>
+		                    <div>
+		                    	<a href="#">Usuń</a>
+		                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
+		                    </div>
+	                	</div>
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	    
+	    <article class="module width_full">
+		<header><h3 class="tabs_involved">Lista galerii</h3>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Nazwa</th> 
+    				<th>Data</th>
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>Galeria 1</td> 
+	    				<td>11/11/11</td>  
+	    				<td>
+	    					<h:form>
+	    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
+		                        <h:commandLink action="#">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+               					</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>
+					<tr> 
+	   					<td><input type="checkbox" /></td> 
+	    				<td>Galeria 2</td> 
+	    				<td>11/11/11</td>  
+	    				<td>
+	    					<h:form>
+	    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
+		                        <h:commandLink action="#">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+               					</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		</div><!-- end of .tab_container -->
+	   	
+		</article><!-- end of content manager article -->
+        <div class="clear"></div>
     </ui:define>
-    
-    <ui:define name="siteSidebar">
-    	<ui:include src="/templates/sections/sidebars/newsy-sidebar.xhtml" />
-	</ui:define>
 	
 </ui:composition>
 
