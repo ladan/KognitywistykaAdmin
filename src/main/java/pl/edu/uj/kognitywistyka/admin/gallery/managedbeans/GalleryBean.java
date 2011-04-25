@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
@@ -24,13 +27,32 @@ public class GalleryBean implements Serializable {
 	private String title;
 	private Date date;
 	private List<Photo> photos = new ArrayList<Photo>();
-	private UploadedFile uploadedFile;
 
 	@ManagedProperty(name = "galleryBo", value = "#{galleryBo}")
 	GalleryBo galleryBo;
 	@ManagedProperty(name = "galleryBunchBean", value = "#{galleryBunchBean}")
 	GalleryBunchBean galleryBunchBean;
-	
+
+	@PostConstruct
+	@SuppressWarnings("unused")
+	private void init() {
+		Map<String, String> requestMap = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		String galleryId = requestMap.get("galleryId");
+		if (galleryId != null)
+			preinitializeBean(new Long(galleryId));
+	}
+
+	private void preinitializeBean(long galleryId) {
+		Gallery gallery = galleryBo.getGallery(galleryId);
+		if (gallery != null) {
+			this.galleryId = gallery.getGalleryId();
+			this.title = gallery.getTitle();
+			this.date = gallery.getDate();
+			this.photos = gallery.getPhotos();
+		}
+	}
+
 	public void setGalleryBo(GalleryBo galleryBo) {
 		this.galleryBo = galleryBo;
 	}
@@ -38,10 +60,11 @@ public class GalleryBean implements Serializable {
 	public void setGalleryBunchBean(GalleryBunchBean galleryBunchBean) {
 		this.galleryBunchBean = galleryBunchBean;
 	}
-	
+
 	public long getGalleryId() {
 		return galleryId;
 	}
+
 	public void setGalleryId(long galleryId) {
 		this.galleryId = galleryId;
 	}
@@ -49,6 +72,7 @@ public class GalleryBean implements Serializable {
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -56,6 +80,7 @@ public class GalleryBean implements Serializable {
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -63,20 +88,18 @@ public class GalleryBean implements Serializable {
 	public List<Photo> getPhotos() {
 		return photos;
 	}
+
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
 	}
-	public void setUploadedFile(UploadedFile uploadedFile) {
-		this.uploadedFile = uploadedFile;
-	}
-	
+
 	public String addGallery() {
 		Gallery gallery = new Gallery();
 		gallery.setTitle(title);
 		gallery.setDate(date);
-		
+
 		galleryBo.addGallery(gallery);
-		
+
 		resetView();
 		return "";
 	}
@@ -88,17 +111,18 @@ public class GalleryBean implements Serializable {
 	}
 
 	public String removePhoto(Photo photo) {
-		if(photos.contains(photo))
+		if (photos.contains(photo))
 			galleryBo.removePhoto(galleryId, photo);
 		resetView();
 		return "";
 	}
-	
+
 	public String removeGallery(long galleryId) {
 		galleryBo.removeGallery(galleryId);
 		resetView();
 		return "";
-	}	
+	}
+
 	public String removeGallery(Gallery gallery) {
 		galleryBo.removeGallery(gallery.getGalleryId());
 		resetView();
