@@ -90,3 +90,10 @@
 	float: right;
 	margin: 0 10px;
 }
+
+.dodane-zdjecia div {
+	border: 1px dotted gray;
+	width: 150px;
+	margin: 10px;
+	float: left;
+}

@@ -4,11 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
  
-   	<bean id="photoBo" 
-         class="pl.edu.uj.kognitywistyka.admin.gallery.bo.PhotoBoImpl" >
-   		<property name="photoDao" ref="photoDao" />
-   	</bean>
- 
    	<bean id="photoDao" 
          class="pl.edu.uj.kognitywistyka.admin.gallery.dao.PhotoDaoImpl" >
    		<property name="sessionFactory" ref="sessionFactory" />

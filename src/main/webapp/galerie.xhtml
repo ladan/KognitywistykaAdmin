@@ -32,13 +32,13 @@
 				<div class="module_content">
 	        		<fieldset class="first_half_field">
 	        			<h:outputLabel for="nazwa" value="Nazwa:" />
-	                    <h:inputText id="nazwa" value="#" required="true"/>
+	                    <h:inputText id="nazwa" value="" required="true"/>
 	                    <p class="warning"><h:message for="nazwa" /></p>
 	                </fieldset>
 	                <fieldset class="second_half_field">
 	        			<h:outputLabel for="data" value="Data:" />
 	                    <p class="input_hint">Format: DD/MM/YYYY</p>
-	                    <h:inputText id="data" value="#" required="true" >
+	                    <h:inputText id="data" value="" required="true" >
 	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <p class="warning"><h:message for="data" /></p>
@@ -48,24 +48,25 @@
 	                	<div class="submit_link">
 	               			<label for="zdjecie">Dodaj zdjęcie</label>
                     		<input type="file" name="zdjecie" class="alt_btn2" />
-                    		<input type="submit" value="Dodaj" class="alt_btn2" />
-	                	</div>
-	                	<div>
-			                	<h3>Dodane zdjęcia</h3>
-		                    <div>
-		                    	<a href="#">Usuń</a>
-		                    	<img src="resources/images/kadra-brak.png" alt="brak" />
-		                    </div>
-		                    <div>
-		                    	<a href="#">Usuń</a>
-		                        <img src="resources/images/baza.png" alt="brak" />
-		                    </div>
-		                    <div>
-		                    	<a href="#">Usuń</a>
-		                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
-		                    </div>
+                    		<input type="submit" value="Dodaj" class="alt_btn2" style="margin: 25px 0 0 100px;"/>
 	                	</div>
 	                </fieldset>
+	                
+                	<div class="dodane-zdjecia">
+	                	<h3>Dodane zdjęcia</h3>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                    	<img src="resources/images/kadra-brak.png" alt="brak" />
+	                    </div>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                        <img src="resources/images/baza.png" alt="brak" />
+	                    </div>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
+	                    </div>
+                	</div>
 	                <div class="clear"></div>
 				</div>				
 				<footer>
@@ -92,32 +93,19 @@
 				</tr> 
 			</thead> 
 			<tbody> 
-					<tr> 
-	   					<td><input type="checkbox" /></td> 
-	    				<td>Galeria 1</td> 
-	    				<td>11/11/11</td>  
-	    				<td>
-	    					<h:form>
-	    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
-		                        <h:commandLink action="#">
-                					<img src="resources/images/icn_trash.png" class="command_img" />
-               					</h:commandLink>
-	                		</h:form>
-	    				</td> 
-					</tr>
-					<tr> 
-	   					<td><input type="checkbox" /></td> 
-	    				<td>Galeria 2</td> 
-	    				<td>11/11/11</td>  
-	    				<td>
-	    					<h:form>
-	    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
-		                        <h:commandLink action="#">
-                					<img src="resources/images/icn_trash.png" class="command_img" />
-               					</h:commandLink>
-	                		</h:form>
-	    				</td> 
-					</tr>
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Galeria 1</td> 
+    				<td>11/11/11</td>  
+    				<td>
+    					<h:form>
+    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
+	                        <h:commandLink action="#">
+               					<img src="resources/images/icn_trash.png" class="command_img" style="margin: 0 10px; padding: 0 10px;"/>
+              					</h:commandLink>
+                		</h:form>
+    				</td> 
+				</tr>
 			</tbody> 
 			</table>
 			</div><!-- end of #tab1 -->
