@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="pl.edu.uj.kognitywistyka.admin.contact.model.ContactRecipient" table="k_contact_recipient">
+		<id name="contactRecipientId" column="Id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="firstName" type="java.lang.String">
+			<column name="firstName" not-null="true" length="30"/>
+		</property>
+		<property name="lastName" type="java.lang.String">
+			<column name="lastName" not-null="true" length="40"/>
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" not-null="true" length="80"/>
+		</property>
+   </class>
+</hibernate-mapping>

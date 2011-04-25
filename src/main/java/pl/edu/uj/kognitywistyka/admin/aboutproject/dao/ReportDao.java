@@ -9,5 +9,5 @@ public interface ReportDao {
 	void removeReport(Report report);
 	void updateReport(Report report);
 	List<Report> findAllReports();
-	public Report getReport(long id);
+	Report getReport(long id);
 }
