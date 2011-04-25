@@ -7,6 +7,7 @@ import java.util.Properties;
 public class PropertiesReader {
 	private static String pathToConfig = "/config/webapp/";
 	private static String nameOfFileProp = "file.properties";
+	private static String nameOfGalleryProp = "gallery.properties";
 
 	private static Properties init(String file) {
 
@@ -29,6 +30,10 @@ public class PropertiesReader {
 
 	public static String getPropertyOfFile(String property) {
 		return init(nameOfFileProp).getProperty(property);
+
+	}
+	public static String getPropertyOfGallery(String property) {
+		return init(nameOfGalleryProp).getProperty(property);
 
 	}
 
