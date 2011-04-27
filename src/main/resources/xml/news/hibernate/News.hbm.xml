@@ -17,7 +17,7 @@
 		<property name="content" type="java.lang.String">
 			<column name="content" not-null="true"/>
 		</property>
-		<many-to-one name="gallery" class="pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery" fetch="select">
+		<many-to-one name="gallery" class="pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery" fetch="select" lazy="false">
 			<column name ="galleryId" not-null="false" />
 		</many-to-one>
    </class>

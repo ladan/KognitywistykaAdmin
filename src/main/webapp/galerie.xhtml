@@ -32,24 +32,22 @@
 				<div class="module_content">
 	        		<fieldset class="first_half_field">
 	        			<h:outputLabel for="nazwa" value="Nazwa:" />
-	                    <h:inputText id="nazwa" value="" required="true"/>
+	                    <h:inputText id="nazwa" value="#{galleryBean.title}" required="true"/>
 	                    <p class="warning"><h:message for="nazwa" /></p>
 	                </fieldset>
 	                <fieldset class="second_half_field">
 	        			<h:outputLabel for="data" value="Data:" />
 	                    <p class="input_hint">Format: DD/MM/YYYY</p>
-	                    <h:inputText id="data" value="" required="true" >
+	                    <h:inputText id="data" value="#{galleryBean.date}" required="true" >
 	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
 	                    </h:inputText>
 	                    <p class="warning"><h:message for="data" /></p>
 	                </fieldset>
 	                <div class="clear"></div>
 	                <fieldset>
-	                	<div class="submit_link">
-	               			<label for="zdjecie">Dodaj zdjęcie</label>
-                    		<input type="file" name="zdjecie" class="alt_btn2" />
-                    		<input type="submit" value="Dodaj" class="alt_btn2" style="margin: 25px 0 0 100px;"/>
-	                	</div>
+               			<label for="zdjecie">Dodaj zdjęcie</label>
+               			<div class="clear"></div>
+               			<p class="hint">Aby dodać zdjęcia do galerii, najpierws musisz ją zapisać</p>
 	                </fieldset>
 	                
                 	<div class="dodane-zdjecia">
@@ -71,7 +69,7 @@
 				</div>				
 				<footer>
 					<div class="submit_link">
-						<h:commandButton class="alt_btn2" value="Dodaj" action="#" />
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{galleryBean.addGallery}" />
 					</div>
 				</footer>
 			</h:form>
@@ -92,20 +90,25 @@
     				<th>Akcje</th> 
 				</tr> 
 			</thead> 
-			<tbody> 
-				<tr> 
+			<tbody>
+				<ui:repeat var="gallery" value="#{galleryBunchBean.allGalleries}">
+					<tr> 
    					<td><input type="checkbox" /></td> 
-    				<td>Galeria 1</td> 
-    				<td>11/11/11</td>  
+    				<td>#{gallery.title}</td> 
+    				<td>#{gallery.shortDate}</td>  
     				<td>
-    					<h:form>
-    						<input type="submit" value="Podejrzyj" class="alt_btn2" />
-	                        <h:commandLink action="#">
-               					<img src="resources/images/icn_trash.png" class="command_img" style="margin: 0 10px; padding: 0 10px;"/>
-              					</h:commandLink>
+                		<h:form>
+	                        <h:link outcome="gallery-edit" includeViewParams="true">
+    							<f:param name="galleryid" value="#{gallery.galleryId}"/>
+               					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />
+               				</h:link>
+	                        <h:commandLink action="#{galleryBean.removeGallery(gallery.galleryId)}">
+               					<img src="resources/images/icn_trash.png" class="command_img" />
+           					</h:commandLink>
                 		</h:form>
     				</td> 
 				</tr>
+				</ui:repeat>
 			</tbody> 
 			</table>
 			</div><!-- end of #tab1 -->

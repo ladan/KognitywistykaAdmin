@@ -14,7 +14,7 @@ public class Gallery implements java.io.Serializable{
 	private Date date;
 	private List<Photo> photos = new ArrayList<Photo>();
 
-	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-mm-yyyy");
+	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 
 	public List<Photo> getPhotos() {
 		return photos;

@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import pl.edu.uj.kognitywistyka.admin.gallery.bo.GalleryBo;
 import pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery;
 import pl.edu.uj.kognitywistyka.admin.news.bo.NewsBo;
 import pl.edu.uj.kognitywistyka.admin.news.model.News;
@@ -20,6 +21,7 @@ public class NewsBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private long newsId;
+	private long galleryId;
 	private String title;
 	private Date date;
 	private String content;
@@ -30,6 +32,8 @@ public class NewsBean implements Serializable {
 	private NewsBo newsBo;
 	@ManagedProperty(name = "newsBunchBean", value = "#{newsBunchBean}")
 	private NewsBunchBean newsBunchBean;
+	@ManagedProperty(name = "galleryBo", value ="#{galleryBo}")
+	private GalleryBo galleryBo;
 	
 	@PostConstruct
 	@SuppressWarnings("unused")
@@ -46,8 +50,11 @@ public class NewsBean implements Serializable {
 			this.newsId = news.getNewsId();
 			this.title = news.getTitle();
 			this.date = news.getDate();
-			this.gallery = news.getGallery();
 			this.content = news.getContent();
+			if(news.getGallery() != null) {
+				this.gallery = news.getGallery();
+				this.galleryId = news.getGallery().getGalleryId();
+			}
 		}
 	}
 
@@ -91,6 +98,14 @@ public class NewsBean implements Serializable {
 		this.content = content;
 	}
 
+	public void setGalleryId(long galleryId) {
+		this.galleryId = galleryId;
+	}
+
+	public long getGalleryId() {
+		return galleryId;
+	}
+	
 	public Gallery getGallery() {
 		return gallery;
 	}
@@ -99,11 +114,16 @@ public class NewsBean implements Serializable {
 		this.gallery = gallery;
 	}
 	
+	public void setGalleryBo(GalleryBo galleryBo) {
+		this.galleryBo = galleryBo;
+	}
+	
 	public String addNews() {
 		News news = new News();
 		news.setTitle(title);
 		news.setContent(content);
 		news.setDate(new Date());
+		Gallery gallery = galleryBo.getGallery(this.galleryId);
 		if(gallery != null)
 			news.setGallery(gallery);
 
@@ -126,16 +146,17 @@ public class NewsBean implements Serializable {
 		news.setTitle(title);
 		news.setContent(content);
 		news.setDate(new Date());
-		news.setGallery(gallery);
 		
-		System.out.println(newsId + " " + title);
+		Gallery gallery = galleryBo.getGallery(this.galleryId);
+		if(gallery != null)
+			news.setGallery(gallery);
 		
 		newsBo.updateNews(news);
 
 		resetView();
 		return "success";
 	}
-
+	
 	private void resetView() {
 		setNewsId(0);
 		setTitle("");
@@ -144,5 +165,4 @@ public class NewsBean implements Serializable {
 
 		newsBunchBean.setAllNews(null);
 	}
-
 }

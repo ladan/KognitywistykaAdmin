@@ -50,6 +50,14 @@
 	                	</h:inputTextarea>
 	                	<p class="warning"><h:message for="opis" /></p>
 	                </fieldset>
+	                <fieldset class="first_half_field">
+	        			<h:outputLabel for="galeria" value="Podepnij galerię" />
+	                    <h:selectOneMenu id="galeria" value="#{newsBean.galleryId}" >
+	                    	<f:selectItem itemLabel="brak" itemValue="0"/>
+       						<f:selectItem itemLabel="---" itemDisabled="true" />
+	                		<f:selectItems var="gallery" value="#{galleryBunchBean.allGalleries}" itemValue="#{gallery.galleryId}" itemLabel="#{gallery.title} #{gallery.shortDate}"/>
+	                	</h:selectOneMenu>
+	                </fieldset>
 	                <div class="clear"></div>
 				</div>				
 				<footer>
@@ -75,6 +83,7 @@
    					<th></th> 
     				<th>Nazwa</th> 
     				<th>Data</th>
+    				<th>Podpięta galeria</th>
     				<th>Akcje</th> 
 				</tr> 
 			</thead> 
@@ -84,16 +93,9 @@
 	   					<td><input type="checkbox" /></td> 
 	    				<td>#{news.title}</td> 
 	    				<td>#{news.shortDate}</td>  
+	    				<td>#{news.gallery.title} #{news.gallery.shortDate}</td>
 	    				<td>
 	    					<h:form>
-               					<label for="foto">Podpięta galeria:</label>
-		                        <select name="foto">
-		                            <option value="g1">brak</option>
-		                            <option disabled="true">---</option>
-		                            <option value="g2">Galeria 2 - 16 sty. 2011</option>
-		                            <option value="g3">Galeria 3 - 26 sty. 2011</option>
-		                    	</select>
-		                        <input type="submit" value="Podepnij" class="alt_btn2" />
 		                        <h:link outcome="newsy-edit" includeViewParams="true">
 	    							<f:param name="newsid" value="#{news.newsId}"/>
                 					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />

@@ -775,6 +775,11 @@ p.warning {
 	color: red;
 }
 
+p.hint {
+	margin: 0 20px;
+	padding: 0;	
+}
+
 p.input_hint {
 	margin: 0 20px;
 	padding: 0;

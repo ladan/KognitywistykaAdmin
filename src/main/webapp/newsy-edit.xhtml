@@ -52,6 +52,14 @@
 	                	</h:inputTextarea>
 	                	<p class="warning"><h:message for="opis" /></p>
 	                </fieldset>
+	                <fieldset class="first_half_field">
+	        			<h:outputLabel for="galeria" value="Podpięta galeria" />
+	                    <h:selectOneMenu id="galeria" value="#{newsBean.galleryId}" >
+	                    	<f:selectItem itemLabel="brak" itemValue="0"/>
+       						<f:selectItem itemLabel="---" itemDisabled="true" />
+	                		<f:selectItems var="gallery" value="#{galleryBunchBean.allGalleries}" itemValue="#{gallery.galleryId}" itemLabel="#{gallery.title} #{gallery.shortDate}"/>
+	                	</h:selectOneMenu>
+	                </fieldset>
 	                <h:inputHidden value="#{newsBean.newsId}" />
 	                <h:inputHidden value="#{newsBean.gallery}" rendered="#{not empty newsBean.gallery}"/>
 	                <div class="clear"></div>
