@@ -33,4 +33,9 @@ implements ContactRecipientDao {
 	public ContactRecipient getContactRecipient(long contactRecipientId) {
 		return (ContactRecipient) getHibernateTemplate().get(ContactRecipient.class, contactRecipientId);
 	}
+
+	public void removeContactRecipient(long contactRecipientId) {
+		// TODO ŁADAN
+		
+	}
 }

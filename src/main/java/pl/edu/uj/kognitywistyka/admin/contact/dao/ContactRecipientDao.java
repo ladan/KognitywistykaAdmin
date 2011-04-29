@@ -8,6 +8,7 @@ public interface ContactRecipientDao {
 	List<ContactRecipient> findAllContactRecipients();
 	void addContactRecipient(ContactRecipient contactRecipient);
 	void removeContactRecipient(ContactRecipient contactRecipient);
+	void removeContactRecipient(long contactRecipientId);
 	void updateContactRecipient(ContactRecipient contactRecipient);
 	ContactRecipient getContactRecipient(long contactRecipientId); 
 }
