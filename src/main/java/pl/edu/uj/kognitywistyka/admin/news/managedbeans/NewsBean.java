@@ -145,7 +145,7 @@ public class NewsBean implements Serializable {
 		news.setNewsId(newsId);
 		news.setTitle(title);
 		news.setContent(content);
-		news.setDate(new Date());
+		news.setDate(date);
 		
 		Gallery gallery = galleryBo.getGallery(this.galleryId);
 		if(gallery != null)
