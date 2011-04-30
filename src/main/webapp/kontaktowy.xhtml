@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Formularz kontaktowy - obsluga" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Formularz kontaktowy</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+	
+		<article class="module width_full">
+			<header><h3>Dodaj osobę</h3></header>
+				<div class="module_content">
+						<fieldset>
+							<label>Imię i Nazwisko</label>
+							<input type="text" />
+							<p class="warning">Wystąpił problem z walidacją pola.</p>
+						</fieldset>
+						<fieldset>
+							<label>E-Mail</label>
+							<input type="text" />
+							<p class="warning">Wystąpił problem z walidacją pola.</p>
+						</fieldset>
+						<fieldset>
+							<label>Bcc?</label>
+							<input type="checkbox" />
+						</fieldset>
+				</div>
+			<footer>
+				<div class="submit_link">
+                    <input type="submit" value="Dodaj" class="alt_btn2" />
+				</div>
+			</footer>
+		</article><!-- end of post new article -->
+	    
+	    <article class="module width_full">
+		<header><h3 class="tabs_involved">Lista osób</h3>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Imię i Nazwisko</th> 
+    				<th>Adres</th>
+    				<th>Bcc</th> 
+    				<th>Usun</th>
+				</tr> 
+			</thead> 
+			<tbody>
+					<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Jan Nowak</td> 
+    				<td>nowakjestem@onetpoczta.eu</td>  
+    				<td>Nie</td> 
+    				<td>
+	    				<a href="#">
+	               			<img src="resources/images/icn_trash.png" class="command_img" />
+	           			</a>
+    				</td>
+					</tr>
+					
+					<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Murzynek Bambo</td> 
+    				<td>bambo@okawango.bd</td>  
+    				<td>Tak</td> 
+    				<td>
+	    				<a href="#">
+	               			<img src="resources/images/icn_trash.png" class="command_img" />
+	           			</a>
+    				</td>
+					</tr>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		</div><!-- end of .tab_container -->
+	   	
+		</article><!-- end of content manager article -->
+        <div class="clear"></div>
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>
