@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import pl.edu.uj.kognitywistyka.admin.contact.bo.ContactRecipientBo;
 import pl.edu.uj.kognitywistyka.admin.contact.model.ContactRecipient;
 
+@ManagedBean
+@RequestScoped
 public class ContactRecipientBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
