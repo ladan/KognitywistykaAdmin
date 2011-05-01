@@ -49,23 +49,6 @@
                			<div class="clear"></div>
                			<p class="hint">Aby dodać zdjęcia do galerii, najpierw musisz ją zapisać</p>
 	                </fieldset>
-	                
-                	<div class="dodane-zdjecia">
-	                	<h3>Dodane zdjęcia</h3>
-	                    <div>
-	                    	<a href="#">Usuń</a>
-	                    	<img src="resources/images/kadra-brak.png" alt="brak" />
-	                    </div>
-	                    <div>
-	                    	<a href="#">Usuń</a>
-	                        <img src="resources/images/baza.png" alt="brak" />
-	                    </div>
-	                    <div>
-	                    	<a href="#">Usuń</a>
-	                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
-	                    </div>
-                	</div>
-	                <div class="clear"></div>
 				</div>				
 				<footer>
 					<div class="submit_link">
@@ -98,7 +81,7 @@
     				<td>#{gallery.shortDate}</td>  
     				<td>
                 		<h:form>
-	                        <h:link outcome="gallery-edit" includeViewParams="true">
+	                        <h:link outcome="galeria-edit" includeViewParams="true">
     							<f:param name="galleryid" value="#{gallery.galleryId}"/>
                					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />
                				</h:link>

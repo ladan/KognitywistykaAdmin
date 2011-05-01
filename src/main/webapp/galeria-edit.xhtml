@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:t="http://myfaces.apache.org/tomahawk">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Podgląd Galerii" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="Lista galerii" outcome="galerie" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Galeria - podgląd</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+	
+		<article class="module width_full">
+			<header><h3>Edytuj galerię</h3></header>
+			<h:form>
+				<div class="module_content">
+	        		<fieldset class="first_half_field">
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{galleryBean.title}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#{galleryBean.date}" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="foto" value="Dodaj zdjęcie: "/>
+			            <t:inputFileUpload id="foto" value="#{galleryBean.uploadedPhoto}" />
+			            <div class="clear"></div>
+			            <h:commandButton value="Dodaj" action="#{galleryBean.addPhoto}" style="margin: 5px 10px">
+			            	<f:param name="galleryid" value="#{gallery.galleryId}"/>
+			            </h:commandButton>
+	                </fieldset>
+	                
+                	<div class="dodane-zdjecia">
+	                	<h3>Dodane zdjęcia</h3>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                    	<img src="resources/images/kadra-brak.png" alt="brak" />
+	                    </div>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                        <img src="resources/images/baza.png" alt="brak" />
+	                    </div>
+	                    <div>
+	                    	<a href="#">Usuń</a>
+	                        <img src="resources/images/kadra-foto.jpg" alt="brak" />
+	                    </div>
+                	</div>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Zapisz" action="#{galleryBean.addGallery}">
+							<f:param name="galleryid" value="#{gallery.galleryId}"/>
+						</h:commandButton>
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+	
+		<article class="module width_full">
+			<header><h2>Galeria 1</h2></header>
+				<div class="module_content">
+					<p>Data: 11/11/11</p>
+					
+				    <div class="galeria">
+                        <img src="resources/images/baza.png" alt="brak" />
+                        <img src="resources/images/baza.png" alt="brak" />
+                        <img src="resources/images/baza.png" alt="brak" />
+                    </div>
+					
+				</div>
+		</article>
+	    
+        <div class="clear"></div>
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>
