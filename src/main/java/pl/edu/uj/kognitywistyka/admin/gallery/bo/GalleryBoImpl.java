@@ -66,10 +66,10 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 
 	public void removePhoto(long galleryId,Photo photo) {
 		
-		File delFile = new File(
+		File delFile = new File(PropertiesReader.getPathToStoreFile() +
 				PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
 				+ photo.getPhoto());
-		File delFileOfMin = new File(
+		File delFileOfMin = new File(PropertiesReader.getPathToStoreFile() +
 				PropertiesReader.getPropertyOfGallery("pathToPhotoMinImg")
 				+ photo.getPhoto());
 		
@@ -90,10 +90,10 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 			String filename = System.currentTimeMillis()
 					+ uploadedFile.getName();
 
-			File destFile = new File(
+			File destFile = new File(PropertiesReader.getPathToStoreFile() +
 					PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
 							+ filename);	
-			File destFileOfMin = new File(
+			File destFileOfMin = new File(PropertiesReader.getPathToStoreFile() +
 					PropertiesReader.getPropertyOfGallery("pathToPhotoMinImg")
 							+ filename);
 			
