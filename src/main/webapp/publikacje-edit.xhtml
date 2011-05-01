@@ -29,15 +29,11 @@
 	<ui:define name="siteContent">
 	
 		<article class="module width_full">
-			<header><h3>Dodaj publikację</h3></header>
+			<header><h3>Edytuj publikację</h3></header>
 			<h:form>
 				<div class="module_content">
 					<fieldset>
 							<label>Nazwa:</label>
-							<input type="text" />
-					</fieldset>
-					<fieldset>
-							<label>Autor (Autorzy):</label>
 							<input type="text" />
 					</fieldset>
 					<fieldset class="first_half_field">
@@ -53,6 +49,39 @@
 							<label>Abstrakt</label>
 							<textarea rows="12"></textarea>
 					</fieldset>
+					
+					<fieldset>
+						<label>Autorzy:</label>
+						<div class="tab_container">
+						<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0"> 
+						<thead> 
+							<tr> 
+			   					<th></th> 
+			    				<th>Członek kadry</th> 
+			    				<th>Pozycja</th> 
+			    				<th>Dodano</th>  
+							</tr> 
+						</thead> 
+						<tbody> 
+							<tr> 
+			   					<td><input type="checkbox" /></td> 
+			    				<td>Jan Nowak</td> 
+			    				<td>Profesor</td> 
+			    				<td>5/11/2011</td> 
+							</tr> 
+							<tr> 
+			   					<td><input type="checkbox" /></td> 
+			    				<td>Murzynek Bambo</td> 
+			    				<td>Pomocnik</td> 
+			    				<td>6/11/2011</td> 
+							</tr>
+						</tbody> 
+						</table>
+						</div>
+						</div>
+					</fieldset>
+					
 	                <div class="clear"></div>
 				</div>				
 				<footer>
