@@ -32,31 +32,41 @@
 				<div class="module_content">
 					<fieldset>
 							<label>Nazwa:</label>
-							<input type="text" />
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
-					</fieldset>
-					<fieldset>
-							<label>Autor (Autorzy):</label>
-							<input type="text" />
+							<h:inputText id="name" value="#{publicationBean.name}" required="true" />
 							<p class="warning">Wystąpił problem z walidacją pola.</p>
 					</fieldset>
 					<fieldset class="first_half_field">
-	        			<label>Data:</label>
-							<input type="text" />
+	        				<label>Data:</label>
+							<h:inputText id="date" value="#{publicationBean.date}" required="true" />
 							<p class="warning">Wystąpił problem z walidacją pola.</p>
 	                </fieldset>
 	        		<fieldset class="second_half_field"> 
 							<label>Tagi:</label>
-							<input type="text" />
+							<h:inputText id="tags" value="#{publicationBean.tags}"/>
 							<p class="warning">Wystąpił problem z walidacją pola.</p>
 					</fieldset>
 	                <div class="clear"></div>
 	               <fieldset>
 							<label>Abstrakt</label>
-							<textarea rows="12"></textarea>
+							<h:inputTextarea rows="12" id="description" value="#{publicationBean.description}" required="true">
+							</h:inputTextarea>
 							<p class="warning">Wystąpił problem z walidacją pola.</p>
 					</fieldset>
+					<div class="clear"></div>
+					<fieldset>
+						<label>Autorzy:</label>
+						<div class="tab_container">
+							<h:panelGrid width="100%" columns="2" >
+							<h:selectManyCheckbox value="#{publicationBean.allAuthors}" layout="pageDirection">
+	   							<f:selectItems 	value="#{publicationBean.allAuthors}" var="w" itemLabel="#{w.title} #{w.firstName} #{w.lastName}" itemValue="#{w.employeeId}" >
+	   							</f:selectItems> 
+							</h:selectManyCheckbox>
+							</h:panelGrid>
+						
+						</div>
+					</fieldset>
 					
+					<!-- 
 					<fieldset>
 						<label>Autorzy:</label>
 						<div class="tab_container">
@@ -88,6 +98,7 @@
 						</div>
 						</div>
 					</fieldset>
+					 -->
 	                <div class="clear"></div>
 				</div>				
 				<footer>
