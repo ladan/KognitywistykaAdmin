@@ -28,27 +28,32 @@
 	
 		<article class="module width_full">
 			<header><h3>Dodaj osobę</h3></header>
-				<div class="module_content">
-						<fieldset>
-							<label>Imię i Nazwisko</label>
-							<input type="text" />
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
-						</fieldset>
-						<fieldset>
-							<label>E-Mail</label>
-							<input type="text" />
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
-						</fieldset>
-						<fieldset>
-							<label>Bcc?</label>
-							<input type="checkbox" />
-						</fieldset>
-				</div>
-			<footer>
-				<div class="submit_link">
-                    <input type="submit" value="Dodaj" class="alt_btn2" />
-				</div>
-			</footer>
+				<h:form>
+					<div class="module_content">
+						<fieldset class="first_half_field">
+		        			<h:outputLabel for="imie" value="Imię:" />
+		                    <h:inputText id="imie" value="#{contactRecipientBean.firstName}" required="true"/>
+		                    <p class="warning"><h:message for="imie" /></p>
+		                </fieldset>
+		                <fieldset class="second_half_field">
+		        			<h:outputLabel for="nazwisko" value="Nazwisko:" />
+		                    <h:inputText id="nazwisko" value="#{contactRecipient.lastName}" required="true"/>
+		                    <p class="warning"><h:message for="nazwisko" /></p>
+		                </fieldset>
+		                <div class="clear"></div>
+		                <fieldset class="first_half_field">
+		        			<h:outputLabel for="email" value="Nazwa:" />
+		                    <h:inputText id="email" value="#{contactRecipient.email}" required="true"/>
+		                    <p class="warning"><h:message for="email" /></p>
+		                </fieldset>
+					</div>
+				
+					<footer>
+						<div class="submit_link">
+							<h:commandButton class="alt_btn2" value="Dodaj" action="#{contactRecipient.addContactRecipient}" />
+						</div>
+					</footer>
+				</h:form>
 		</article><!-- end of post new article -->
 	    
 	    <article class="module width_full">
