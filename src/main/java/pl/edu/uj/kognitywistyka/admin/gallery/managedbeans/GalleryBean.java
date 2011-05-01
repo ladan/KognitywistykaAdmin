@@ -40,7 +40,7 @@ public class GalleryBean implements Serializable {
 		Map<String, String> requestMap = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		String galleryId = requestMap.get("galleryid");
-		if (galleryId != null)
+		if (galleryId != null && !galleryId.isEmpty())
 			preinitializeBean(new Long(galleryId));
 	}
 
