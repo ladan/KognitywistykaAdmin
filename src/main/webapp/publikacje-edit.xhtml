@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+
+<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Publikacja - edycja" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="Publikacje" outcome="publikacje" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Pubikacja - edycja</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+	
+		<article class="module width_full">
+			<header><h3>Edytuj publikację</h3></header>
+			<h:form>
+				<div class="module_content">
+					<fieldset>
+							<label>Nazwa:</label>
+							<input type="text" />
+					</fieldset>
+					<fieldset class="first_half_field">
+	        			<label>Data:</label>
+							<input type="text" />
+	                </fieldset>
+	        		<fieldset class="second_half_field"> 
+							<label>Tagi:</label>
+							<input type="text" />
+					</fieldset>
+	                <div class="clear"></div>
+	               <fieldset>
+							<label>Abstrakt</label>
+							<textarea rows="12"></textarea>
+					</fieldset>
+					
+					<fieldset>
+						<label>Autorzy:</label>
+						<div class="tab_container">
+						<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0"> 
+						<thead> 
+							<tr> 
+			   					<th></th> 
+			    				<th>Członek kadry</th> 
+			    				<th>Pozycja</th> 
+			    				<th>Dodano</th>  
+							</tr> 
+						</thead> 
+						<tbody> 
+							<tr> 
+			   					<td><input type="checkbox" /></td> 
+			    				<td>Jan Nowak</td> 
+			    				<td>Profesor</td> 
+			    				<td>5/11/2011</td> 
+							</tr> 
+							<tr> 
+			   					<td><input type="checkbox" /></td> 
+			    				<td>Murzynek Bambo</td> 
+			    				<td>Pomocnik</td> 
+			    				<td>6/11/2011</td> 
+							</tr>
+						</tbody> 
+						</table>
+						</div>
+						</div>
+					</fieldset>
+					
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<input type="submit" value="Edytuj" class="alt_btn2" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+        <div class="clear"></div>
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>
