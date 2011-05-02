@@ -38,9 +38,8 @@ implements ContactRecipientDao {
 	}
 
 	public void removeContactRecipient(long contactRecipientId) {
-	
 		Query query = getSession().createQuery("delete ContactRecipient where contactRecipientId = :contactRecipientId");
-		query.setParameter("contactRecipient", contactRecipientId);
+		query.setParameter("contactRecipientId", contactRecipientId);
 		query.executeUpdate();
 	}
 }

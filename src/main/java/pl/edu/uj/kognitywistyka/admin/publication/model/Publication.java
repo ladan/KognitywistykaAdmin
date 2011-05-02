@@ -12,6 +12,7 @@ public class Publication implements Serializable{
 	private Date date;
 	private String description;
 	private String fileName;
+
 	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	

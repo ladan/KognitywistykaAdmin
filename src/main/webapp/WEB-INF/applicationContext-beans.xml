@@ -16,4 +16,7 @@
 	<import resource="classes/xml/gallery/spring/GalleryBean.xml" />
 	<import resource="classes/xml/gallery/spring/PhotoBean.xml" />
 	<import resource="classes/xml/news/spring/NewsBean.xml" />
+	<import resource="classes/xml/contact/spring/ContactRecipientBean.xml" />
+	<import resource="classes/xml/publication/spring/PublicationBean.xml" />
+	
 </beans>
