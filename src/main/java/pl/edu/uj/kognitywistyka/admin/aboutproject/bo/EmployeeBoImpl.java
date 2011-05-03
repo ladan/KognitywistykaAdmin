@@ -67,7 +67,7 @@ public class EmployeeBoImpl implements EmployeeBo, Serializable {
 			String filename = System.currentTimeMillis()
 					+ uploadedFile.getName();
 
-			File destFile = new File(
+			File destFile = new File(PropertiesReader.getPathToStoreFile() +
 					PropertiesReader.getPropertyOfFile("pathToEmployeeImg")
 							+ filename);
 			BufferedImage imageBuffer = ImageIO.read(uploadedFile
