@@ -38,7 +38,6 @@ public class ReportBoImpl implements ReportBo, Serializable {
 		return reportDao.findAllReports();
 	}
 
-	@Override
 	public Report getReport(long reportId) {
 		return reportDao.getReport(reportId);
 	}
