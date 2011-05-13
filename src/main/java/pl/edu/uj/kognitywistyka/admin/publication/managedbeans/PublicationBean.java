@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBo;
 import pl.edu.uj.kognitywistyka.admin.aboutproject.model.Employee;
 import pl.edu.uj.kognitywistyka.admin.publication.bo.PublicationBo;
-import pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBo;
 
 @ManagedBean
 @SessionScoped
@@ -20,13 +20,33 @@ public class PublicationBean implements Serializable
 	private String date;
 	private String tags;
 	private String description;
-	private List<Employee> authors;
 	
 	@ManagedProperty(name="publicationBo", value="#{publicationBo}")
 	PublicationBo publicationBo;
 	
 	@ManagedProperty(name="employeeBo", value="#{employeeBo}")
 	EmployeeBo employeeBo;
+	
+	private List<Employee> allAuthors;
+	
+	public List<Employee> getAllAuthors()
+	{
+		if(allAuthors == null)
+		{
+			allAuthors = employeeBo.findAllEmployees();
+		}
+		return allAuthors;
+	}
+	
+	public void setAllAuthors(List<Employee> authors)
+	{
+		this.allAuthors = authors;
+	}
+	
+	public void setEmployeeBo(EmployeeBo employeeBo)
+	{
+		this.employeeBo = employeeBo;
+	}
 	
 	public String getName()
 	{
@@ -71,20 +91,6 @@ public class PublicationBean implements Serializable
 	public void setDescription(String description)
 	{
 		this.description = description;
-	}
-	
-	public List<Employee> getAuthors()
-	{
-		if(authors == null)
-		{
-			authors = employeeBo.findAllEmployees();
-		}
-		return authors;
-	}
-	
-	public void setAuthors(List<Employee> authors)
-	{
-		this.authors = authors;
 	}
 }
 
