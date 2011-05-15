@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -50,12 +51,14 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 	}
 
 	public void addPhoto(long galleryId,UploadedFile uploadedFile) {
-		
 		Gallery gallery = galleryDao.getGallery(galleryId);
 		List<Photo> photos = gallery.getPhotos();
+		if(photos==null)
+			photos = new ArrayList<Photo>();
 		
 		Photo photo = new Photo();
 		photo.setGallery(gallery);
+
 		photo.setPhoto(serveImage(uploadedFile));
 		
 		photos.add(photo);
@@ -65,7 +68,7 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 	}
 
 	public void removePhoto(long galleryId,Photo photo) {
-		
+
 		File delFile = new File(PropertiesReader.getPathToStoreFile() +
 				PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
 				+ photo.getPhoto());

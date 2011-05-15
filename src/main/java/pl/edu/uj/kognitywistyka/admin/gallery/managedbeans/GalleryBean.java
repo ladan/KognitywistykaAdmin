@@ -30,9 +30,9 @@ public class GalleryBean implements Serializable {
 	private UploadedFile uploadedPhoto;
 	
 	@ManagedProperty(name = "galleryBo", value = "#{galleryBo}")
-	GalleryBo galleryBo;
+	private GalleryBo galleryBo;
 	@ManagedProperty(name = "galleryBunchBean", value = "#{galleryBunchBean}")
-	GalleryBunchBean galleryBunchBean;
+	private GalleryBunchBean galleryBunchBean;
 
 	@PostConstruct
 	@SuppressWarnings("unused")
@@ -42,6 +42,7 @@ public class GalleryBean implements Serializable {
 		String galleryId = requestMap.get("galleryid");
 		if (galleryId != null && !galleryId.isEmpty())
 			preinitializeBean(new Long(galleryId));
+		
 	}
 
 	private void preinitializeBean(long galleryId) {
@@ -52,6 +53,7 @@ public class GalleryBean implements Serializable {
 			this.date = gallery.getDate();
 			this.photos = gallery.getPhotos();
 		}
+		
 	}
 
 	public void setGalleryBo(GalleryBo galleryBo) {
@@ -99,7 +101,7 @@ public class GalleryBean implements Serializable {
 	}
 	
 	public UploadedFile getUploadedPhoto() {
-		return null;
+		return uploadedPhoto;
 	}
 	
 	public String addGallery() {
@@ -111,6 +113,7 @@ public class GalleryBean implements Serializable {
 
 		resetView();
 		return "";
+	
 	}
 
 	public String addPhoto() {
@@ -141,6 +144,7 @@ public class GalleryBean implements Serializable {
 	private void resetView() {
 		setDate(null);
 		setTitle("");
+		setUploadedPhoto(null);
 		galleryBunchBean.setAllGalleries(null);
 	}
 
