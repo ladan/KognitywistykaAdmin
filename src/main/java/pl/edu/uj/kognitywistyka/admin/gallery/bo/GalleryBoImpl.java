@@ -26,6 +26,7 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 	public void setPhotoDao(PhotoDao photoDao) {
 		this.photoDao = photoDao;
 	}
+
 	public void setGalleryDao(GalleryDao galleryDao) {
 		this.galleryDao = galleryDao;
 	}
@@ -39,7 +40,10 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 	}
 
 	public List<Gallery> findAllGalleries() {
-		return galleryDao.findAllGalleries();
+		List<Gallery> galleries = galleryDao.findAllGalleries();
+
+		return galleries;
+
 	}
 
 	public void removeGallery(long galleryId) {
@@ -50,70 +54,71 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 		return galleryDao.getGallery(galleryId);
 	}
 
-	public void addPhoto(long galleryId,UploadedFile uploadedFile) {
+	public void addPhoto(long galleryId, UploadedFile uploadedFile) {
 		Gallery gallery = galleryDao.getGallery(galleryId);
+		initializePhotoList(gallery);
 		List<Photo> photos = gallery.getPhotos();
-		if(photos==null)
-			photos = new ArrayList<Photo>();
-		
+
 		Photo photo = new Photo();
-		photo.setGallery(gallery);
+		photo.setGalleryId(gallery.getGalleryId());
 
 		photo.setPhoto(serveImage(uploadedFile));
-		
+
 		photos.add(photo);
 		gallery.setPhotos(photos);
-		galleryDao.addGallery(gallery);		
-		
+		galleryDao.addGallery(gallery);
+
 	}
 
-	public void removePhoto(long galleryId,Photo photo) {
+	public void removePhoto(long galleryId, Photo photo) {
 
-		File delFile = new File(PropertiesReader.getPathToStoreFile() +
-				PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
+		File delFile = new File(PropertiesReader.getPathToStoreFile()
+				+ PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
 				+ photo.getPhoto());
-		File delFileOfMin = new File(PropertiesReader.getPathToStoreFile() +
-				PropertiesReader.getPropertyOfGallery("pathToPhotoMinImg")
+		File delFileOfMin = new File(PropertiesReader.getPathToStoreFile()
+				+ PropertiesReader.getPropertyOfGallery("pathToPhotoMinImg")
 				+ photo.getPhoto());
-		
+
 		delFile.delete();
 		delFileOfMin.delete();
-		
+
 		Gallery gallery = galleryDao.getGallery(galleryId);
 		List<Photo> photos = gallery.getPhotos();
 		photos.remove(photo);
 		gallery.setPhotos(photos);
-		galleryDao.addGallery(gallery);		
-		
+		galleryDao.addGallery(gallery);
+
 	}
-	
+
 	private String serveImage(UploadedFile uploadedFile) {
 		try {
 
 			String filename = System.currentTimeMillis()
 					+ uploadedFile.getName();
 
-			File destFile = new File(PropertiesReader.getPathToStoreFile() +
-					PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
-							+ filename);	
-			File destFileOfMin = new File(PropertiesReader.getPathToStoreFile() +
-					PropertiesReader.getPropertyOfGallery("pathToPhotoMinImg")
+			File destFile = new File(PropertiesReader.getPathToStoreFile()
+					+ PropertiesReader.getPropertyOfGallery("pathToPhotoImg")
+					+ filename);
+			File destFileOfMin = new File(
+					PropertiesReader.getPathToStoreFile()
+							+ PropertiesReader
+									.getPropertyOfGallery("pathToPhotoMinImg")
 							+ filename);
-			
+
 			BufferedImage imageBuffer = ImageIO.read(uploadedFile
-					.getInputStream());	
+					.getInputStream());
 			BufferedImage imageBufferMin = ImageIO.read(uploadedFile
 					.getInputStream());
 
 			imageBufferMin = ImageConverter.resize(imageBufferMin, Integer
 					.parseInt(PropertiesReader
-							.getPropertyOfGallery("heightOfPhotoMinImg")), Integer
-					.parseInt(PropertiesReader
+							.getPropertyOfGallery("heightOfPhotoMinImg")),
+					Integer.parseInt(PropertiesReader
 							.getPropertyOfGallery("widthOfPhotoMinImg")));
-			
+
 			ImageIO.write(imageBufferMin, ImageConverter.getFormat(filename)
 					.toString(), destFileOfMin);
-			
+
 			ImageIO.write(imageBuffer, ImageConverter.getFormat(filename)
 					.toString(), destFile);
 
@@ -122,6 +127,22 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+
+	private void initializePhotoList(Gallery gallery) {
+		List<Long> photosId = gallery.getPhotosId();
+		if (!photosId.isEmpty()) {
+			List<Photo> photos = new ArrayList<Photo>();
+			for (Long id : photosId) {
+				Photo p = photoDao.getPhoto(id);
+				if (p != null)
+					photos.add(p);
+			}
+			gallery.setPhotos(photos);
+		} else {
+			gallery.setPhotos(new ArrayList<Photo>());
+		}
+
 	}
 
 }
