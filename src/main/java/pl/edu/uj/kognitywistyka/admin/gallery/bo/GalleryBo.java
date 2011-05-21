@@ -15,7 +15,7 @@ public interface GalleryBo {
 
 	void removeGallery(long galleryId);
 	
-	void addPhoto(long galleryId, UploadedFile uploadedFile);
+	void addPhoto(long galleryId, UploadedFile uploadedPhoto);
 	
 	void removePhoto(long galleryId, Photo photoID);
 

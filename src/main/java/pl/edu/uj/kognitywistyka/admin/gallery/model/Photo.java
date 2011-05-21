@@ -6,7 +6,7 @@ public class Photo implements java.io.Serializable {
 
 	private long photoId;
 	private String photo;
-	private long galleryId;
+	private Gallery gallery;
 
 	public long getPhotoId() {
 		return photoId;
@@ -24,12 +24,14 @@ public class Photo implements java.io.Serializable {
 		this.photo = photo;
 	}
 
-	public long getGalleryId() {
-		return galleryId;
+	public Gallery getGallery() {
+		return gallery;
 	}
 
-	public void setGalleryId(long galleryId) {
-		this.galleryId = galleryId;
+	public void setGallery(Gallery gallery) {
+		this.gallery = gallery;
 	}
+
+
 
 }

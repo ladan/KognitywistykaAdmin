@@ -40,9 +40,9 @@ public class GalleryBean implements Serializable {
 		Map<String, String> requestMap = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		String galleryId = requestMap.get("galleryid");
+		System.err.println("To jest galleryID zwrocone" + galleryId);
 		if (galleryId != null && !galleryId.isEmpty())
 			preinitializeBean(new Long(galleryId));
-		
 	}
 
 	private void preinitializeBean(long galleryId) {
@@ -53,7 +53,6 @@ public class GalleryBean implements Serializable {
 			this.date = gallery.getDate();
 			this.photos = gallery.getPhotos();
 		}
-		
 	}
 
 	public void setGalleryBo(GalleryBo galleryBo) {
@@ -113,10 +112,10 @@ public class GalleryBean implements Serializable {
 
 		resetView();
 		return "";
-	
 	}
 
 	public String addPhoto() {
+		System.err.println(galleryId + " "+uploadedPhoto.getSize());
 		galleryBo.addPhoto(galleryId, uploadedPhoto);
 		resetView();
 		return "";
@@ -144,7 +143,6 @@ public class GalleryBean implements Serializable {
 	private void resetView() {
 		setDate(null);
 		setTitle("");
-		setUploadedPhoto(null);
 		galleryBunchBean.setAllGalleries(null);
 	}
 

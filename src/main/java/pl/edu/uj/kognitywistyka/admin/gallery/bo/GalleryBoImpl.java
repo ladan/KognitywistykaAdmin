@@ -54,18 +54,17 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 		return galleryDao.getGallery(galleryId);
 	}
 
-	public void addPhoto(long galleryId, UploadedFile uploadedFile) {
+	public void addPhoto(long galleryId, UploadedFile uploadedPhoto) {
 		Gallery gallery = galleryDao.getGallery(galleryId);
-		initializePhotoList(gallery);
-		List<Photo> photos = gallery.getPhotos();
+		
 
 		Photo photo = new Photo();
-		photo.setGalleryId(gallery.getGalleryId());
+		photo.setGallery(gallery);
 
-		photo.setPhoto(serveImage(uploadedFile));
+		photo.setPhoto(serveImage(uploadedPhoto));
 
-		photos.add(photo);
-		gallery.setPhotos(photos);
+
+		gallery.addPhoto(photo);
 		galleryDao.addGallery(gallery);
 
 	}
@@ -127,22 +126,6 @@ public class GalleryBoImpl implements Serializable, GalleryBo {
 			System.out.println(e.getMessage());
 		}
 		return null;
-	}
-
-	private void initializePhotoList(Gallery gallery) {
-		List<Long> photosId = gallery.getPhotosId();
-		if (!photosId.isEmpty()) {
-			List<Photo> photos = new ArrayList<Photo>();
-			for (Long id : photosId) {
-				Photo p = photoDao.getPhoto(id);
-				if (p != null)
-					photos.add(p);
-			}
-			gallery.setPhotos(photos);
-		} else {
-			gallery.setPhotos(new ArrayList<Photo>());
-		}
-
 	}
 
 }
