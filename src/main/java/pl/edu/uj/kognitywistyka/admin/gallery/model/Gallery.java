@@ -41,9 +41,6 @@ public class Gallery implements java.io.Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public void addPhoto(Photo photo) {
-		photos.add(photo);
-	}
 
 
 	public List<Photo> getPhotos() {

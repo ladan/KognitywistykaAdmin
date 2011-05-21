@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import pl.edu.uj.kognitywistyka.admin.gallery.bo.GalleryBo;
+import pl.edu.uj.kognitywistyka.admin.gallery.bo.PhotoBo;
 import pl.edu.uj.kognitywistyka.admin.gallery.model.Gallery;
 import pl.edu.uj.kognitywistyka.admin.gallery.model.Photo;
 
@@ -28,9 +29,13 @@ public class GalleryBean implements Serializable {
 	private Date date;
 	private List<Photo> photos = new ArrayList<Photo>();
 	private UploadedFile uploadedPhoto;
-	
+
 	@ManagedProperty(name = "galleryBo", value = "#{galleryBo}")
 	private GalleryBo galleryBo;
+	
+	@ManagedProperty(name = "photoBo", value = "#{photoBo}")
+	private PhotoBo photoBo;
+	
 	@ManagedProperty(name = "galleryBunchBean", value = "#{galleryBunchBean}")
 	private GalleryBunchBean galleryBunchBean;
 
@@ -53,6 +58,10 @@ public class GalleryBean implements Serializable {
 			this.date = gallery.getDate();
 			this.photos = gallery.getPhotos();
 		}
+	}
+
+	public void setPhotoBo(PhotoBo photoBo) {
+		this.photoBo = photoBo;
 	}
 
 	public void setGalleryBo(GalleryBo galleryBo) {
@@ -98,11 +107,11 @@ public class GalleryBean implements Serializable {
 	public void setUploadedPhoto(UploadedFile uploadedPhoto) {
 		this.uploadedPhoto = uploadedPhoto;
 	}
-	
+
 	public UploadedFile getUploadedPhoto() {
 		return uploadedPhoto;
 	}
-	
+
 	public String addGallery() {
 		Gallery gallery = new Gallery();
 		gallery.setTitle(title);
@@ -115,15 +124,16 @@ public class GalleryBean implements Serializable {
 	}
 
 	public String addPhoto() {
-		System.err.println(galleryId + " "+uploadedPhoto.getSize());
-		galleryBo.addPhoto(galleryId, uploadedPhoto);
+		Photo photo = new Photo();
+		photo.setGallery(galleryBo.getGallery(galleryId));
+
+		photoBo.addPhoto(photo, uploadedPhoto);
 		resetView();
 		return "";
 	}
 
 	public String removePhoto(Photo photo) {
-		if (photos.contains(photo))
-			galleryBo.removePhoto(galleryId, photo);
+		photoBo.removePhoto(photo);
 		resetView();
 		return "";
 	}
