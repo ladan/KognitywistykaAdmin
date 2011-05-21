@@ -4,22 +4,31 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="pl.edu.uj.kognitywistyka.admin.publication.model.Publication" table="k_publication">
+	<class name="pl.edu.uj.kognitywistyka.admin.publication.model.Publication"
+		table="k_publication">
 		<id name="publicationId" column="id" type="long">
-			<generator class="native"/>
+			<generator class="native" />
 		</id>
 		<property name="title" type="java.lang.String">
-			<column name="title" not-null="true" length="80"/>
+			<column name="title" not-null="true" length="80" />
 		</property>
 		<property name="date" type="timestamp">
-			<column name="date" not-null="true" length="19"/>
+			<column name="date" not-null="true" length="19" />
 		</property>
 		<property name="description" type="java.lang.String">
-			<column name="description" not-null="false"/>
+			<column name="description" not-null="false" />
 		</property>
 		<property name="fileName" type="java.lang.String">
-			<column name="fileName" not-null="true" length="90"/>
+			<column name="fileName" not-null="true" length="90" />
 		</property>
+		<bag name="tags" table="k_tag" fetch="select"
+			inverse="true" order-by="publicationId asc">
+			<key>
+				<column name="publicationId" not-null="true"></column>
+			</key>
+			<many-to-many
+				class="pl.edu.uj.kognitywistyka.admin.gallery.model.Tag" />
+		</bag>
 
-   </class>
+	</class>
 </hibernate-mapping>
