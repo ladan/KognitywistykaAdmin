@@ -3,6 +3,7 @@ package pl.edu.uj.kognitywistyka.admin.publication.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Publication implements Serializable{
 
@@ -12,6 +13,15 @@ public class Publication implements Serializable{
 	private Date date;
 	private String description;
 	private String fileName;
+	private List<Tag> tags;
+
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
 
 	private SimpleDateFormat shortDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
 	

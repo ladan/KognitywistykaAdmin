@@ -3,15 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
- 
-   	<bean id="galleryBo" 
-         class="pl.edu.uj.kognitywistyka.admin.gallery.bo.GalleryBoImpl" >
-   		<property name="galleryDao" ref="galleryDao" />
-   	</bean>
- 
-   	<bean id="galleryDao" 
-         class="pl.edu.uj.kognitywistyka.admin.gallery.dao.GalleryDaoImpl" >
-   		<property name="sessionFactory" ref="sessionFactory" />
-   	</bean>
- 
+
+	<bean id="galleryBo" class="pl.edu.uj.kognitywistyka.admin.gallery.bo.GalleryBoImpl">
+		<property name="galleryDao" ref="galleryDao" />
+	</bean>
+
+	<bean id="galleryDao"
+		class="pl.edu.uj.kognitywistyka.admin.gallery.dao.GalleryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="photoBo" class="pl.edu.uj.kognitywistyka.admin.gallery.bo.PhotoBoImpl">
+		<property name="photoDao" ref="photoDao" />
+	</bean>
+	<bean id="photoDao" class="pl.edu.uj.kognitywistyka.admin.gallery.dao.PhotoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 </beans>

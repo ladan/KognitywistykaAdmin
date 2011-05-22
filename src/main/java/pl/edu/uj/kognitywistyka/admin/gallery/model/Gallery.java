@@ -12,7 +12,6 @@ public class Gallery implements java.io.Serializable {
 	private long galleryId;
 	private String title;
 	private Date date;
-	private List<Long> photosId = new ArrayList<Long>();
 
 	private List<Photo> photos = new ArrayList<Photo>();
 
@@ -43,13 +42,6 @@ public class Gallery implements java.io.Serializable {
 		this.date = date;
 	}
 
-	public List<Long> getPhotosId() {
-		return photosId;
-	}
-
-	public void setPhotosId(List<Long> photosId) {
-		this.photosId = photosId;
-	}
 
 	public List<Photo> getPhotos() {
 		return photos;
