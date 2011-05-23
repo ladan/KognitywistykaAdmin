@@ -1,13 +1,17 @@
 package pl.edu.uj.kognitywistyka.admin.publication.dao;
 
 import java.util.List;
+import java.util.Set;
 
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import pl.edu.uj.kognitywistyka.admin.publication.model.Publication;
+import pl.edu.uj.kognitywistyka.admin.publication.model.Tag;
 
-public class PublicationDaoImpl extends HibernateDaoSupport implements PublicationDao {
+public class PublicationDaoImpl extends HibernateDaoSupport implements
+		PublicationDao {
 
 	public void addPublication(Publication publication) {
 		getHibernateTemplate().save(publication);
@@ -35,5 +39,21 @@ public class PublicationDaoImpl extends HibernateDaoSupport implements Publicati
 
 	}
 
+	public void removePublication(long publicationId) {
+		getHibernateTemplate().delete(getPublication(publicationId));
+
+	}
 	
+	public void addTagsToPublication(Set<Tag> tags, Publication publication) {
+		Session session = getSessionFactory().openSession();
+
+		session.beginTransaction();
+
+		publication.setTags(tags);
+
+		session.save(publication);
+
+		session.getTransaction().commit();
+	}
+
 }

@@ -51,12 +51,9 @@ public class Gallery implements java.io.Serializable {
 		this.photos = photos;
 	}
 
-	public SimpleDateFormat getShortDateFormatter() {
-		return shortDateFormatter;
+	public String getShortDate() {
+		return shortDateFormatter.format(date);
 	}
 
-	public void setShortDateFormatter(SimpleDateFormat shortDateFormatter) {
-		this.shortDateFormatter = shortDateFormatter;
-	}
 
 }

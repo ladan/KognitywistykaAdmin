@@ -13,13 +13,14 @@
 		class="pl.edu.uj.kognitywistyka.admin.publication.dao.PublicationDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="employeeBo"
-		class="pl.edu.uj.kognitywistyka.admin.aboutproject.bo.EmployeeBoImpl">
-		<property name="employeeDao" ref="employeeDao" />
+
+	<bean id="tagBo"
+		class="pl.edu.uj.kognitywistyka.admin.publication.bo.TagBoImpl">
+		<property name="tagDao" ref="tagDao" />
 	</bean>
 
-	<bean id="employeeDao"
-		class="pl.edu.uj.kognitywistyka.admin.aboutproject.dao.EmployeeDaoImpl">
+	<bean id="tagDao"
+		class="pl.edu.uj.kognitywistyka.admin.publication.dao.TagDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
