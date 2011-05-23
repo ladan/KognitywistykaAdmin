@@ -25,8 +25,10 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 
 	public void addPublication(Publication publication,
 			UploadedFile uploadedDocument, String tags) {
-		
-		publication.setFileName(serveDocument(uploadedDocument));
+		if(uploadedDocument!=null)
+			publication.setFileName(serveDocument(uploadedDocument));
+		else
+			publication.setFileName("");
 		
 		Set<Tag> workingSet = new HashSet<Tag>(0);
 		for(String i : tags.split(", "))

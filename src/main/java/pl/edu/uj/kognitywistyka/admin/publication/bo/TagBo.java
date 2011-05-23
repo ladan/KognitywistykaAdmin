@@ -11,5 +11,7 @@ public interface TagBo {
 
 	Tag getTag(long tagId);
 	
+	List<Tag> getTagsForPublication(long publicationId);
+	
 	List<Tag> getAllTags();
 }

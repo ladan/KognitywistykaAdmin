@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
+	  xmlns:f="http://java.sun.com/jsf/core"
+	   xmlns:t="http://myfaces.apache.org/tomahawk"
+	  >
 <head><title>IGNORED!</title></head>
 <body>
 <!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
@@ -30,87 +32,53 @@
 			<header><h3>Dodaj publikację</h3></header>
 			<h:form>
 				<div class="module_content">
-					<fieldset>
-							<label>Nazwa:</label>
-							<h:inputText id="title" value="#{publicationBean.title}" required="true" />
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
-					</fieldset>
 					<fieldset class="first_half_field">
-	        				<label>Data:</label>
-							<h:inputText id="date" value="#{publicationBean.date}" required="true" />
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
+	        			<h:outputLabel for="nazwa" value="Nazwa:" />
+	                    <h:inputText id="nazwa" value="#{publicationBean.title}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
 	                </fieldset>
-	        		<fieldset class="second_half_field"> 
-							<label>Tagi:</label>
-							<h:inputText id="tags" value="#{publicationBean.tags}"/>
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
-					</fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="data" value="Data:" />
+	                    <p class="input_hint">Format: DD/MM/YYYY</p>
+	                    <h:inputText id="data" value="#{publicationBean.date}" required="true" >
+	                    	<f:convertDateTime pattern="dd/MM/yyyy" />
+	                    </h:inputText>
+	                    <p class="warning"><h:message for="data" /></p>
+	                </fieldset>
 	                <div class="clear"></div>
-	               <fieldset>
-							<label>Abstrakt</label>
-							<h:inputTextarea rows="12" id="description" value="#{publicationBean.description}" required="true">
-							</h:inputTextarea>
-							<p class="warning">Wystąpił problem z walidacją pola.</p>
+	                <fieldset class="first_half_field">
+	        			<h:outputLabel for="author" value="Autor:" />
+	                    <h:inputText id="author" value="#{publicationBean.author}" required="true"/>
+	                    <p class="warning"><h:message for="author" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	        			<h:outputLabel for="tags" value="Tagi:" />
+	                    <h:inputText id="tags" value="#{publicationBean.tags}" required="true"/>
+	                    <p class="warning"><h:message for="nazwa" /></p>
+	                </fieldset>
+	                <fieldset>
+	                	 <h:outputLabel for="description" value="Abstrakt:" />
+			             <h:inputTextarea id="description" value="#{publicationBean.description}" rows="10" required="true">
+			             </h:inputTextarea>
+						 <p class="warning"><h:message for="description" /></p>
 					</fieldset>
 					<div class="clear"></div>
-						<!-- 
-					<fieldset>
-						<label>Autorzy:</label>
-						<div class="tab_container">
-							<h:panelGrid width="100%" columns="2" >
-							<h:selectManyCheckbox value="#{publicationBean.allAuthors}" layout="pageDirection">
-	   							<f:selectItems 	value="#{publicationBean.allAuthors}" var="w" itemLabel="#{w.title} #{w.firstName} #{w.lastName}" itemValue="#{w.employeeId}" >
-	   							</f:selectItems> 
-							</h:selectManyCheckbox>
-							</h:panelGrid>
-						
-						</div>
-					</fieldset>
-					
-
-					<fieldset>
-						<label>Autorzy:</label>
-						<div class="tab_container">
-						<div id="tab1" class="tab_content">
-						<table class="tablesorter" cellspacing="0"> 
-						<thead> 
-							<tr> 
-			   					<th></th> 
-			    				<th>Członek kadry</th> 
-			    				<th>Pozycja</th> 
-			    				<th>Dodano</th>  
-							</tr> 
-						</thead> 
-						<tbody> 
-							<tr> 
-			   					<td><input type="checkbox" /></td> 
-			    				<td>Jan Nowak</td> 
-			    				<td>Profesor</td> 
-			    				<td>5/11/2011</td> 
-							</tr> 
-							<tr> 
-			   					<td><input type="checkbox" /></td> 
-			    				<td>Murzynek Bambo</td> 
-			    				<td>Pomocnik</td> 
-			    				<td>6/11/2011</td> 
-							</tr>
-						</tbody> 
-						</table>
-						</div>
-						</div>
-					</fieldset>
-					 -->
-						<div class="clear"></div>
+						                <fieldset>
+	                	<h:outputLabel for="document" value="Dodaj dokument: "/>
+			            <t:inputFileUpload id="document" value="#{publicationBean.uploadedDocument}" />
+			            <div class="clear"></div>
+	                </fieldset>
+	                <div class="clear"></div>
 				</div>				
 				<footer>
 					<div class="submit_link">
-						<input type="submit" value="Dodaj" class="alt_btn2" />
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{publicationBean.addPublication}" />
 					</div>
 				</footer>
 			</h:form>
 		</article><!-- end of post new article -->
-	    
-	    <article class="module width_full">
+		
+		<article class="module width_full">
 		<header><h3 class="tabs_involved">Lista publikacji</h3>
 		</header>
 
@@ -120,47 +88,40 @@
 			<thead> 
 				<tr> 
    					<th></th> 
-    				<th>Nazwa</th> 
-    				<th>Data</th>
+    				<th>Tytuł</th> 
     				<th>Autor</th>
+    				<th>Data</th>
     				<th>Akcje</th> 
 				</tr> 
 			</thead> 
 			<tbody>
-				<tr> 
+				<ui:repeat var="publication" value="#{publicationBunchBean.allPublications}">
+					<tr> 
    					<td><input type="checkbox" /></td> 
-    				<td>O Koziołku Matołku</td> 
-    				<td>22/02/2011</td>  
-    				<td>Jan Nowak</td>
+    				<td>#{publication.title}</td> 
+    				<td>#{publication.author}</td>  
+    				<td>#{publication.shortDate}</td>  
     				<td>
-    						<a href="#">
-               					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" /></a>
-
+                		<h:form>
+	                        <h:link outcome="publikacje" includeViewParams="true">
+    							<f:param name="publicationid" value="#{publication.publicationId}"/>
+               					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" />
+               				</h:link>
+	                        <h:commandLink action="#{publicationBean.removePublication(publication.publicationId)}">
+               					<img src="resources/images/icn_trash.png" class="command_img" />
+           					</h:commandLink>
+                		</h:form>
     				</td> 
 				</tr>
-				<tr> 
-   					<td><input type="checkbox" /></td> 
-    				<td>Geneza Murzynka Bambo</td> 
-    				<td>11/06/2010</td>  
-    				<td>Murzynek Bambo</td>
-    				<td>
-    						<a href="#">
-               					<img src="resources/images/icn_edit.png" class="command_img" style="margin: 0 10px; padding: 0 10px;" /></a>
-
-    				</td> 
-				</tr>
+				</ui:repeat>
 			</tbody> 
 			</table>
-			<footer>
-					<div class="submit_link">
-						<input type="submit" value="Usuń wybrane" class="alt_btn2" />
-					</div>
-			</footer>
 			</div><!-- end of #tab1 -->
 		</div><!-- end of .tab_container -->
 	   	
 		</article><!-- end of content manager article -->
         <div class="clear"></div>
+
     </ui:define>
 	
 </ui:composition>

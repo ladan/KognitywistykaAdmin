@@ -14,4 +14,7 @@ public interface TagDao {
 	Tag getTag(long tagId);
 
 	List<Tag> findAllTags();
+	
+	List<Tag> getTagsForPublication(long publicationId);
+	
 }

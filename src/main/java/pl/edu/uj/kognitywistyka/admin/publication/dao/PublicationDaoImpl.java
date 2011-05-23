@@ -21,7 +21,7 @@ public class PublicationDaoImpl extends HibernateDaoSupport implements
 	@SuppressWarnings("unchecked")
 	public List<Publication> findAllPublication() {
 		HibernateTemplate ht = getHibernateTemplate();
-		ht.setMaxResults(3);
+		ht.setMaxResults(8);
 		return ht.find("from Publication order by date desc");
 	}
 

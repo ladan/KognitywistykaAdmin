@@ -6,9 +6,11 @@
 <hibernate-mapping>
 	<class name="pl.edu.uj.kognitywistyka.admin.publication.model.Publication"
 		table="k_publication">
-		<id name="publicationId" column="id" type="long">
-			<generator class="native" />
+		
+		<id name="publicationId" column="PUBLICATION_ID" type="long">
+			<generator class="identity" />
 		</id>
+		
 		<property name="title" type="java.lang.String">
 			<column name="title" not-null="true" length="80" />
 		</property>
@@ -19,15 +21,16 @@
 			<column name="description" not-null="false" />
 		</property>
 		<property name="fileName" type="java.lang.String">
-			<column name="fileName" not-null="true" length="90" />
+			<column name="fileName" not-null="false" length="90" />
 		</property>
 		<property name="author" type="java.lang.String">
 			<column name="author" not-null="true" length="80" />
 		</property>
-		<set name="tags" table="publication_tag" inverse="false" lazy="true"
+		
+		<set name="tags" table="k_publication_tag" inverse="false" lazy="true"
 			fetch="select" cascade="all">
 			<key>
-				<column name="id" not-null="true" />
+				<column name="PUBLICATION_ID" not-null="true" />
 			</key>
 			<many-to-many entity-name="pl.edu.uj.kognitywistyka.admin.publication.model.Tag">
 				<column name="TAG_ID" not-null="true" />
