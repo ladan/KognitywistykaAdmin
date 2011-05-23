@@ -21,14 +21,18 @@
 		<property name="fileName" type="java.lang.String">
 			<column name="fileName" not-null="true" length="90" />
 		</property>
-		<bag name="tags" table="k_tag" fetch="select"
-			inverse="true" order-by="publicationId asc">
+		<property name="author" type="java.lang.String">
+			<column name="author" not-null="true" length="80" />
+		</property>
+		<set name="tags" table="publication_tag" inverse="false" lazy="true"
+			fetch="select" cascade="all">
 			<key>
-				<column name="publicationId" not-null="true"></column>
+				<column name="id" not-null="true" />
 			</key>
-			<many-to-many
-				class="pl.edu.uj.kognitywistyka.admin.gallery.model.Tag" />
-		</bag>
+			<many-to-many entity-name="pl.edu.uj.kognitywistyka.admin.publication.model.Tag">
+				<column name="TAG_ID" not-null="true" />
+			</many-to-many>
+		</set>
 
 	</class>
 </hibernate-mapping>

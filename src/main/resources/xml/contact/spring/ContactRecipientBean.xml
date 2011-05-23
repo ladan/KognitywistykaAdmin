@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
- 
-   	<bean id="contactRecipientDao" 
-         class="pl.edu.uj.kognitywistyka.admin.contact.dao.ContactRecipientDaoImpl" >
-   		<property name="sessionFactory" ref="sessionFactory" />
-   	</bean>
- 
+
+	<bean id="contactRecipientDao"
+		class="pl.edu.uj.kognitywistyka.admin.contact.dao.ContactRecipientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contactRecipientBo"
+		class="pl.edu.uj.kognitywistyka.admin.contact.bo.ContactRecipientBoImpl">
+		<property name="contactRecipientDao" ref="contactRecipientDao" />
+	</bean>
+
+
+
 </beans>

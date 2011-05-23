@@ -25,7 +25,7 @@ public class ContactRecipientBean implements Serializable {
 	@ManagedProperty(name = "contactRecipientBo", value = "#{contactRecipientBo}")
 	ContactRecipientBo contactRecipientBo;
 
-	@ManagedProperty(name = "contactRecipientBunchBean", value = "#{contactRecipientBunchBean")
+	@ManagedProperty(name = "contactRecipientBunchBean", value = "#{contactRecipientBunchBean}")
 	ContactRecipientBunchBean contactRecipientBunchBean;
 
 	public void setContactRecipientBo(ContactRecipientBo contactRecipientBo) {
@@ -111,7 +111,6 @@ public class ContactRecipientBean implements Serializable {
 	}
 
 	private void resetView() {
-		setContactRecipientId(0);
 		setFirstName("");
 		setLastName("");
 		setEmail("");
