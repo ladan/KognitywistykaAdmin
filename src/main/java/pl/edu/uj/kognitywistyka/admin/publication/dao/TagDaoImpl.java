@@ -3,6 +3,8 @@ package pl.edu.uj.kognitywistyka.admin.publication.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -30,8 +32,22 @@ public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
 		return ht.find("from Tag ");
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Tag> getTagsForPublication(long publicationId) {
+		
+		Session session = getSession();
+	    Transaction tx = session.beginTransaction();
+	    
+	    Publication publication = (Publication) getSession().load(Publication.class, publicationId);
+	    List<Tag> tags = new ArrayList<Tag>(publication.getTags());
+
+	    for(Tag i : tags)
+	    	System.err.println(i);
+
+
+        tx.commit();
+        session.close();
+        return tags;
+/**
 		HibernateTemplate ht = getHibernateTemplate();
 		ht.setMaxResults(10);
 		List<Tag> lista = ht.find("from Tag ");
@@ -55,7 +71,7 @@ public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
 		//Query query = getSession().createQuery(hql);
 		//query.setParameter("publicationId", publicationId);
 
-		return result;
+		return result;**/
 	}
 
 }

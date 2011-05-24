@@ -12,6 +12,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+import org.apache.taglibs.standard.tag.common.xml.SetTag;
 
 import pl.edu.uj.kognitywistyka.admin.publication.bo.PublicationBo;
 import pl.edu.uj.kognitywistyka.admin.publication.bo.TagBo;
@@ -162,6 +163,18 @@ public class PublicationBean implements Serializable {
 		resetView();
 		return "";
 	}
+	public String updatePublication() {
+		Publication publication = publicationBo.getPublication(publicationId);
+		publication.setTitle(title);
+		publication.setDate(date);
+		publication.setAuthor(author);
+		publication.setDescription(description);
+
+		publicationBo.updatePublication(publication, uploadedDocument, tags);
+
+		resetView();
+		return "";
+	}
 
 	public String removePublication(Publication publication) {
 		publicationBo.removePublication(publication);
@@ -174,6 +187,8 @@ public class PublicationBean implements Serializable {
 		setTitle("");
 		setAuthor("");
 		setDescription("");
+		setTags("");
+		setUploadedDocument(null);
 		publicationBunchBean.setAllPublications(null);
 	}
 

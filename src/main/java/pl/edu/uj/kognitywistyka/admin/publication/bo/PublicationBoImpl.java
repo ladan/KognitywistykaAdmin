@@ -37,13 +37,25 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 			tag.setTitle(i);
 			workingSet.add(tag);
 		}
-		publicationDao.addPublication(publication);
-		publicationDao.addTagsToPublication(workingSet, publication);
+		publicationDao.addPublicationWithTags(publication, workingSet);
 	}
 
-	public void updatePublication(Publication publication) {
+	public void updatePublication(Publication publication,
+			UploadedFile uploadedDocument, String tags) {
+		if(uploadedDocument!=null)
+			publication.setFileName(serveDocument(uploadedDocument));
+		else
+			publication.setFileName("");
+		
+		Set<Tag> workingSet = new HashSet<Tag>(0);
+		for(String i : tags.split(", "))
+		{
+			Tag tag = new Tag();
+			tag.setTitle(i);
+			workingSet.add(tag);
+		}
+		publication.setTags(workingSet);
 		publicationDao.updatePublication(publication);
-
 	}
 
 	public void removePublication(Publication publication) {
