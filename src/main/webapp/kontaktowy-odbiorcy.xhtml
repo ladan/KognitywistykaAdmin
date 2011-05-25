@@ -37,20 +37,20 @@
 		                </fieldset>
 		                <fieldset class="second_half_field">
 		        			<h:outputLabel for="nazwisko" value="Nazwisko:" />
-		                    <h:inputText id="nazwisko" value="#{contactRecipient.lastName}" required="true"/>
+		                    <h:inputText id="nazwisko" value="#{contactRecipientBean.lastName}" required="true"/>
 		                    <p class="warning"><h:message for="nazwisko" /></p>
 		                </fieldset>
 		                <div class="clear"></div>
 		                <fieldset class="first_half_field">
-		        			<h:outputLabel for="email" value="Nazwa:" />
-		                    <h:inputText id="email" value="#{contactRecipient.email}" required="true"/>
+		        			<h:outputLabel for="email" value="Adres e-mail:" />
+		                    <h:inputText id="email" value="#{contactRecipientBean.email}" required="true"/>
 		                    <p class="warning"><h:message for="email" /></p>
 		                </fieldset>
 					</div>
 				
 					<footer>
 						<div class="submit_link">
-							<h:commandButton class="alt_btn2" value="Dodaj" action="#{contactRecipient.addContactRecipient}" />
+							<h:commandButton class="alt_btn2" value="Dodaj" action="#{contactRecipientBean.addContactRecipient}" />
 						</div>
 					</footer>
 				</h:form>
@@ -59,6 +59,7 @@
 	    <article class="module width_full">
 		<header><h3 class="tabs_involved">Lista osób</h3>
 		</header>
+
 
 		<div class="tab_container">
 			<div id="tab1" class="tab_content">
@@ -72,30 +73,23 @@
     				<th>Usun</th>
 				</tr> 
 			</thead> 
-			<tbody>
+			<tbody> 
+				<ui:repeat var="contactRecipient" value="#{contactRecipientBunchBean.allContactRecipient}">
 					<tr> 
-   					<td><input type="checkbox" /></td> 
-    				<td>Jan Nowak</td> 
-    				<td>nowakjestem@onetpoczta.eu</td>  
-    				<td>Nie</td> 
-    				<td>
-	    				<a href="#">
-	               			<img src="resources/images/icn_trash.png" class="command_img" />
-	           			</a>
-    				</td>
-					</tr>
-					
-					<tr> 
-   					<td><input type="checkbox" /></td> 
-    				<td>Murzynek Bambo</td> 
-    				<td>bambo@okawango.bd</td>  
-    				<td>Tak</td> 
-    				<td>
-	    				<a href="#">
-	               			<img src="resources/images/icn_trash.png" class="command_img" />
-	           			</a>
-    				</td>
-					</tr>
+	   					<td><input type="checkbox" /></td> 
+	    				<td>#{contactRecipient.firstName} #{contactRecipient.lastName}</td> 
+	    				<td>#{contactRecipient.email}</td>  
+	    				<td>N/A</td> 
+	    				<td>
+	    					<h:form>
+
+                				<h:commandLink action="#{contactRecipientBean.removeContractRecipient(contactRecipient.contactRecipientId)}">
+                					<img src="resources/images/icn_trash.png" class="command_img" />
+                				</h:commandLink>
+	                		</h:form>
+	    				</td> 
+					</tr>  
+				</ui:repeat>
 			</tbody> 
 			</table>
 			</div><!-- end of #tab1 -->

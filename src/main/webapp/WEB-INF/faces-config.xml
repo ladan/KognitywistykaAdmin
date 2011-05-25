@@ -29,6 +29,14 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+		<navigation-rule>
+		<from-view-id>/publikacje-edit*</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/publikacje</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/galerie-edit*</from-view-id>
 		<navigation-case>
