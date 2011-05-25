@@ -68,12 +68,13 @@
 			            <t:inputFileUpload id="document" value="#{publicationBean.uploadedDocument}" />
 			            <div class="clear"></div>
 	                </fieldset>
+	                <h:inputHidden value="#{publicationBean.publicationId}" />
 	                <div class="clear"></div>
 				</div>				
 				<footer>
 				
 					<div class="submit_link">
-						<h:commandButton class="alt_btn2" value="Edytuj" action="#{publicationBean.updatePublication}" />
+						<h:commandButton class="alt_btn2" value="Zapisz" action="#{publicationBean.updatePublication}" />
 					</div>
 				</footer>
 			</h:form>
