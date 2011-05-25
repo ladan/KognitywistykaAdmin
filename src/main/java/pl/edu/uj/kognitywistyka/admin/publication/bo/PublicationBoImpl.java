@@ -42,6 +42,7 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 
 	public void updatePublication(Publication publication,
 			UploadedFile uploadedDocument, String tags) {
+		publicationDao.removePublication(publication.getPublicationId());
 		if(uploadedDocument!=null)
 			publication.setFileName(serveDocument(uploadedDocument));
 		else
@@ -55,7 +56,7 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 			workingSet.add(tag);
 		}
 		publication.setTags(workingSet);
-		publicationDao.updatePublication(publication);
+		publicationDao.addPublication(publication);
 	}
 
 	public void removePublication(Publication publication) {

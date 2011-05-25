@@ -33,7 +33,9 @@ public class PublicationDaoImpl extends HibernateDaoSupport implements
 	}
 
 	public void updatePublication(Publication publication) {
-		getHibernateTemplate().update(publication);
+		//getHibernateTemplate().update(publication);
+		removePublication(publication);
+		addPublication(publication);
 
 	}
 
@@ -85,6 +87,14 @@ public class PublicationDaoImpl extends HibernateDaoSupport implements
 		}
 		session.flush();
 		session.delete(publication);
+		session.flush();
+		res = session.createQuery("from Tag e where e.publications.size < 1").list();
+		if(!res.isEmpty())
+		{
+			for(Object i : res)
+				session.delete(i);
+			session.flush();
+		}
 
 		tx.commit();
 		session.close();
