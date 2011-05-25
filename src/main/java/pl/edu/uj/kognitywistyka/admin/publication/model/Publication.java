@@ -2,8 +2,10 @@ package pl.edu.uj.kognitywistyka.admin.publication.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Publication implements Serializable {
@@ -76,19 +78,15 @@ public class Publication implements Serializable {
 	public Set<Tag> getTags() {
 		return tags;
 	}
+	
+	public List<Tag> getTagsAsList() {
+		return new ArrayList<Tag>(tags);
+	}
 
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
 	}
 
-	public String getTagsAsString() {
-		
-		StringBuffer tagsString = new StringBuffer();
-		for (Tag i : tags) {
-			tagsString.append(i + ", ");
-		}
-		
-		return tagsString.toString();
-	}
+
 
 }

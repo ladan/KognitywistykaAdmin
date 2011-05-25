@@ -20,6 +20,6 @@ public interface PublicationDao {
 	
 	void removePublication(long publicationId);
 	
-	void addTagsToPublication(Set<Tag> tags, Publication publication);
+	void addPublicationWithTags(Publication publication, Set<Tag> tags);
 
 }

@@ -5,16 +5,19 @@
 <hibernate-mapping>
 	<class name="pl.edu.uj.kognitywistyka.admin.publication.model.Tag"
 		table="k_tag">
-		<id name="tagId" column="id" type="long">
-			<generator class="native" />
+		
+		<id name="tagId" column="TAG_ID" type="long">
+			<generator class="identity" />
 		</id>
+		
 		<property name="title" type="java.lang.String">
 			<column name="title" not-null="true" length="80" />
 		</property>
-		<set name="publications" table="publication_tag" inverse="true"
+		
+		<set name="publications" table="k_publication_tag" inverse="true"
 			lazy="true" fetch="select">
 			<key>
-				<column name="id" not-null="true" />
+				<column name="TAG_ID" not-null="true" />
 			</key>
 			<many-to-many
 				entity-name="pl.edu.uj.kognitywistyka.admin.publication.model.Publication">

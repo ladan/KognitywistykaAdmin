@@ -1,10 +1,14 @@
 package pl.edu.uj.kognitywistyka.admin.publication.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import pl.edu.uj.kognitywistyka.admin.publication.model.Publication;
 import pl.edu.uj.kognitywistyka.admin.publication.model.Tag;
 
 public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
@@ -25,9 +29,49 @@ public class TagDaoImpl extends HibernateDaoSupport implements TagDao {
 	public List<Tag> findAllTags() {
 		HibernateTemplate ht = getHibernateTemplate();
 		ht.setMaxResults(3);
-		return ht.find("from Tag order by date desc");
+		return ht.find("from Tag ");
 	}
 
+	public List<Tag> getTagsForPublication(long publicationId) {
+		
+		Session session = getSession();
+	    Transaction tx = session.beginTransaction();
+	    
+	    Publication publication = (Publication) getSession().load(Publication.class, publicationId);
+	    List<Tag> tags = new ArrayList<Tag>(publication.getTags());
 
+	    for(Tag i : tags)
+	    	System.err.println(i);
+
+
+        tx.commit();
+        session.close();
+        return tags;
+/**
+		HibernateTemplate ht = getHibernateTemplate();
+		ht.setMaxResults(10);
+		List<Tag> lista = ht.find("from Tag ");
+		List<Tag> result = new ArrayList<Tag>(0);
+		
+		etykieta:
+		for(Tag i :lista)
+		{
+			for(Publication j : i.getPublications())
+			{
+				if(j.getPublicationId() == publicationId)
+				{
+					result.add(i);
+					continue etykieta;
+				}
+			}
+		}
+		
+	//	String hql = "select distinct a from Tag a " + "join a.Publication t "
+		//		+ "where t.PUBLICATION_ID is :publicationId";
+		//Query query = getSession().createQuery(hql);
+		//query.setParameter("publicationId", publicationId);
+
+		return result;**/
+	}
 
 }

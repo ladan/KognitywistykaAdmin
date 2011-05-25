@@ -2,20 +2,22 @@ package pl.edu.uj.kognitywistyka.admin.publication.managedbeans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.fileupload.UploadedFile;
+import org.apache.taglibs.standard.tag.common.xml.SetTag;
 
 import pl.edu.uj.kognitywistyka.admin.publication.bo.PublicationBo;
 import pl.edu.uj.kognitywistyka.admin.publication.bo.TagBo;
 import pl.edu.uj.kognitywistyka.admin.publication.model.Publication;
+import pl.edu.uj.kognitywistyka.admin.publication.model.Tag;
 
 @ManagedBean
 @RequestScoped
@@ -68,10 +70,23 @@ public class PublicationBean implements Serializable {
 			this.publicationId = publication.getPublicationId();
 			this.author = publication.getAuthor();
 			this.date = publication.getDate();
-			this.tags = publication.getTagsAsString();
+
+			this.tags = getTagsAsString();
+
 			this.title = publication.getTitle();
 			this.description = publication.getDescription();
 		}
+	}
+
+	public String getTagsAsString() {
+		
+		StringBuffer tagsString = new StringBuffer();
+		List<Tag> tags = tagBo.getTagsForPublication(publicationId);
+		for (Tag i : tags) {
+			tagsString.append(i + ", ");
+		}
+
+		return tagsString.toString();
 	}
 
 	public long getPublicationId() {
@@ -142,9 +157,21 @@ public class PublicationBean implements Serializable {
 		resetView();
 		return "";
 	}
-	
+
 	public String removePublication(long publicationId) {
 		publicationBo.removePublication(publicationId);
+		resetView();
+		return "";
+	}
+	public String updatePublication() {
+		Publication publication = publicationBo.getPublication(publicationId);
+		publication.setTitle(title);
+		publication.setDate(date);
+		publication.setAuthor(author);
+		publication.setDescription(description);
+
+		publicationBo.updatePublication(publication, uploadedDocument, tags);
+
 		resetView();
 		return "";
 	}
@@ -154,11 +181,14 @@ public class PublicationBean implements Serializable {
 		resetView();
 		return "";
 	}
+
 	private void resetView() {
 		setDate(null);
 		setTitle("");
 		setAuthor("");
 		setDescription("");
+		setTags("");
+		setUploadedDocument(null);
 		publicationBunchBean.setAllPublications(null);
 	}
 

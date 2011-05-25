@@ -9,7 +9,7 @@ import pl.edu.uj.kognitywistyka.admin.publication.model.Publication;
 public interface PublicationBo {
 	void addPublication(Publication publication, UploadedFile uploadedDocument, String tags);
 
-	void updatePublication(Publication publication);
+	void updatePublication(Publication publication, UploadedFile uploadedDocument, String tags);
 
 	void removePublication(Publication publication);
 

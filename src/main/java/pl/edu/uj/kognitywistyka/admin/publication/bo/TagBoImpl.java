@@ -31,4 +31,8 @@ public class TagBoImpl implements Serializable, TagBo {
 		return tagDao.findAllTags();
 	}
 
+	public List<Tag> getTagsForPublication(long publicationId) {
+		return tagDao.getTagsForPublication(publicationId);
+	}
+
 }
