@@ -25,6 +25,7 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 
 	public void addPublication(Publication publication,
 			UploadedFile uploadedDocument, String tags) {
+		System.err.println("Bo.add: "+ uploadedDocument.getName());
 		if(uploadedDocument!=null)
 			publication.setFileName(serveDocument(uploadedDocument));
 		else
@@ -78,14 +79,14 @@ public class PublicationBoImpl implements PublicationBo, Serializable {
 
 	private String serveDocument(UploadedFile uploadedDocument) {
 		try {
-
+			System.err.println("bo.serve"+ uploadedDocument.getName());
 			String filename = System.currentTimeMillis()
 					+ uploadedDocument.getName();
 
 			File destFile = new File(
 					PropertiesReader.getPathToStoreFile()
 							+ PropertiesReader
-									.getPropertyOfGallery("pathToPublication")
+									.getPropertyOfPublication("pathToPublication")
 							+ filename);
 
 			FileOutputStream fop = new FileOutputStream(destFile);

@@ -151,7 +151,7 @@ public class PublicationBean implements Serializable {
 		publication.setDate(date);
 		publication.setAuthor(author);
 		publication.setDescription(description);
-
+		System.err.println("Bean: "+ uploadedDocument.getName());
 		publicationBo.addPublication(publication, uploadedDocument, tags);
 
 		resetView();
