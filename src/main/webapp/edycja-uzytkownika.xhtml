@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:t="http://myfaces.apache.org/tomahawk">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+	
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Edycja Użytkownika" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <h:link value="Lista Użytkowników" outcome="lista-uzytkownikow" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Edycja Użytkownika</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+		
+		<div class="clear"></div>
+		<article class="module width_full">
+			<header><h3>Edycja Użytkownika</h3></header>
+           	<h:form>
+				<div class="module_content">
+					<fieldset class="first_half_field">
+	                	<h:outputLabel for="imie" value="Imię:" />
+	                    <h:inputText id="imie" value="John" required="true"/>
+	                    <p class="warning"><h:message for="imie" /></p>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+	                	<h:outputLabel for="nazwisko" value="Nazwisko: " />
+	                    <h:inputText id="nazwisko" value="Smith" required="true"/>
+	                    <p class="warning"><h:message for="nazwisko" /></p>
+	                </fieldset>
+	                <fieldset class="first_half_field">
+	                    <h:outputLabel for="firma" value="Firma: " />
+	                    <h:inputText id="firma" value="Galaxy Corporation"/>
+	                </fieldset>
+	                <fieldset class="second_half_field">
+						<h:outputLabel for="stanowisko" value="Stanowisko: " />
+	                    <h:inputText id="stanowisko" value="Zajadacz Chleba"/>
+					</fieldset>
+					<fieldset class="first_half_field">
+							<label>Typ użytkownika</label>
+							<select>
+								<option>Naukowiec</option>
+								<option>Przedsiębiorca</option>
+							</select>
+					</fieldset>
+					<fieldset class="second_half_field">
+	                	<h:outputLabel for="miejscowosc" value="Miejscowosc: " />
+	                    <h:inputText id="miejscowosc" value="Krakow" required="true"/>
+	                </fieldset>
+	                <fieldset class="first_half_field">
+							<label>Wojewodztwo</label>
+							<select>
+								<option>dolnośląskie</option>
+								<option>kujawsko-pomorskie</option>
+								<option>małopolskie</option>
+								<option>mazowieckie</option>
+								<option>podlaskie</option>
+								<option>podkarpackie</option>
+								<option>wielkopolskie</option>
+								<option>zachodnio-pomorskie</option>
+							</select>
+					</fieldset>
+					<fieldset class="second_half_field">
+	                	<h:outputLabel for="branze" value="Branze: " /><br />
+	                    <input type="checkbox" />HR
+	                    <input type="checkbox" />Internet
+	                    <input type="checkbox" />COS
+	                </fieldset>
+	                <div class="clear"></div>
+	                <fieldset>
+	                	<h:outputLabel for="opis" value="Opis firmy: " />
+	                    <h:inputTextarea id="opis" value="Biznes jak biznes" rows="5" required="true">
+	                	</h:inputTextarea>
+	                	<p class="warning"><h:message for="opis" /></p>
+	                </fieldset>
+	                <div class="clear"></div>
+				</div>				
+				<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Dodaj" action="#{employeeBean.addEmployee}" />
+					</div>
+				</footer>
+			</h:form>
+		</article><!-- end of post new article -->
+
+        <div class="clear"></div>
+        
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>

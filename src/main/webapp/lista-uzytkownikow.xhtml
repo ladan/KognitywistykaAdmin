@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		  xmlns:ui="http://java.sun.com/jsf/facelets"
+		  xmlns:h="http://java.sun.com/jsf/html"
+		  xmlns:f="http://java.sun.com/jsf/core"
+		  xmlns:t="http://myfaces.apache.org/tomahawk">
+<head><title>IGNORED!</title></head>
+<body>
+<!-- WSZYSTKO POWYŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+
+<ui:composition template="/templates/masterLayout.xhtml">
+	
+	<!-- Tu podajemy nazwę, która ma być wyświetlona w nagłówku strony -->
+	<ui:param name="siteName" value="Lista użytkowników" />
+	
+	<ui:define name="siteNav">
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<h:link value="Panel administracyjny" outcome="index" />
+                <div class="breadcrumb_divider"></div>
+                <a class="current">Lista użytkowników</a>
+            </article>
+		</div>
+	</ui:define>
+	
+	<ui:define name="siteContent">
+	
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">Lista Użytkowników</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Naukowiec</a></li>
+    		<li><a href="#tab2">Przedsiębiorca</a></li>
+		</ul>
+		</header>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Użytkownik</th> 
+    				<th>Firma</th> 
+    				<th>Pozycja</th>
+    				<th>Akcje</th> 
+				</tr> 
+			</thead> 
+			<tbody>
+			<ui:repeat var="employee" value="1">
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Albert Einstein</td> 
+    				<td>Firma</td>
+    				<td>Pozycja</td> 
+    				<td>
+    					<h:form>
+                			<h:commandLink action="#">
+    							<img src="resources/images/icn_edit.png" class="command_img" /> 
+   							</h:commandLink>
+	                    </h:form>
+   					</td> 
+				</tr> 
+			</ui:repeat>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+			
+			<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th></th> 
+    				<th>Użytkownik</th> 
+    				<th>Firma</th> 
+    				<th>Pozycja</th>
+    				<th>Akcje</th>
+				</tr> 
+			</thead> 
+			<tbody>
+			<ui:repeat var="employee" value="1">
+				<tr> 
+   					<td><input type="checkbox" /></td> 
+    				<td>Lex Luthor</td> 
+    				<td>Firma</td>
+    				<td>Pozycja</td> 
+    				<td>
+    					<h:form>
+                			<h:commandLink action="#">
+    							<img src="resources/images/icn_edit.png" class="command_img" /> 
+   							</h:commandLink>
+	                    </h:form>
+   					</td> 
+				</tr> 
+			</ui:repeat>
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab2 -->
+		</div><!-- end of .tab_container -->
+		<footer>
+					<div class="submit_link">
+						<h:commandButton class="alt_btn2" value="Usuń wybranych" action="#" />
+					</div>
+			</footer>
+		</article><!-- end of content manager article -->
+        
+    </ui:define>
+	
+</ui:composition>
+
+<!-- WSZYSTKO PONIŻEJ JEST IGNOROWANE -->
+<!-- Zostawiamy tylko dlatego by Eclipse nie sypał warningami -->
+</body>
+</html>
